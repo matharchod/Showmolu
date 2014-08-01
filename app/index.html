@@ -50,24 +50,22 @@
       <li><a href="#/view2">Contact Me</a></li>
     </ul>
     <!-- #mainNav - container for man nav --> 
-    <ul id="mainNav">
+    <ul id="mainNav" class="">
       <li><a href="">R&eacute;sum&eacute;</a></li>
-      <li><a href="">Design</a></li>
+      <li><a href="">Creative</a></li>
       <li><a href="">Code</a></li>
       <li><a href="">UX Diary</a></li>
-      <li><a href="">Blog</a></li>
-    </ul>         
+      <!-- <li><a href="">Blog</a></li> -->
+    </ul> 
+    <!-- #subNav - container for secondary nav -->
+    <ul id="subNav" class="">
+      <li>
+        <a class="more-btn">...</a>
+      </li>
+    </ul>       
   </div> <! -- / #dynamicNav -->
   
-  <div id="infoBtn">
-    
-  </div>
-
-
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-  
+  <a id="infoBtn" class=""></a>
   
   <!-- #dynamicBkg - container for nifty background stuff -->
   <div id="dynamicBkg" ng-view></div>
