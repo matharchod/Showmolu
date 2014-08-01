@@ -114,6 +114,11 @@ body.open {
   margin: 0 auto;
   display: block;
   background-repeat: no-repeat;
+  background-size: cover;
+}
+.view {
+  z-index: 1;
+  position: relative;
 }
 h3 {
 	font-family: 'Open Sans', sans-serif;
