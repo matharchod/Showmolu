@@ -19,12 +19,8 @@
 <body>
   <!-- #dynamicNav - container for the dynamic nav. -->
   <div id="dynamicNav"> 
-    <h1 class="your-position">
-      <a href="">Front End Developer</a>
-    </h1>  
-     <h2 class="your-name">
-      <a href="">Jani Momolu Anderson</a>
-    </h2> 
+    <h1 class="your-title">Front End Developer</h1>  
+    <h2 class="your-name">Jani Momolu Anderson</h2> 
     <!--
       A table allows the logo to maintain its relative position 
       as the nav moves around the page
@@ -50,7 +46,7 @@
       <li><a href="#/view2">Contact Me</a></li>
     </ul>
     <!-- #mainNav - container for man nav --> 
-    <ul id="mainNav" class="">
+    <ul id="mainNav" class="hidden">
       <li><a href="">R&eacute;sum&eacute;</a></li>
       <li><a href="">Creative</a></li>
       <li><a href="">Code</a></li>
@@ -58,19 +54,21 @@
       <!-- <li><a href="">Blog</a></li> -->
     </ul> 
     <!-- #subNav - container for secondary nav -->
-    <ul id="subNav" class="">
+    <ul id="subNav" class="hidden">
       <li>
         <a class="more-btn">...</a>
       </li>
     </ul>       
-  </div> <! -- / #dynamicNav -->
+  </div> <!-- / #dynamicNav -->
   
   <a id="infoBtn" class=""></a>
-  
-  <!-- #dynamicBkg - container for nifty background stuff -->
-  <div id="dynamicBkg" ng-view></div>
 
+  <div ng-view></div>
+  
   <div>Showmolu : v<span app-version></span></div>
+  
+  <!-- #dynamicBkg - container for nifty background stuff -->  
+  <div id="dynamicBkg"></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
