@@ -1,6 +1,8 @@
 # Showmolu
 #### A Social Portfolio App / Built in AngularJS
 
+### PLEASE NOTE: this app is under construction. 
+
 ### Run the Application
 
 We have preconfigured the project with a simple development web server.  The simplest way to start
