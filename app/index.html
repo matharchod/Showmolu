@@ -13,15 +13,14 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/app.css"/>
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>  
 </head>
 <body>
   <!-- #dynamicNav - container for the dynamic nav. -->
   <div id="dynamicNav"> 
     <h1 class="your-title">Front End Developer</h1>  
     <h2 class="your-name">Jani Momolu Anderson</h2> 
+    <h3 ng-controller="pageController">{{ greeting }}</h3>
     <!--
       A table allows the logo to maintain its relative position 
       as the nav moves around the page
@@ -62,15 +61,29 @@
     </ul>       
   </div> <!-- / #dynamicNav -->
   
-  <a id="infoBtn" class=""></a>
+  <button id="infoBtn" class="" ngClick="toggleBkgImageMenu">i</button>
 
   <div class="view" ng-view></div>
   
   <div>Showmolu : v<span app-version></span></div>
   
-  <!-- #dynamicBkg - container for nifty background stuff -->  
-  <div id="dynamicBkg"></div>
-
+  <!-- 
+  #dynamicBkg - container for nifty background stuff.
+  Classes decorate elements that may change during develpoment.
+  -->  
+  <div id="dynamicBkg">
+    <ul class="menu border-box">
+      <li class="close">&times;</li>
+      <li class="title">This is the Title of One of My Photographs in Chicago</li>
+      <li class="controls">
+        <span class="link"><a href="">view this photo on Flickr</a></span>
+        <span class="prev"><</span>
+        <span class="next">></span>
+      </li>
+    </ul>
+  </div>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->

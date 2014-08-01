@@ -1,7 +1,7 @@
 /* Showmolu css stylesheet */
 
 body {
-	font-family: sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-weight: normal;
 	line-height: 100%;
 	overflow: hidden;
@@ -57,7 +57,6 @@ body.open {
 }
 #dynamicNav h1, 
 #dynamicNav h2 {
-	font-family: 'Open Sans', sans-serif;
 	font-size: 18px;
 	font-weight: 300;
 	position: absolute;
@@ -81,6 +80,11 @@ body.open {
 #dynamicNav #homeNav li {
   width: 50%;
 }
+#dynamicNav table td.logo {
+  background-color: transparent;
+  width: 75px;
+  height: 75px;
+}
 #dynamicBkg {
   background-image: url('../img/my-balcony.jpg');
   background-size: cover;
@@ -91,18 +95,76 @@ body.open {
   height: 100%;
   z-index: 0;
 }
-#dynamicNav table td.logo {
+#dynamicBkg .menu {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  background-color: #fff;
+  margin: 0;
+  padding: 2.5%;
+  padding-left: 5%;
+}
+#dynamicBkg .menu li {
+  list-style-type: none;
+  padding: 0;
+  display: inline-block;  
+  vertical-align: middle;
+}
+#dynamicBkg .menu li.close {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 32px;
+  font-weight: normal;
+}
+#dynamicBkg .menu li.title {
+  font-size: 18px;
+  line-height: 125%;
+  max-width: 50%;
+}
+#dynamicBkg .menu li.controls {
+  float: right;
+  text-align: right;
+}
+#dynamicBkg .menu .link {
+  margin-right: 25px;
+  font-size: 12px;
+}
+#dynamicBkg .menu .controls .prev,
+#dynamicBkg .menu .controls .next {  
+  display: inline-block;  
+  vertical-align: middle;
+  font-size: 36px;
+}
+#dynamicBkg .menu .close,
+#dynamicBkg .menu .title,
+#dynamicBkg .menu .controls .prev,
+#dynamicBkg .menu .controls .next {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300; 
+}
+#infoBtn {
+  display: block;
+  width: 35px;
+  height: 35px;
+  padding: 15px;
+  margin-top: -25px;
+  color: #fff;
+  border: 1px solid #fff;
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  top: 50%;
   background-color: transparent;
-  width: 75px;
-  height: 75px;
+  line-height: 0px;
+  text-align: center;
+  font-style: italic;
+  font-family: 'Georgia', sans-serif;
+  border-radius: 25px;
 }
 .your-name {font-size: 24px;}
 .your-title {margin-bottom: -25px;}
-.border-box {
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-}
 .your-logo {
 	padding: 0;
 	margin: 0;
@@ -121,7 +183,6 @@ body.open {
   position: relative;
 }
 h3 {
-	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	font-weight: 300;	
 	line-height: 150%;
@@ -133,4 +194,8 @@ h3 {
 	width: 49.5%;
 	font-size: 90%;
 }
-
+.border-box {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
