@@ -3,12 +3,17 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('dynamicNavController', ['$scope', function($scope) {
+.controller('appController', ['$scope', function($scope) {
     $scope.page = 'home';
+    $scope.pageStatus = 'default';
+    $scope.greeting = 'Hola!';   
     $scope.navStatus = 'default';
+    $scope.bkgImage = 'default';
+    $scope.imageNavStatus = 'closed'; 
+  }])
+  .controller('dynamicNavController', ['$scope', function($scope) {
   }])
   .controller('dynamicBkgController', ['$scope', function($scope) {
-    $scope.bkgImage = 'default';
     $scope.imageNavStatus = 'closed';
     $scope.imageNavStatusToggle = function() {
       /* alert($scope.imageNavStatus); */
@@ -20,9 +25,6 @@ angular.module('myApp.controllers', [])
     } 
   }])
   .controller('portfolioController', ['$scope', function($scope) {
-    $scope.page = 'home';
   }])
   .controller('pageController', ['$scope', function($scope) {
-    $scope.pageStatus = 'default';
-    $scope.greeting = 'Hola!';
   }]); 
