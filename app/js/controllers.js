@@ -7,7 +7,7 @@ angular.module('myApp.controllers', [])
     $scope.page = 'home';
     $scope.pageStatus = 'default';
     $scope.greeting = 'Hola!';   
-    $scope.navStatus = 'default';
+    $scope.navStatus = 'open';
     $scope.bkgImage = 'default';
     $scope.imageNavStatus = 'closed'; 
   }])
@@ -27,4 +27,5 @@ angular.module('myApp.controllers', [])
   .controller('portfolioController', ['$scope', function($scope) {
   }])
   .controller('pageController', ['$scope', function($scope) {
+  
   }]); 
