@@ -15,12 +15,12 @@
   <link rel="stylesheet" href="css/app.css"/>
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>  
 </head>
-<body>
+<body ng-controller="pageController">
   <!-- #dynamicNav - container for the dynamic nav. -->
   <div id="dynamicNav"> 
     <h1 class="your-title">Front End Developer</h1>  
     <h2 class="your-name">Jani Momolu Anderson</h2> 
-    <h3 ng-controller="pageController">{{ greeting }}</h3>
+    <h3>{{ greeting }}</h3>
     <!--
       A table allows the logo to maintain its relative position 
       as the nav moves around the page
@@ -60,8 +60,6 @@
       </li>
     </ul>       
   </div> <!-- / #dynamicNav -->
-  
-  <button id="infoBtn" class="" ngClick="toggleBkgImageMenu">i</button>
 
   <div class="view" ng-view></div>
   
@@ -71,8 +69,9 @@
   #dynamicBkg - container for nifty background stuff.
   Classes decorate elements that may change during develpoment.
   -->  
-  <div id="dynamicBkg">
-    <ul class="menu border-box">
+  <div id="dynamicBkg" ng-controller="dynamicBkgController">
+    <button id="infoBtn" ng-click="imageNavStatusToggle()">i</button> 
+    <ul class="menu border-box" ng-class="{{imageNavStatus}}">
       <li class="close">&times;</li>
       <li class="title">This is the Title of One of My Photographs in Chicago</li>
       <li class="controls">
