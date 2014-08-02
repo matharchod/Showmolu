@@ -7,22 +7,31 @@ angular.module('myApp.controllers', [])
     $scope.page = 'home';
     $scope.pageStatus = 'default';
     $scope.greeting = 'Hola!';   
-    $scope.navStatus = 'open';
     $scope.bkgImage = 'default';
+    $scope.navStatus = 'closed';
     $scope.imageNavStatus = 'closed'; 
-  }])
-  .controller('dynamicNavController', ['$scope', function($scope) {
-  }])
-  .controller('dynamicBkgController', ['$scope', function($scope) {
-    $scope.imageNavStatus = 'closed';
     $scope.imageNavStatusToggle = function() {
-      /* alert($scope.imageNavStatus); */
       if ($scope.imageNavStatus == 'closed') {
           $scope.imageNavStatus = 'open';
+          $scope.navStatus = 'gone';
         } else {
           $scope.imageNavStatus = 'closed';
+          $scope.navStatus = 'closed';
       }    
-    } 
+    }; 
+     $scope.navStatusToggle = function() {
+      if ($scope.navStatus == 'closed') {
+          $scope.navStatus = 'open';
+        } else {
+          $scope.navStatus = 'closed';
+      }    
+    };      
+  }])
+  .controller('dynamicNavController', ['$scope', function($scope) {
+   
+  }])
+  .controller('dynamicBkgController', ['$scope', function($scope) {
+
   }])
   .controller('portfolioController', ['$scope', function($scope) {
   }])

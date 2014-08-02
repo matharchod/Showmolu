@@ -31,6 +31,15 @@ body.open {
 	left: 25%;
 	text-align: center;
 }
+#dynamicNav.open {
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+}
+#dynamicNav.gone{
+  display: none;
+}
 #dynamicNav li {
 	list-style-type: none;
 	padding: 7.5% 0;
@@ -165,6 +174,9 @@ body.open {
   font-style: italic;
   font-family: 'Georgia', sans-serif;
   border-radius: 25px;
+}
+#infoBtn.closed {
+  display: none;
 }
 .your-name {font-size: 24px;}
 .your-title {margin-bottom: -25px;}

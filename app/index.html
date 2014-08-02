@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" ng-controller="appController" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,10 +17,9 @@
 </head>
 <body ng-controller="pageController">
   <!-- #dynamicNav - container for the dynamic nav. -->
-  <div id="dynamicNav" class="{{navStatus}}" > 
+  <div id="dynamicNav" ng-controller="dynamicNavController" class="{{navStatus}}" > 
     <h1 class="your-title">Front End Developer</h1>  
     <h2 class="your-name">Jani Momolu Anderson</h2> 
-    <h3>{{ greeting }}</h3>
     <!--
       A table allows the logo to maintain its relative position 
       as the nav moves around the page
@@ -32,7 +31,7 @@
       <tr>
         <td width="50%"></td>
         <td class="logo">
-          <a href="" class="your-logo"></a>
+          <a href="" class="your-logo" ng-click="navStatusToggle()"></a>
         </td>
         <td width="50%"></td>
       </tr> 
@@ -70,9 +69,9 @@
   Classes decorate elements that may change during develpoment.
   -->  
   <div id="dynamicBkg" ng-controller="dynamicBkgController">
-    <button id="infoBtn" ng-click="imageNavStatusToggle()">i</button> 
+    <button id="infoBtn" ng-click="imageNavStatusToggle()" class="{{infoBtnStatus}}">i</button> 
     <ul class="menu border-box {{imageNavStatus}}">
-      <li class="close">&times;</li>
+      <li ng-click="imageNavStatusToggle()" class="close">&times;</li>
       <li class="title">This is the Title of One of My Photographs in Chicago</li>
       <li class="controls">
         <span class="link"><a href="">view this photo on Flickr</a></span>
