@@ -71,7 +71,7 @@
   -->  
   <div id="dynamicBkg" ng-controller="dynamicBkgController">
     <button id="infoBtn" ng-click="imageNavStatusToggle()">i</button> 
-    <ul class="menu border-box" ng-class="{{imageNavStatus}}">
+    <ul class="menu border-box {{imageNavStatus}}">
       <li class="close">&times;</li>
       <li class="title">This is the Title of One of My Photographs in Chicago</li>
       <li class="controls">

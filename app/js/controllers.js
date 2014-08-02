@@ -11,14 +11,12 @@ angular.module('myApp.controllers', [])
     $scope.bkgImage = 'default';
     $scope.imageNavStatus = 'closed';
     $scope.imageNavStatusToggle = function() {
-      $scope.imageNavStatus = 'open';
-      alert($scope.imageNavStatus);
-/*
-      if () {
-        
+      /* alert($scope.imageNavStatus); */
+      if ($scope.imageNavStatus == 'closed') {
+          $scope.imageNavStatus = 'open';
         } else {
-      }  
-*/  
+          $scope.imageNavStatus = 'closed';
+      }    
     } 
   }])
   .controller('portfolioController', ['$scope', function($scope) {
