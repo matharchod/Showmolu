@@ -14,3 +14,14 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'pageController'});
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
+
+function ShowmoluFlickr() {
+  $.ajax({
+    url: 'http://janianderson.com/photos.json?callback=?',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data){
+      console.log(data);
+    }
+  });
+};

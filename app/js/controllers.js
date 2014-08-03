@@ -10,6 +10,7 @@ angular.module('myApp.controllers', [])
     $scope.bkgImage = 'default';
     $scope.navStatus = 'closed';
     $scope.imageNavStatus = 'closed'; 
+    
     $scope.imageNavStatusToggle = function() {
       if ($scope.imageNavStatus == 'closed') {
           $scope.imageNavStatus = 'open';
@@ -19,19 +20,21 @@ angular.module('myApp.controllers', [])
           $scope.navStatus = 'closed';
       }    
     }; 
+    
      $scope.navStatusToggle = function() {
       if ($scope.navStatus == 'closed') {
           $scope.navStatus = 'open';
         } else {
           $scope.navStatus = 'closed';
       }    
-    };      
+    };  
+        
   }])
   .controller('dynamicNavController', ['$scope', function($scope) {
    
   }])
   .controller('dynamicBkgController', ['$scope', function($scope) {
-
+    ShowmoluFlickr();
   }])
   .controller('portfolioController', ['$scope', function($scope) {
   }])
