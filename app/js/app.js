@@ -15,7 +15,8 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
 
-function ShowmoluFlickr() {
+function Flickolu() {
+  var flickrPhotoGroup = [];
   $.ajax({
     url: '/app/js/flickr-photos.json',
     type: 'GET',
@@ -23,24 +24,35 @@ function ShowmoluFlickr() {
     success: function(data){
       //console.log(data.photos.photo);  
       for (var i in data.photos.photo) {
-        var owner = data.photos.photo[i].owner;// owner ID
-        var farmid = data.photos.photo[i].farm;// farm ID
-        var id = data.photos.photo[i].id;// image ID
-        var secret = data.photos.photo[i].secret;// secret
-        var serverid = data.photos.photo[i].server;// server ID
-        var title = data.photos.photo[i].title;// title
-        console.log(owner,farmid,id,secret,serverid,title);   
+        var flickrPhoto = data.photos.photo[i]
+        , owner = flickrPhoto.owner// owner ID
+        , farmid = flickrPhoto.farm// farm ID
+        , id = flickrPhoto.id// image ID
+        , secret = flickrPhoto.secret// secret
+        , serverid = flickrPhoto.server// server ID
+        , title = flickrPhoto.title;// title
+        //console.log(owner,farmid,id,secret,serverid,title);   
         //create image index
         var imageIndex = [];
         imageIndex.push(i);
-        console.log('imageIndex :', imageIndex);
+        //console.log('imageIndex :', imageIndex);
         //create image url
-        var y = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '.jpg';
-        console.log('image url :', y);
-        //create image title
+        var imageLink = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '.jpg';
+        //console.log('image url :', imageLink);
         //create image link
-        //      
+        var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id;
+        //add to flickrPhotoGroup object
+        flickrPhotoGroup.push([imageIndex[0],imageLink,title,imageURL]);
       }
+      createCarousel(flickrPhotoGroup); //create the bkg carousel
     }
   });
+
+
 };
+
+function createCarousel(flickrPhotoGroup) {
+  for (var i in flickrPhotoGroup) {
+    console.log(flickrPhotoGroup[i]);
+  } 
+}

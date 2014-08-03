@@ -34,7 +34,7 @@ angular.module('myApp.controllers', [])
    
   }])
   .controller('dynamicBkgController', ['$scope', function($scope) {
-    ShowmoluFlickr();
+    Flickolu();
   }])
   .controller('portfolioController', ['$scope', function($scope) {
   }])
