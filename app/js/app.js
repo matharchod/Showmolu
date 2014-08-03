@@ -24,39 +24,42 @@ function Flickolu() {
     dataType: 'json',
     success: function(data){
       //console.log(data.photos.photo);  
-      for (var i in data.photos.photo) {
-        var flickrPhoto = data.photos.photo[i]
+      for (var i in data.photoset.photo) {
+        var flickrPhoto = data.photoset.photo[i]
         , owner = flickrPhoto.owner// owner ID
         , farmid = flickrPhoto.farm// farm ID
         , id = flickrPhoto.id// image ID
         , secret = flickrPhoto.secret// secret
         , serverid = flickrPhoto.server// server ID
         , title = flickrPhoto.title;// title
-        //console.log(owner,farmid,id,secret,serverid,title);   
-        //console.log('imageIndex :', imageIndex);
         //create image url
         var imageLink = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_b.jpg';
-        //console.log('image url :', imageLink);
         //create image link
         var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id;
         //add to flickrPhotoGroup object
         flickrPhotoGroup.push({'imageLink':imageLink,'title':title,'imageURL':imageURL});
       }
-      createBkgImg(flickrPhotoGroup); //create the bkg carousel
+      var idx = 1;
+      createBkgImg(flickrPhotoGroup,idx); //create the bkg image and menu
+      //add event listeners for prev/next btns
+      $('.prev').click(function(){
+        createBkgImg(flickrPhotoGroup,idx--);
+      });
+       $('.next').click(function(){
+        createBkgImg(flickrPhotoGroup,idx++);
+      });     
     }
   });
 
 
 };
 
-function createBkgImg(flickrPhotoGroup) {
-  var bkgImage = flickrPhotoGroup[10];
+function createBkgImg(flickrPhotoGroup,idx) {
+  if (idx < 0 || idx > flickrPhotoGroup.length){
+    idx = 0;
+  } 
+  var bkgImage = flickrPhotoGroup[idx];
   $('#dynamicBkg').css('background-image','url(' + bkgImage.imageLink + ')');
   $('#dynamicBkg .menu .title').html(bkgImage.title)
   $('#dynamicBkg .menu .link a').attr('href',bkgImage.imageURL);
-/*
-  for (var i in flickrPhotoGroup) {
-    console.log(flickrPhotoGroup[i]);
-  } 
-*/
 }

@@ -95,7 +95,6 @@ body.open {
   height: 75px;
 }
 #dynamicBkg {
-  background-image: url('../img/my-balcony.jpg');
   background-size: cover;
   position: absolute;
   top: 0;
@@ -145,9 +144,10 @@ body.open {
 }
 #dynamicBkg .menu .controls .prev,
 #dynamicBkg .menu .controls .next {  
-  display: inline-block;  
+  display: inline;  
   vertical-align: middle;
   font-size: 36px;
+  cursor: pointer;
 }
 #dynamicBkg .menu .close,
 #dynamicBkg .menu .title,
