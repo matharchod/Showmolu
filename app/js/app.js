@@ -17,11 +17,21 @@ config(['$routeProvider', function($routeProvider) {
 
 function ShowmoluFlickr() {
   $.ajax({
-    url: 'http://janianderson.com/photos.json?callback=?',
+    url: '/app/js/flickr-photos.json',
     type: 'GET',
     dataType: 'json',
     success: function(data){
-      console.log(data);
+      //console.log(data.photos.photo);  
+      var i;
+      for (i in data.photos.photo) {
+        var owner = data.photos.photo[i].owner;// owner ID
+        var farm = data.photos.photo[i].farm;// farm ID
+        var id = data.photos.photo[i].id;// image ID
+        var secret = data.photos.photo[i].secret;// secret
+        var server = data.photos.photo[i].server;// server ID
+        var title = data.photos.photo[i].title;// title
+        console.log(owner,farm,id,secret,server,title);        
+      }
     }
   });
 };
