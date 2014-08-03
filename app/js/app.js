@@ -22,15 +22,24 @@ function ShowmoluFlickr() {
     dataType: 'json',
     success: function(data){
       //console.log(data.photos.photo);  
-      var i;
-      for (i in data.photos.photo) {
+      for (var i in data.photos.photo) {
         var owner = data.photos.photo[i].owner;// owner ID
-        var farm = data.photos.photo[i].farm;// farm ID
+        var farmid = data.photos.photo[i].farm;// farm ID
         var id = data.photos.photo[i].id;// image ID
         var secret = data.photos.photo[i].secret;// secret
-        var server = data.photos.photo[i].server;// server ID
+        var serverid = data.photos.photo[i].server;// server ID
         var title = data.photos.photo[i].title;// title
-        console.log(owner,farm,id,secret,server,title);        
+        console.log(owner,farmid,id,secret,serverid,title);   
+        //create image index
+        var imageIndex = [];
+        imageIndex.push(i);
+        console.log('imageIndex :', imageIndex);
+        //create image url
+        var y = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '.jpg';
+        console.log('image url :', y);
+        //create image title
+        //create image link
+        //      
       }
     }
   });
