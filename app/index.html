@@ -59,8 +59,6 @@
       </li>
     </ul>       
   </div> <!-- / #dynamicNav -->
-
-  <div class="view" ng-view></div>
   
   <div>Showmolu : v<span app-version></span></div>
   
@@ -79,7 +77,8 @@
         <span class="next">></span>
       </li>
     </ul>
-  </div>
+    <div class="view" ng-view></div>
+  </div> <!-- / #dynamicBkg -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- In production use:

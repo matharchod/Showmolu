@@ -16,6 +16,7 @@ config(['$routeProvider', function($routeProvider) {
 }]);
 
 function Flickolu() {
+  //create flickrPhotoGroup object
   var flickrPhotoGroup = [];
   $.ajax({
     url: '/app/js/flickr-photos.json',
@@ -32,27 +33,30 @@ function Flickolu() {
         , serverid = flickrPhoto.server// server ID
         , title = flickrPhoto.title;// title
         //console.log(owner,farmid,id,secret,serverid,title);   
-        //create image index
-        var imageIndex = [];
-        imageIndex.push(i);
         //console.log('imageIndex :', imageIndex);
         //create image url
-        var imageLink = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '.jpg';
+        var imageLink = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_b.jpg';
         //console.log('image url :', imageLink);
         //create image link
         var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id;
         //add to flickrPhotoGroup object
-        flickrPhotoGroup.push([imageIndex[0],imageLink,title,imageURL]);
+        flickrPhotoGroup.push({'imageLink':imageLink,'title':title,'imageURL':imageURL});
       }
-      createCarousel(flickrPhotoGroup); //create the bkg carousel
+      createBkgImg(flickrPhotoGroup); //create the bkg carousel
     }
   });
 
 
 };
 
-function createCarousel(flickrPhotoGroup) {
+function createBkgImg(flickrPhotoGroup) {
+  var bkgImage = flickrPhotoGroup[10];
+  $('#dynamicBkg').css('background-image','url(' + bkgImage.imageLink + ')');
+  $('#dynamicBkg .menu .title').html(bkgImage.title)
+  $('#dynamicBkg .menu .link a').attr('href',bkgImage.imageURL);
+/*
   for (var i in flickrPhotoGroup) {
     console.log(flickrPhotoGroup[i]);
   } 
+*/
 }
