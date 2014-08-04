@@ -5,8 +5,7 @@
 angular.module('myApp.controllers', [])
 .controller('appController', ['$scope', function($scope) {
     $scope.page = 'home';
-    $scope.pageStatus = 'default';
-    $scope.greeting = 'Hola!';   
+    $scope.pageStatus = 'default'; 
     $scope.bkgImage = 'default';
     $scope.navStatus = 'closed';
     $scope.imageNavStatus = 'closed'; 

@@ -31,7 +31,8 @@ function Flickolu() {
     success: function(data){
       for (var i in data.photoset.photo) {
         var flickrPhoto = data.photoset.photo[i]
-        , owner = flickrPhoto.owner// owner ID
+        , owner = '94139373@N05' // owner ID
+        , imageSet = '72157645741266837' // gallery ID
         , farmid = flickrPhoto.farm// farm ID
         , id = flickrPhoto.id// image ID
         , secret = flickrPhoto.secret// secret
@@ -40,7 +41,8 @@ function Flickolu() {
         //create image url
         var imageLink = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_b.jpg';
         //create image link
-        var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id;
+        //var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id; //photostream
+        var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id + '/in/set-' + imageSet;
         //add to flickrPhotoGroup object
         flickrPhotoGroup.push({'imageLink':imageLink,'title':title,'imageURL':imageURL});
       }
