@@ -15,11 +15,19 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
 
+var Flickoluser = {
+  getFlickrPhotoGroup : function(){
+    return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
+    //return sessionStorage;
+  }
+}
+
 function Flickolu() {
   //create flickrPhotoGroup object
   var flickrPhotoGroup = [];
+  //sessionStorage.getItem('flickrPhotoGroup');
   $.ajax({
-    url: '/app/js/flickr-photos.json',
+    url: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=0003a7066dc8122b2dff6740652b722a&photoset_id=72157645741266837&format=json&nojsoncallback=1',
     type: 'GET',
     dataType: 'json',
     success: function(data){
@@ -38,23 +46,19 @@ function Flickolu() {
         //add to flickrPhotoGroup object
         flickrPhotoGroup.push({'imageLink':imageLink,'title':title,'imageURL':imageURL});
       }
-      var idx = randomIntFromInterval(1, flickrPhotoGroup.length);
+      //init bkg image and controls
+      var idx = randomIntFromInterval(1, flickrPhotoGroup.length -1);
       console.log('idx',idx);
-      sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(flickrPhotoGroup));
-      console.log('sessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));      
-      createBkgImg(flickrPhotoGroup,idx); //create the bkg image and menu
-      //add event listeners for prev/next btns
-      $('.prev').click(function(){
-        console.log('next',idx);
-        createBkgImg(flickrPhotoGroup,idx--);
-      });
-      $('.next').click(function(){
-        console.log('next',idx);       
-        createBkgImg(flickrPhotoGroup,idx++);
-      });     
+      //adding session storage for json
+      sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(flickrPhotoGroup));    
+     // var y = JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
+      bkgControlsInit(flickrPhotoGroup,idx) 
+      //console.log('sessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));    
     }
   });
 };
+
+      //console.log('sessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));  
 
 function randomIntFromInterval(min,max) {
   return Math.floor(Math.random()*(max-min+1)+min);
@@ -64,7 +68,8 @@ function createBkgImg(flickrPhotoGroup,idx) {
   if (idx <= 0) { //beginning of object
     idx = 1;
     $('.prev').hide(); //hide prev btn
-  } else if (idx >= flickrPhotoGroup.length){ //end of object
+  } else if (idx == flickrPhotoGroup.length){ //end of object
+    idx = flickrPhotoGroup.length--;
     $('.next').hide(); //hide next btn
   } else {
     var bkgImage = flickrPhotoGroup[idx];
@@ -79,11 +84,11 @@ function bkgControlsInit(flickrPhotoGroup,idx) {
   createBkgImg(flickrPhotoGroup,idx); //create the bkg image and menu
   //add event listeners for prev/next btns
   $('.prev').click(function(){
-    console.log('prev',idx);
+    console.log('next',idx);
     createBkgImg(flickrPhotoGroup,idx--);
   });
-   $('.next').click(function(){
-    console.log('next',idx);
+  $('.next').click(function(){
+    console.log('next',idx);       
     createBkgImg(flickrPhotoGroup,idx++);
-  }); 
+  });
 }
