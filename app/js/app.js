@@ -18,14 +18,12 @@ config(['$routeProvider', function($routeProvider) {
 var Flickoluser = {
   getFlickrPhotoGroup : function(){
     return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
-    //return sessionStorage;
   }
 }
 
 function Flickolu() {
   //create flickrPhotoGroup object
   var flickrPhotoGroup = [];
-  //sessionStorage.getItem('flickrPhotoGroup');
   $.ajax({
     url: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=0003a7066dc8122b2dff6740652b722a&photoset_id=72157645741266837&format=json&nojsoncallback=1',
     type: 'GET',
@@ -50,7 +48,9 @@ function Flickolu() {
       var idx = randomIntFromInterval(1, flickrPhotoGroup.length -1);
       console.log('idx',idx);
       //adding session storage for json
-      sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(flickrPhotoGroup));    
+      if (JSON.parse(sessionStorage.getItem('flickrPhotoGroup')) == null) {
+         sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(flickrPhotoGroup));       
+      }
      // var y = JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
       bkgControlsInit(flickrPhotoGroup,idx) 
       //console.log('sessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));    

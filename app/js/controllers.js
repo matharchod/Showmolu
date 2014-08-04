@@ -36,7 +36,7 @@ angular.module('myApp.controllers', [])
   .controller('dynamicBkgController', ['$scope', function($scope) {
     Flickolu(); 
     $scope.photos = Flickoluser.getFlickrPhotoGroup();
-    //console.log('$scope.photos',$scope.photos);
+    console.log('$scope.photos',$scope.photos);
   }])
   .controller('portfolioController', ['$scope', function($scope) {
   }])
