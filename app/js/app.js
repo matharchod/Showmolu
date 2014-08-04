@@ -23,7 +23,6 @@ function Flickolu() {
     type: 'GET',
     dataType: 'json',
     success: function(data){
-      //console.log(data.photos.photo);  
       for (var i in data.photoset.photo) {
         var flickrPhoto = data.photoset.photo[i]
         , owner = flickrPhoto.owner// owner ID
@@ -39,27 +38,52 @@ function Flickolu() {
         //add to flickrPhotoGroup object
         flickrPhotoGroup.push({'imageLink':imageLink,'title':title,'imageURL':imageURL});
       }
-      var idx = 1;
+      var idx = randomIntFromInterval(1, flickrPhotoGroup.length);
+      console.log('idx',idx);
+      sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(flickrPhotoGroup));
+      console.log('sessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));      
       createBkgImg(flickrPhotoGroup,idx); //create the bkg image and menu
       //add event listeners for prev/next btns
       $('.prev').click(function(){
+        console.log('next',idx);
         createBkgImg(flickrPhotoGroup,idx--);
       });
-       $('.next').click(function(){
+      $('.next').click(function(){
+        console.log('next',idx);       
         createBkgImg(flickrPhotoGroup,idx++);
       });     
     }
   });
+};
 
-
+function randomIntFromInterval(min,max) {
+  return Math.floor(Math.random()*(max-min+1)+min);
 };
 
 function createBkgImg(flickrPhotoGroup,idx) {
-  if (idx < 0 || idx > flickrPhotoGroup.length){
-    idx = 0;
-  } 
-  var bkgImage = flickrPhotoGroup[idx];
-  $('#dynamicBkg').css('background-image','url(' + bkgImage.imageLink + ')');
-  $('#dynamicBkg .menu .title').html(bkgImage.title)
-  $('#dynamicBkg .menu .link a').attr('href',bkgImage.imageURL);
+  if (idx <= 0) { //beginning of object
+    idx = 1;
+    $('.prev').hide(); //hide prev btn
+  } else if (idx >= flickrPhotoGroup.length){ //end of object
+    $('.next').hide(); //hide next btn
+  } else {
+    var bkgImage = flickrPhotoGroup[idx];
+    $('#dynamicBkg').css('background-image','url(' + bkgImage.imageLink + ')');
+    $('#dynamicBkg .menu .title').html(bkgImage.title)
+    $('#dynamicBkg .menu .link a').attr('href',bkgImage.imageURL);  
+    $('.prev, .next').show();  
+  }
+}
+
+function bkgControlsInit(flickrPhotoGroup,idx) {
+  createBkgImg(flickrPhotoGroup,idx); //create the bkg image and menu
+  //add event listeners for prev/next btns
+  $('.prev').click(function(){
+    console.log('prev',idx);
+    createBkgImg(flickrPhotoGroup,idx--);
+  });
+   $('.next').click(function(){
+    console.log('next',idx);
+    createBkgImg(flickrPhotoGroup,idx++);
+  }); 
 }
