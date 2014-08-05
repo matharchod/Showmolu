@@ -21,18 +21,21 @@ var Flickoluser = {
   }
 }
 
-function Flickolu() {
+function Flickolu(owner,imageSet) {
   //create flickrPhotoGroup object
   var flickrPhotoGroup = [];
   $.ajax({
-    url: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=0003a7066dc8122b2dff6740652b722a&photoset_id=72157645741266837&format=json&nojsoncallback=1',
+    url: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=5ae3f6d6106e232dc531b19d44ccd668&photoset_id=' + imageSet + '&format=json&nojsoncallback=1',
     type: 'GET',
     dataType: 'json',
     success: function(data){
+      console.log('data',data);
       for (var i in data.photoset.photo) {
         var flickrPhoto = data.photoset.photo[i]
+/*
         , owner = '94139373@N05' // owner ID
         , imageSet = '72157645741266837' // gallery ID
+*/
         , farmid = flickrPhoto.farm// farm ID
         , id = flickrPhoto.id// image ID
         , secret = flickrPhoto.secret// secret

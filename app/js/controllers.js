@@ -33,7 +33,7 @@ angular.module('myApp.controllers', [])
    
   }])
   .controller('dynamicBkgController', ['$scope', function($scope) {
-    Flickolu(); 
+    Flickolu('94139373@N05','72157645741266837');  // owner, imageSet      
     $scope.photos = Flickoluser.getFlickrPhotoGroup();
     console.log('$scope.photos',$scope.photos);
   }])
