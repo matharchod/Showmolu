@@ -16,57 +16,41 @@ config(['$routeProvider', function($routeProvider) {
 }]);
 
 var Flickoluser = {
-  getFlickrPhotoGroup : function(){
+  getSessionStorage : function(){
     return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
   }
 }
 
-function Flickolu(owner,imageSet) {
+function Flickolu(flickrData) {
   //create flickrPhotoGroup object
   var flickrPhotoGroup = [];
-  $.ajax({
-    url: 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=5ae3f6d6106e232dc531b19d44ccd668&photoset_id=' + imageSet + '&format=json&nojsoncallback=1',
-    type: 'GET',
-    dataType: 'json',
-    success: function(data){
-      console.log('data',data);
-      for (var i in data.photoset.photo) {
-        var flickrPhoto = data.photoset.photo[i]
-/*
-        , owner = '94139373@N05' // owner ID
-        , imageSet = '72157645741266837' // gallery ID
-*/
-        , farmid = flickrPhoto.farm// farm ID
-        , id = flickrPhoto.id// image ID
-        , secret = flickrPhoto.secret// secret
-        , serverid = flickrPhoto.server// server ID
-        , title = flickrPhoto.title;// title
-        //create image url
-        var imageLink = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_b.jpg';
-        //create image link
-        //var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id; //photostream
-        var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id + '/in/set-' + imageSet;
-        //add to flickrPhotoGroup object
-        flickrPhotoGroup.push({'imageLink':imageLink,'title':title,'imageURL':imageURL});
-      }
-      //init bkg image and controls
-      var idx = randomIntFromInterval(1, flickrPhotoGroup.length -1);
-      console.log('idx',idx);
-      //adding session storage for json
-      if (JSON.parse(sessionStorage.getItem('flickrPhotoGroup')) == null) {
-         sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(flickrPhotoGroup));       
-      }
-     // var y = JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
-      bkgControlsInit(flickrPhotoGroup,idx) 
-      //console.log('sessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));    
-    }
-  });
-};
-
-      //console.log('sessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));  
-
-function randomIntFromInterval(min,max) {
-  return Math.floor(Math.random()*(max-min+1)+min);
+  console.log('flickrData',flickrData);
+  for (var i in flickrData.photoset.photo) {
+    var flickrPhoto = flickrData.photoset.photo[i]
+    , owner = '94139373@N05' // owner ID
+    , imageSet = 72157645741266837 // gallery ID, must be integer, not string
+    , farmid = flickrPhoto.farm// farm ID
+    , id = flickrPhoto.id// image ID
+    , secret = flickrPhoto.secret// secret
+    , serverid = flickrPhoto.server// server ID
+    , title = flickrPhoto.title;// title
+    //create image url
+    var imageLink = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_b.jpg';
+    //create image link
+    var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id + '/in/set-' + imageSet;
+    //add to flickrPhotoGroup object
+    flickrPhotoGroup.push({'imageLink':imageLink,'title':title,'imageURL':imageURL});
+  }
+    //pick a random image to use as first wallpaper
+  function randomIntFromInterval(min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
+  };  
+  var idx = randomIntFromInterval(1, flickrPhotoGroup.length -1);
+  //adding session storage for json
+  if (JSON.parse(sessionStorage.getItem('flickrPhotoGroup') == null)) { //must be null
+     sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(flickrPhotoGroup));       
+  }
+  bkgControlsInit(flickrPhotoGroup,idx)   //init bkg image and controls
 };
 
 function createBkgImg(flickrPhotoGroup,idx) {
