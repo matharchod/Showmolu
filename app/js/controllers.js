@@ -9,7 +9,6 @@ angular.module('myApp.controllers', [])
     $scope.bkgImage = 'default';
     $scope.navStatus = 'closed';
     $scope.imageNavStatus = 'closed'; 
-    $scope.flickrPhoto = [];
     
     $scope.imageNavStatusToggle = function() {
       if ($scope.imageNavStatus == 'closed') {
@@ -34,18 +33,46 @@ angular.module('myApp.controllers', [])
    
   }])
   .controller('dynamicBkgController', ['$scope', '$http', function($scope, $http)  {
-    $scope.imageSet = '72157645741266837'; //flickr gallery ID
-    $scope.owner = '94139373@N05'; //your flickr ID
-    if (Flickoluser.getSessionStorage() == null){ //get sessionStorage 
+    //get stored flickr data from sessionStorage
+    $scope.flickrData = Flickoluser.getSessionStorage();  
+    //if sessionStorage is empty, get new flickr data
+    if ($scope.flickrData == null){ 
+      $scope.imageSet = '72157645741266837'; //flickr gallery ID
+      $scope.owner = '94139373@N05'; //your flickr ID     
       $http.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=5ae3f6d6106e232dc531b19d44ccd668&photoset_id=' + $scope.imageSet + '&format=json&nojsoncallback=1').success(function(data) {
         Flickoluser.setSessionStorage(data);  
-        // create dynamic background    
-        $scope.flickrPhoto = $scope.data.photoset.photo;
-        //console.log('$scope.flickrPhoto',$scope.flickrPhoto)
+        // create dynamic background 
+        $scope.flickrData = data;
       });    
-    };    
-    console.log('Flickoluser.getSessionStorage',Flickoluser.getSessionStorage())
+    }    
+    $scope.idx = 0; //which image am I on?   
+    //create image url
+    $scope.flickrPhoto = $scope.flickrData.photoset.photo[$scope.idx];
+    $scope.imageURL = (['https://farm' + 
+      $scope.flickrPhoto.farm + '.staticflickr.com/' + 
+      $scope.flickrPhoto.server + '/' + $scope.flickrPhoto.id + '_' + 
+      $scope.flickrPhoto.secret + '_b.jpg'   
+    ]).join('');    
+    //create image link
+    $scope.imageLink = (['https://www.flickr.com/photos/' + 
+      '94139373@N05' + '/' + // owner ID 
+      $scope.flickrPhoto.id + '/in/set-' + 
+      '72157645741266837' //image set
+    ]).join('');
+    $scope.bkgImage = 'url(' + $scope.imageURL + ')'; //create bkg image CSS
+    
+    //prev/next
+    $scope.prev = function(){
+      $scope.flickrPhoto = $scope.flickrData.photoset.photo[$scope.idx--];
+      console.log('$scope.idx',$scope.idx);
+    };
+    $scope.next = function(){
+      $scope.flickrPhoto = $scope.flickrData.photoset.photo[$scope.idx++];
+      console.log('$scope.idx',$scope.idx);
+    };
+    //console.log('Flickoluser.getSessionStorage',Flickoluser.getSessionStorage())
     //$scope.apiKey = '5ae3f6d6106e232dc531b19d44ccd668'; your flickr API key
+    console.log('$scope.flickrData',$scope.flickrData);   
     
   }])
   .controller('portfolioController', ['$scope', function($scope) {
