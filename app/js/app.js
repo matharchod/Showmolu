@@ -47,9 +47,9 @@ var Flickoluser = {
     $('.prev, .next').show();  
   },   
   //adding session storage for json object  
-  setSessionStorage : function(){
-    if (JSON.parse(sessionStorage.getItem('flickrPhotoGroup') == null)) { //must be null
-       sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(Flickoluser.flickrPhotoGroup));       
+  setSessionStorage : function(data){
+    if (JSON.parse(sessionStorage.getItem('flickrPhotoGroup') == null)) {
+       sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(data));       
     }    
   },
   getSessionStorage : function(){
