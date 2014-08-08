@@ -38,9 +38,8 @@ angular.module('myApp.controllers', [])
     $scope.owner = '94139373@N05'; //your flickr ID
     //$scope.apiKey = '5ae3f6d6106e232dc531b19d44ccd668'; your flickr API key
     $http.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=5ae3f6d6106e232dc531b19d44ccd668&photoset_id=' + $scope.imageSet + '&format=json&nojsoncallback=1').success(function(data) {
-      $scope.flickrData = data;
-      Flickolu($scope.flickrData);  // create dynamic background       
-    });
+      Flickolu(data);  // create dynamic background    
+    });    
   }])
   .controller('portfolioController', ['$scope', function($scope) {
   }])
