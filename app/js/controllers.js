@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-.controller('appController', ['$scope', function($scope) {
+  .controller('appController', ['$scope', function($scope) {
     $scope.page = 'home';
     $scope.pageStatus = 'default'; 
     $scope.bkgImage = 'default';
