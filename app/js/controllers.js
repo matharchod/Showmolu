@@ -83,5 +83,8 @@ angular.module('myApp.controllers', [])
     });  
     
   }])
-  .controller('portfolioController', ['$scope', function($scope) {}])
-  .controller('pageController', ['$scope', function($scope) {}]); 
+  .controller('dashboardController', ['$scope', function($scope) {}])
+  .controller('resumeController', ['$scope', function($scope) {}])
+  .controller('twitoluController', ['$scope', function($scope) {}]) 
+  .controller('portfolioController', ['$scope', function($scope) {}])     
+  .controller('portfolioPageController', ['$scope', function($scope) {}]); 

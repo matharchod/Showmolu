@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/app.css"/>
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>  
 </head>
-<body ng-controller="pageController">
+<body>
   <!-- #dynamicNav - container for the dynamic nav. -->
   <div id="dynamicNav" ng-controller="dynamicNavController" class="{{navStatus}}" > 
     <h1 class="your-title">Front End Developer</h1>  
@@ -39,25 +39,24 @@
         <td colspan="3"></td>
       </tr>   
     </table>
-    <!-- #homeNav - container for home nav --> 
-    <ul id="homeNav">
-      <li><a href="#/view1">About Me</a></li>
-      <li><a href="#/view2">Contact Me</a></li>
-    </ul>
-    <!-- #mainNav - container for man nav --> 
-    <ul id="mainNav" class="hidden">
-      <li><a href="">R&eacute;sum&eacute;</a></li>
-      <li><a href="">Creative</a></li>
-      <li><a href="">Code</a></li>
-      <li><a href="">UX Diary</a></li>
-      <!-- <li><a href="">Blog</a></li> -->
-    </ul> 
-    <!-- #subNav - container for secondary nav -->
-    <ul id="subNav" class="hidden">
-      <li>
-        <a class="more-btn">...</a>
-      </li>
-    </ul>       
+    <div id="dashboardNav">
+      <ul id="home">
+        <li><a href="#/view1">About Me</a></li>
+        <li><a href="#/view2">Contact Me</a></li>
+      </ul>
+      <ul id="aboutme" class="hidden">
+        <li><a href="">R&eacute;sum&eacute;</a></li>
+        <li><a href="">Creative</a></li>
+        <li><a href="">Code</a></li>
+        <li><a href="">UX Diary</a></li>
+        <!-- <li><a href="">Blog</a></li> -->
+      </ul> 
+      <!-- #subNav - container for secondary nav -->
+      <ul id="subNav" class="hidden">
+        <li ng-repeat="item in subNavItem"><a href="{{item.link}}">{{item.name}}</a></li>
+        <li><a class="more-btn">...</a></li>
+      </ul> 
+    </div>      
   </div> <!-- / #dynamicNav -->
   
   <div>Showmolu : v<span app-version></span></div>
@@ -82,9 +81,9 @@
     <!-- create a set of thumbnails from the flickr photo set -->
     <ul>
       <li ng-repeat="photo in photoSet">
-        <a ng-click="changeDynamicBkg(photo)" style="display: inline-block;">
+        <div ng-click="changeDynamicBkg(photo)">
           <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
-        </a>
+        </div>
         {{title}}
       </li>
     </ul>
