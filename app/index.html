@@ -79,6 +79,9 @@
         <span class="next" ng-click="next()" ng-class="{invisible: idx >= photoSet.length -1}">></span>
       </li>
     </ul>
+    <ul ng-repeat="photo in photoSet">
+      <li><a href=""><img src="" /></a>{{photo}}</li>
+    </ul>
     <div class="view" ng-view></div>
   </div> <!-- / #dynamicBkg -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>

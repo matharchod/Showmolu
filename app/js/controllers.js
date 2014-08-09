@@ -33,7 +33,6 @@ angular.module('myApp.controllers', [])
   .controller('dynamicBkgController', ['$scope', '$http', function($scope, $http)  {
     //get stored flickr data from sessionStorage
     $scope.flickrData = Flickolu.getSessionStorage(); 
-    $scope.photoSet = $scope.flickrData.photoset.photo;     
     //create image url
     $scope.createDynamicBkg = function(flickrPhoto) {
       $scope.flickrPhoto = flickrPhoto;
@@ -50,6 +49,7 @@ angular.module('myApp.controllers', [])
         '72157645741266837' //image set
       ]).join('');
       $scope.bkgImage = 'url(' + $scope.imageURL + ')'; //create bkg image CSS     
+      $scope.photoSet = $scope.flickrData.photoset.photo;     
     }    
     
     //if sessionStorage is empty, get new flickr data
