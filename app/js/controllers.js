@@ -48,6 +48,7 @@ angular.module('myApp.controllers', [])
     $scope.idx = 0; //which image am I on?   
     //create image url
     $scope.flickrPhoto = $scope.flickrData.photoset.photo[$scope.idx];
+    $scope.imageTitle = $scope.flickrPhoto.title;
     $scope.imageURL = (['https://farm' + 
       $scope.flickrPhoto.farm + '.staticflickr.com/' + 
       $scope.flickrPhoto.server + '/' + $scope.flickrPhoto.id + '_' + 
@@ -61,13 +62,10 @@ angular.module('myApp.controllers', [])
     ]).join('');
     $scope.bkgImage = 'url(' + $scope.imageURL + ')'; //create bkg image CSS
     
-    //prev/next - http//wwwsitepointcom/creating-slide-show-plugin-angularjs/
-    $scope.idx = 0; // Initially the index is at the first image
-     
+    //prev/next - http//wwwsitepointcom/creating-slide-show-plugin-angularjs/     
     $scope.next = function() {
       $scope.idx < $scope.flickrData.photoset.photo.length - 1 ? $scope.idx++ : $scope.idx = 0;
-    };
-     
+    };     
     $scope.prev = function() {
       $scope.idx > 0 ? $scope.idx-- : $scope.idx = $scope.flickrData.photoset.photo - 1;
     };
@@ -76,7 +74,22 @@ angular.module('myApp.controllers', [])
 
 
     $scope.$watch('idx', function() {
-      console.log('$scope.flickrPhoto',$scope.flickrPhoto);   
+      //create image url
+      $scope.flickrPhoto = $scope.flickrData.photoset.photo[$scope.idx];
+      $scope.imageTitle = $scope.flickrPhoto.title;
+      $scope.imageURL = (['https://farm' + 
+        $scope.flickrPhoto.farm + '.staticflickr.com/' + 
+        $scope.flickrPhoto.server + '/' + $scope.flickrPhoto.id + '_' + 
+        $scope.flickrPhoto.secret + '_b.jpg'   
+      ]).join('');    
+      //create image link
+      $scope.imageLink = (['https://www.flickr.com/photos/' + 
+        '94139373@N05' + '/' + // owner ID 
+        $scope.flickrPhoto.id + '/in/set-' + 
+        '72157645741266837' //image set
+      ]).join('');
+      $scope.bkgImage = 'url(' + $scope.imageURL + ')'; //create bkg image CSS      
+      console.log('$scope.flickrData.photoset.photo[$scope.idx]',$scope.flickrData.photoset.photo[$scope.idx]);   
     });    
     
   }])

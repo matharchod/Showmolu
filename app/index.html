@@ -72,7 +72,7 @@
     <button id="infoBtn" ng-click="imageNavStatusToggle()" class="{{infoBtnStatus}}">i</button> 
     <ul class="menu border-box {{imageNavStatus}}">
       <li ng-click="imageNavStatusToggle()" class="close">&times;</li>
-      <li class="title">This is the Title of One of My Photographs in Chicago</li>
+      <li class="title">{{imageTitle}}</li>
       <li class="controls">
         <span class="link"><a href="{{imageLink}}">view this photo on Flickr</a></span>
         <span class="prev" ng-click="prev()"><</span>
