@@ -75,8 +75,8 @@
       <li class="title">{{imageTitle}}</li>
       <li class="controls">
         <span class="link"><a href="{{imageLink}}">view this photo on Flickr</a></span>
-        <span class="prev" ng-click="prev()"><</span>
-        <span class="next" ng-click="next()">></span>
+        <span class="prev" ng-click="prev()" ng-class="{invisible: idx <= 0}"><</span>
+        <span class="next" ng-click="next()" ng-class="{invisible: idx >= photoSet.length -1}">></span>
       </li>
     </ul>
     <div class="view" ng-view></div>

@@ -32,7 +32,8 @@ angular.module('myApp.controllers', [])
   .controller('dynamicNavController', ['$scope', function($scope) {}])
   .controller('dynamicBkgController', ['$scope', '$http', function($scope, $http)  {
     //get stored flickr data from sessionStorage
-    $scope.flickrData = Flickolu.getSessionStorage();  
+    $scope.flickrData = Flickolu.getSessionStorage(); 
+    $scope.photoSet = $scope.flickrData.photoset.photo;     
     //create image url
     $scope.createDynamicBkg = function(flickrPhoto) {
       $scope.flickrPhoto = flickrPhoto;
@@ -56,7 +57,7 @@ angular.module('myApp.controllers', [])
       $scope.imageSet = '72157645741266837'; //flickr gallery ID
       $scope.owner = '94139373@N05'; //your flickr ID     
       $http.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=5ae3f6d6106e232dc531b19d44ccd668&photoset_id=' + $scope.imageSet + '&format=json&nojsoncallback=1').success(function(data) {
-        Flickoluser.setSessionStorage(data);  
+        Flickolu.setSessionStorage(data);  
         // create dynamic background 
         $scope.flickrData = data;
       });    
@@ -69,6 +70,7 @@ angular.module('myApp.controllers', [])
     //prev/next - http//wwwsitepointcom/creating-slide-show-plugin-angularjs/     
     $scope.next = function() {
       $scope.idx < $scope.flickrData.photoset.photo.length - 1 ? $scope.idx++ : $scope.idx = 0;
+      return $scope.idx;
     };     
     $scope.prev = function() {
       $scope.idx > 0 ? $scope.idx-- : $scope.idx = $scope.flickrData.photoset.photo - 1;
@@ -77,7 +79,7 @@ angular.module('myApp.controllers', [])
     //update bkgImage
     $scope.$watch('idx', function() {
       $scope.createDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
-      console.log('$scope.createDynamicBkg',$scope.flickrPhoto);   
+      console.log('$scope.createDynamicBkg idx',$scope.flickrData.photoset.photo[$scope.idx]);   
     });  
     
   }])
