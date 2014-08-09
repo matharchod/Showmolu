@@ -61,18 +61,23 @@ angular.module('myApp.controllers', [])
     ]).join('');
     $scope.bkgImage = 'url(' + $scope.imageURL + ')'; //create bkg image CSS
     
-    //prev/next
-    $scope.prev = function(){
-      $scope.flickrPhoto = $scope.flickrData.photoset.photo[$scope.idx--];
-      console.log('$scope.idx',$scope.idx);
+    //prev/next - http//wwwsitepointcom/creating-slide-show-plugin-angularjs/
+    $scope.idx = 0; // Initially the index is at the first image
+     
+    $scope.next = function() {
+      $scope.idx < $scope.flickrData.photoset.photo.length - 1 ? $scope.idx++ : $scope.idx = 0;
     };
-    $scope.next = function(){
-      $scope.flickrPhoto = $scope.flickrData.photoset.photo[$scope.idx++];
-      console.log('$scope.idx',$scope.idx);
+     
+    $scope.prev = function() {
+      $scope.idx > 0 ? $scope.idx-- : $scope.idx = $scope.flickrData.photoset.photo - 1;
     };
     //console.log('Flickoluser.getSessionStorage',Flickoluser.getSessionStorage())
     //$scope.apiKey = '5ae3f6d6106e232dc531b19d44ccd668'; your flickr API key
-    console.log('$scope.flickrData',$scope.flickrData);   
+
+
+    $scope.$watch('idx', function() {
+      console.log('$scope.flickrPhoto',$scope.flickrPhoto);   
+    });    
     
   }])
   .controller('portfolioController', ['$scope', function($scope) {
