@@ -15,37 +15,8 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
 
-//Test for Flickolu object
+//Flickolu object
 var Flickolu = {
-  //create flickrPhotoGroup object
-  photoGroup : function(flickrData){
-    var flickrPhotoGroup = [];  
-    for (var i in flickrData.photoset.photo) {
-      var flickrPhoto = flickrData.photoset.photo[i]
-      , owner = '94139373@N05' // owner ID
-      , imageSet = 72157645741266837 // gallery ID, must be integer, not string
-      , farmid = flickrPhoto.farm// farm ID
-      , id = flickrPhoto.id// image ID
-      , secret = flickrPhoto.secret// secret
-      , serverid = flickrPhoto.server// server ID
-      , title = flickrPhoto.title;// title
-      //create image url
-      var imageLink = 'https://farm' + farmid + '.staticflickr.com/' + serverid + '/' + id + '_' + secret + '_b.jpg';
-      //create image link
-      var imageURL = 'https://www.flickr.com/photos/' + owner + '/' + id + '/in/set-' + imageSet;
-      //add to flickrPhotoGroup object
-      flickrPhotoGroup.push({'imageLink':imageLink,'title':title,'imageURL':imageURL});
-      return flickrPhotoGroup;        
-    };
-  },
-  //add the image set and event listeners for the dynamic bkg
-  bkgImage : function(flickrPhotoGroup,idx) {
-    var bkgImage = flickrPhotoGroup[idx];
-    $('#dynamicBkg').css('background-image','url(' + bkgImage.imageLink + ')');
-    $('#dynamicBkg .menu .title').html(bkgImage.title)
-    $('#dynamicBkg .menu .link a').attr('href',bkgImage.imageURL);  
-    $('.prev, .next').show();  
-  },   
   //adding session storage for json object  
   setSessionStorage : function(data){
     if (JSON.parse(sessionStorage.getItem('flickrPhotoGroup') == null)) {
@@ -55,33 +26,7 @@ var Flickolu = {
   getSessionStorage : function(){
     return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
   },
-  initBkgControls : function(flickrPhotoGroup,idx) {
-    var photoGroup = flickrPhotoGroup;
-    //add event listeners for prev/next btns
-    $('.prev').click(function(){
-      console.log('next',idx);
-      createBkgImg(photoGroup,idx--);
-    });
-    $('.next').click(function(){
-      console.log('next',idx);       
-      createBkgImg(photoGroup,idx++);
-    });
-  }, 
-  initBkg : function(flickrPhotoGroup) {
-    var photoGroup = flickrPhotoGroup;
-    //pick a random item from a set - https//gist.github.com/Phinome/ac24dc2a800ae2f2b165
-    function randomFromSet(min,max) {
-      return Math.floor(Math.random()*(max-min+1)+min);
-    }      
-    //pick a random image to use as first wallpaper
-    var idx = randomFromSet(1, photoGroup.length -1);
-    //create the bkg image and menu  
-    var bkgImage = photoGroup[idx];
-    this.createBkgImg(photoGroup,idx);
-    console.log('photoGroup[idx]',photoGroup[idx]);
-    $('#dynamicBkg').css('background-image','url(' + bkgImage.imageLink + ')');
-    $('#dynamicBkg .menu .title').html(bkgImage.title)
-    $('#dynamicBkg .menu .link a').attr('href',bkgImage.imageURL);  
-    $('.prev, .next').show();        
-  }
+  randomFromSet : function(min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
+  }      
 }

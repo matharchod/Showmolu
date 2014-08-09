@@ -9,8 +9,8 @@ angular.module('myApp.directives', []).
       elm.text(version);
     };
   }]).
-  directive('toggleNav',function(){
-    return function(scope){
-      $scope.status = 'Heyo!';
+  directive('dynamicBeeyotch',function(){
+    return function(scope, elm, attrs){
+      elem.text('Heyo!');
     }
   });
