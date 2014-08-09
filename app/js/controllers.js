@@ -34,7 +34,7 @@ angular.module('myApp.controllers', [])
   }])
   .controller('dynamicBkgController', ['$scope', '$http', function($scope, $http)  {
     //get stored flickr data from sessionStorage
-    $scope.flickrData = Flickoluser.getSessionStorage();  
+    $scope.flickrData = Flickolu.getSessionStorage();  
     //if sessionStorage is empty, get new flickr data
     if ($scope.flickrData == null){ 
       $scope.imageSet = '72157645741266837'; //flickr gallery ID
