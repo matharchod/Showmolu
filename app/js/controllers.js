@@ -34,7 +34,7 @@ angular.module('myApp.controllers', [])
     //get stored flickr data from sessionStorage
     $scope.flickrData = Flickolu.getSessionStorage(); 
     //create image url
-    $scope.createDynamicBkg = function(flickrPhoto) {
+    $scope.changeDynamicBkg = function(flickrPhoto) {
       $scope.flickrPhoto = flickrPhoto;
       $scope.imageTitle = $scope.flickrPhoto.title;
       $scope.imageURL = (['https://farm' + 
@@ -65,7 +65,7 @@ angular.module('myApp.controllers', [])
     
     //pick a random image to use as first wallpaper 
     $scope.idx = Flickolu.randomFromSet(1, $scope.flickrData.photoset.photo.length -1); 
-    $scope.createDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
+    $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
     
     //prev/next - http//wwwsitepointcom/creating-slide-show-plugin-angularjs/     
     $scope.next = function() {
@@ -78,8 +78,8 @@ angular.module('myApp.controllers', [])
 
     //update bkgImage
     $scope.$watch('idx', function() {
-      $scope.createDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
-      console.log('$scope.createDynamicBkg idx',$scope.flickrData.photoset.photo[$scope.idx]);   
+      $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
+      console.log('$scope.changeDynamicBkg idx',$scope.flickrData.photoset.photo[$scope.idx]);   
     });  
     
   }])

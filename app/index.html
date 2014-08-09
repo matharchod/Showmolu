@@ -79,10 +79,11 @@
         <span class="next" ng-click="next()" ng-class="{invisible: idx >= photoSet.length -1}">></span>
       </li>
     </ul>
+    <!-- create a set of thumbnails from the flickr photo set -->
     <ul>
       <li ng-repeat="photo in photoSet">
-        <a ng-click="createDynamicBkg(photo)">
-          <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_b.jpg" width="100" height="100" />
+        <a ng-click="changeDynamicBkg(photo)" style="display: inline-block;">
+          <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
         </a>
         {{title}}
       </li>
