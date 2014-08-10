@@ -122,11 +122,11 @@ body.open {
   display: inline-block;  
   vertical-align: middle;
 }
-#dynamicBkg .menu li.close {
+#dynamicBkg .menu li.toggle {
   position: absolute;
-  top: 5px;
-  left: 10px;
-  font-size: 32px;
+  top: 15px;
+  left: 15px;
+  font-size: 18px;
   font-weight: normal;
 }
 #dynamicBkg .menu li.title {

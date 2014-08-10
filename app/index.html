@@ -70,21 +70,24 @@
   <div id="dynamicBkg" ng-controller="dynamicBkgController" style="background-image:{{bkgImage}}">
     <button id="infoBtn" ng-click="imageNavStatusToggle()" class="{{infoBtnStatus}}">i</button> 
     <ul class="menu border-box {{imageNavStatus}}">
-      <li ng-click="imageNavStatusToggle()" class="close">&times;</li>
+      <!-- create a set of thumbnails from the flickr photo set -->
+      <ul class="thumbs {{thumbsStatus}}">
+        <li ng-repeat="photo in photoSet">
+          <div ng-click="changeDynamicBkg(photo)">
+            <img src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+          </div>
+          {{title}}
+        </li>
+      </ul>
+      <li ng-click="thumbsStatusToggle()" class="toggle">
+        <span ng-hide="thumbsStatus == 'open'">&uarr;</span>
+        <span ng-hide="thumbsStatus == 'hidden'">&darr;</span>
+      </li>
       <li class="title">{{imageTitle}}</li>
       <li class="controls">
         <span class="link"><a href="{{imageLink}}">view this photo on Flickr</a></span>
         <span class="prev" ng-click="prev()" ng-class="{invisible: idx <= 0}"><</span>
         <span class="next" ng-click="next()" ng-class="{invisible: idx >= photoSet.length -1}">></span>
-      </li>
-    </ul>
-    <!-- create a set of thumbnails from the flickr photo set -->
-    <ul>
-      <li ng-repeat="photo in photoSet">
-        <div ng-click="changeDynamicBkg(photo)">
-          <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
-        </div>
-        {{title}}
       </li>
     </ul>
     <div class="view" ng-view></div>

@@ -6,30 +6,47 @@ angular.module('myApp.controllers', [])
   .controller('appController', ['$scope', function($scope) {
     $scope.page = 'home';
     $scope.pageStatus = 'default'; 
-    $scope.bkgImage = 'default';
     $scope.navStatus = 'closed';
-    $scope.imageNavStatus = 'closed'; 
+    $scope.imageNavStatus = 'closed';
+    $scope.thumbsStatus = "hidden"; 
     
     $scope.imageNavStatusToggle = function() {
-      if ($scope.imageNavStatus == 'closed') {
+      if ($scope.imageNavStatus == 'hidden') {
           $scope.imageNavStatus = 'open';
           $scope.navStatus = 'gone';
         } else {
-          $scope.imageNavStatus = 'closed';
-          $scope.navStatus = 'closed';
+          $scope.imageNavStatus = 'hidden';
+          $scope.navStatus = 'hidden';
       }    
     }; 
     
      $scope.navStatusToggle = function() {
-      if ($scope.navStatus == 'closed') {
+      if ($scope.navStatus == 'hidden') {
           $scope.navStatus = 'open';
         } else {
-          $scope.navStatus = 'closed';
+          $scope.navStatus = 'hidden';
       }    
     };  
+    
+     $scope.thumbsStatusToggle = function() {
+      if ($scope.thumbsStatus == 'hidden') {
+          $scope.thumbsStatus = 'open';
+        } else {
+          $scope.thumbsStatus = 'hidden';
+      }    
+    };        
         
   }])
-  .controller('dynamicNavController', ['$scope', function($scope) {}])
+  .controller('dynamicNavController', ['$scope', function($scope) {
+    //nav status
+    //about me link
+    //about me - resume link
+    //about me - creative link
+    //about me - code link
+    //about me - ux diary link
+    //contact me
+    
+  }])
   .controller('dynamicBkgController', ['$scope', '$http', function($scope, $http)  {
     //get stored flickr data from sessionStorage
     $scope.flickrData = Flickolu.getSessionStorage(); 
