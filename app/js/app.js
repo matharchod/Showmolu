@@ -10,9 +10,10 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'dashboardController'});
+  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'dynamicNavController'});
+  $routeProvider.when('/page/:pageID', {templateUrl: 'partials/page.html', controller: 'pageController'});
   $routeProvider.when('/portfolio', {templateUrl: 'partials/portfolio.html', controller: 'portfolioController'});
-  $routeProvider.when('/portfolio/page/:pageID', {templateUrl: 'partials/portfolioPage.html', controller: 'portfolioController'});
+  $routeProvider.when('/portfolio/page/:pageID', {templateUrl: 'partials/portfolio-page.html', controller: 'portfolioController'});
   $routeProvider.when('/resume', {templateUrl: 'partials/resume.html', controller: 'resumeController'});
   $routeProvider.when('/twitolu', {templateUrl: 'partials/twitolu.html', controller: 'twitoluController'});
   $routeProvider.otherwise({redirectTo: '/home'});
@@ -23,8 +24,9 @@ var Flickolu = {
   //adding session storage for json object  
   setSessionStorage : function(data){
     if (JSON.parse(sessionStorage.getItem('flickrPhotoGroup') == null)) {
-       sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(data));       
-    }    
+       sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(data));  
+       this.getSessionStorage('flickrPhotoGroup');     
+    } 
   },
   getSessionStorage : function(){
     return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));

@@ -99,6 +99,7 @@ angular.module('myApp.controllers', [])
     });  
     
   }])
+  .controller('pageController', ['$scope', function($scope) {}])  
   .controller('dashboardController', ['$scope', function($scope) {}])
   .controller('resumeController', ['$scope', function($scope) {}])
   .controller('twitoluController', ['$scope', function($scope) {}]) 
