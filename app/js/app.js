@@ -10,13 +10,12 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/dahsboard', {templateUrl: 'partials/dashboard.html', controller: 'dashboardController'});
-  $routeProvider.when('/nav', {templateUrl: 'partials/nav.html', controller: 'dynamicNavController'});
+  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'dashboardController'});
   $routeProvider.when('/portfolio', {templateUrl: 'partials/portfolio.html', controller: 'portfolioController'});
   $routeProvider.when('/portfolio/page/:pageID', {templateUrl: 'partials/portfolioPage.html', controller: 'portfolioController'});
   $routeProvider.when('/resume', {templateUrl: 'partials/resume.html', controller: 'resumeController'});
   $routeProvider.when('/twitolu', {templateUrl: 'partials/twitolu.html', controller: 'twitoluController'});
-  $routeProvider.otherwise({redirectTo: '/dahsboard'});
+  $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
 //Flickolu object

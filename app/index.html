@@ -15,9 +15,10 @@
   <link rel="stylesheet" href="css/app.css"/>
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>  
 </head>
-<body>
+<body>  
+
   <!-- #dynamicNav - container for the dynamic nav. -->
-  <div id="dynamicNav" ng-controller="dynamicNavController" class="{{navStatus}}" > 
+  <div id="dynamicNav" ng-controller="dynamicNavController" class="{{dynamicNavStatus}}" > 
     <h1 class="your-title">Front End Developer</h1>  
     <h2 class="your-name">Jani Momolu Anderson</h2> 
     <!--
@@ -58,7 +59,9 @@
       </ul> 
     </div>      
   </div> <!-- / #dynamicNav -->
-  
+
+  <div class="view" ng-view></div>
+
   <div>Showmolu : v<span app-version></span></div>
   
   <!-- 
@@ -69,16 +72,8 @@
   -->  
   <div id="dynamicBkg" ng-controller="dynamicBkgController" style="background-image:{{bkgImage}}">
     <button id="infoBtn" ng-click="imageNavStatusToggle()" class="{{infoBtnStatus}}">i</button> 
-    <ul class="menu border-box {{imageNavStatus}}">
-      <!-- create a set of thumbnails from the flickr photo set -->
-      <ul class="thumbs {{thumbsStatus}}">
-        <li ng-repeat="photo in photoSet">
-          <div ng-click="changeDynamicBkg(photo)">
-            <img src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
-          </div>
-          {{title}}
-        </li>
-      </ul>
+    <!-- bottom menu -->
+    <ul class="menu border-box" ng-hide="imageNavStatus != 'open'">
       <li ng-click="thumbsStatusToggle()" class="toggle">
         <span ng-hide="thumbsStatus == 'open'">&uarr;</span>
         <span ng-hide="thumbsStatus == 'hidden'">&darr;</span>
@@ -89,8 +84,18 @@
         <span class="prev" ng-click="prev()" ng-class="{invisible: idx <= 0}"><</span>
         <span class="next" ng-click="next()" ng-class="{invisible: idx >= photoSet.length -1}">></span>
       </li>
-    </ul>
-    <div class="view" ng-view></div>
+      <li>
+        <!-- create a set of thumbnails from the flickr photo set -->
+        <ul class="thumbs {{thumbsStatus}}">
+          <li ng-repeat="photo in photoSet">
+            <a ng-click="changeDynamicBkg(photo)">
+              <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg">
+            </a>
+            {{title}}
+          </li>
+        </ul> <!-- / thumbs -->
+      </li>
+    </ul><!-- bottom menu -->
   </div> <!-- / #dynamicBkg -->
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

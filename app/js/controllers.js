@@ -6,25 +6,25 @@ angular.module('myApp.controllers', [])
   .controller('appController', ['$scope', function($scope) {
     $scope.page = 'home';
     $scope.pageStatus = 'default'; 
-    $scope.navStatus = 'closed';
+    $scope.dynamicNavStatus = 'closed';
     $scope.imageNavStatus = 'closed';
     $scope.thumbsStatus = "hidden"; 
     
     $scope.imageNavStatusToggle = function() {
       if ($scope.imageNavStatus == 'hidden') {
           $scope.imageNavStatus = 'open';
-          $scope.navStatus = 'gone';
+          $scope.dynamicNavStatus = 'hidden';
         } else {
           $scope.imageNavStatus = 'hidden';
-          $scope.navStatus = 'hidden';
+          $scope.dynamicNavStatus = 'closed ';
       }    
     }; 
     
-     $scope.navStatusToggle = function() {
-      if ($scope.navStatus == 'hidden') {
-          $scope.navStatus = 'open';
+     $scope.dynamicNavStatusToggle = function() {
+      if ($scope.dynamicNavStatus == 'hidden') {
+          $scope.dynamicNavStatus = 'open';
         } else {
-          $scope.navStatus = 'hidden';
+          $scope.dynamicNavStatus = 'hidden';
       }    
     };  
     
@@ -50,6 +50,16 @@ angular.module('myApp.controllers', [])
   .controller('dynamicBkgController', ['$scope', '$http', function($scope, $http)  {
     //get stored flickr data from sessionStorage
     $scope.flickrData = Flickolu.getSessionStorage(); 
+    //if sessionStorage is empty, get new flickr data
+    if ($scope.flickrData == null){ 
+      $scope.imageSet = '72157645741266837'; //flickr gallery ID
+      $scope.owner = '94139373@N05'; //your flickr ID     
+      $http.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=5ae3f6d6106e232dc531b19d44ccd668&photoset_id=' + $scope.imageSet + '&format=json&nojsoncallback=1').success(function(data) {
+        Flickolu.setSessionStorage(data);  
+        // create dynamic background 
+        $scope.flickrData = data;
+      });    
+    }       
     //create image url
     $scope.changeDynamicBkg = function(flickrPhoto) {
       $scope.flickrPhoto = flickrPhoto;
@@ -69,17 +79,6 @@ angular.module('myApp.controllers', [])
       $scope.photoSet = $scope.flickrData.photoset.photo;     
     }    
     
-    //if sessionStorage is empty, get new flickr data
-    if ($scope.flickrData == null){ 
-      $scope.imageSet = '72157645741266837'; //flickr gallery ID
-      $scope.owner = '94139373@N05'; //your flickr ID     
-      $http.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=5ae3f6d6106e232dc531b19d44ccd668&photoset_id=' + $scope.imageSet + '&format=json&nojsoncallback=1').success(function(data) {
-        Flickolu.setSessionStorage(data);  
-        // create dynamic background 
-        $scope.flickrData = data;
-      });    
-    }   
-    
     //pick a random image to use as first wallpaper 
     $scope.idx = Flickolu.randomFromSet(1, $scope.flickrData.photoset.photo.length -1); 
     $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
@@ -96,7 +95,7 @@ angular.module('myApp.controllers', [])
     //update bkgImage
     $scope.$watch('idx', function() {
       $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
-      console.log('$scope.changeDynamicBkg idx',$scope.flickrData.photoset.photo[$scope.idx]);   
+      console.log('$scope.changeDynamicBkg ' + $scope.idx,$scope.flickrData.photoset.photo[$scope.idx]);   
     });  
     
   }])
