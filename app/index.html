@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/app.css"/>
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>  
 </head>
-<body class="{{pageStatus}}">  
+<body ng-controller="appController" class="{{pageStatus}}">  
 
   <!-- #dynamicNav - container for the dynamic nav. -->
   <div id="dynamicNav" ng-controller="dynamicNavController" class="{{dynamicNavStatus}}" > 
@@ -38,7 +38,7 @@
     </table><!-- / logo table -->
     <div id="dashboardNav">
       <ul id="home" ng-hide="dynamicNavStatus != 'closed'">
-        <li><a ng-click="openDashboard()">About Me</a></li>
+        <li><a ng-click="toggleDashboard()">About Me</a></li>
         <li><a href="#/page/contact">Contact Me</a></li>
       </ul>
       <ul id="aboutme" ng-hide="dynamicNavStatus != 'open'">

@@ -3,10 +3,20 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('appController', ['$scope', function($scope) {
-    $scope.page = 'home';
-    $scope.pageStatus = 'default'; 
-    //$scope.dynamicNavStatus = 'closed';
+  .controller('appController', ['$scope','$rootScope', function($scope, $rootScope) {
+  
+    $rootScope.page = 'home';
+    $rootScope.pageStatus = 'default'; 
+    $rootScope.dynamicNavStatus = 'closed';
+    
+    $rootScope.dynamicNavStatusToggle = function() {
+      if ($scope.dynamicNavStatus != 'open') {
+          $scope.dynamicNavStatus = 'open';
+        } else {
+          $scope.dynamicNavStatus = 'closed';
+      }    
+    };      
+    
     $scope.imageNavStatus = 'closed';
     $scope.thumbsStatus = "hidden"; 
     
@@ -20,15 +30,7 @@ angular.module('myApp.controllers', [])
       }    
     }; 
     
-     $scope.dynamicNavStatusToggle = function() {
-      if ($scope.dynamicNavStatus != 'open') {
-          $scope.dynamicNavStatus = 'open';
-        } else {
-          $scope.dynamicNavStatus = 'closed';
-      }    
-    };  
-    
-     $scope.thumbsStatusToggle = function() {
+    $scope.thumbsStatusToggle = function() {
       if ($scope.thumbsStatus == 'hidden') {
           $scope.thumbsStatus = 'open';
         } else {
@@ -37,16 +39,21 @@ angular.module('myApp.controllers', [])
     };        
         
   }])  
-  .controller('portfolioController', ['$scope', function($scope, $location) {
-    $scope.dynamicNavStatus = 'top';
-    console.log('$scope.dynamicNavStatus',$scope.dynamicNavStatus);    
+  .controller('portfolioController', ['$scope', '$rootScope', function($scope, $rootScope) {
+    $rootScope.dynamicNavStatus = 'top';
+    //$scope.toggleDashboard;
+    //console.log('changeDynamicNavStatus',changeDynamicNavStatus);    
   }])
   .controller('dynamicNavController', ['$scope', function($scope) {
     //nav status 
     //about me link
-    $scope.openDashboard = function(){
-      $scope.dynamicNavStatus = 'open';
-      $scope.imageNavStatus = 'closed';  
+    $scope.toggleDashboard = function(){
+      if ($scope.dynamicNavStatus != 'open') {
+        $scope.dynamicNavStatus = 'open';
+      } else {
+        $scope.dynamicNavStatus = 'closed'; 
+      }
+       
     }
     //about me - resume link
     //about me - creative link

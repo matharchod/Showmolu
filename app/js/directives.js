@@ -9,8 +9,6 @@ angular.module('myApp.directives', []).
       elm.text(version);
     };
   }]).
-  directive('dynamicBeeyotch',function(){
-    return function(scope, elm, attrs){
-      elem.text('Heyo!');
-    }
+  directive('',function(){
+
   });
