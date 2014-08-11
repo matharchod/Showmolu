@@ -30,19 +30,19 @@
       <tr>
         <td width="50%"></td>
         <td class="logo">
-          <a href="" class="your-logo" ng-click="navStatusToggle()"></a>
+          <a href="" class="your-logo" ng-click="dynamicNavStatusToggle()"></a>
         </td>
         <td width="50%"></td>
       </tr> 
       <tr><td colspan="3"></td></tr>   
     </table><!-- / logo table -->
     <div id="dashboardNav">
-      <ul id="home">
-        <li><a href="#/view1">About Me</a></li>
-        <li><a href="#/view2">Contact Me</a></li>
+      <ul id="home" ng-hide="dynamicNavStatus != 'closed'">
+        <li><a ng-click="openDashboard()">About Me</a></li>
+        <li><a href="#/page/contact">Contact Me</a></li>
       </ul>
-      <ul id="aboutme" class="hidden">
-        <li><a href="">R&eacute;sum&eacute;</a></li>
+      <ul id="aboutme" ng-hide="dynamicNavStatus != 'open'">
+        <li><a href="#/portfolio">R&eacute;sum&eacute;</a></li>
         <li><a href="">Creative</a></li>
         <li><a href="">Code</a></li>
         <li><a href="">UX Diary</a></li>

@@ -23,10 +23,7 @@ config(['$routeProvider', function($routeProvider) {
 var Flickolu = {
   //adding session storage for json object  
   setSessionStorage : function(data){
-    if (JSON.parse(sessionStorage.getItem('flickrPhotoGroup') == null)) {
-       sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(data));  
-       this.getSessionStorage('flickrPhotoGroup');     
-    } 
+    sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(data)); 
   },
   getSessionStorage : function(){
     return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));

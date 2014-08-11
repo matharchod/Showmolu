@@ -6,7 +6,7 @@ angular.module('myApp.controllers', [])
   .controller('appController', ['$scope', function($scope) {
     $scope.page = 'home';
     $scope.pageStatus = 'default'; 
-    $scope.dynamicNavStatus = 'closed';
+    //$scope.dynamicNavStatus = 'closed';
     $scope.imageNavStatus = 'closed';
     $scope.thumbsStatus = "hidden"; 
     
@@ -21,10 +21,10 @@ angular.module('myApp.controllers', [])
     }; 
     
      $scope.dynamicNavStatusToggle = function() {
-      if ($scope.dynamicNavStatus == 'hidden') {
+      if ($scope.dynamicNavStatus != 'open') {
           $scope.dynamicNavStatus = 'open';
         } else {
-          $scope.dynamicNavStatus = 'hidden';
+          $scope.dynamicNavStatus = 'closed';
       }    
     };  
     
@@ -36,10 +36,18 @@ angular.module('myApp.controllers', [])
       }    
     };        
         
+  }])  
+  .controller('portfolioController', ['$scope', function($scope, $location) {
+    $scope.dynamicNavStatus = 'top';
+    console.log('$scope.dynamicNavStatus',$scope.dynamicNavStatus);    
   }])
   .controller('dynamicNavController', ['$scope', function($scope) {
-    //nav status
+    //nav status 
     //about me link
+    $scope.openDashboard = function(){
+      $scope.dynamicNavStatus = 'open';
+      $scope.imageNavStatus = 'closed';  
+    }
     //about me - resume link
     //about me - creative link
     //about me - code link
@@ -99,9 +107,10 @@ angular.module('myApp.controllers', [])
     });  
     
   }])
-  .controller('pageController', ['$scope', function($scope) {}])  
+  .controller('pageController', ['$scope', function($scope, $location) {
+    //$scope.dynamicNavStatus = 'top';
+    console.log('$location.path()',$location.path());
+  }])  
   .controller('dashboardController', ['$scope', function($scope) {}])
   .controller('resumeController', ['$scope', function($scope) {}])
-  .controller('twitoluController', ['$scope', function($scope) {}]) 
-  .controller('portfolioController', ['$scope', function($scope) {}])     
-  .controller('portfolioPageController', ['$scope', function($scope) {}]); 
+  .controller('twitoluController', ['$scope', function($scope) {}]);
