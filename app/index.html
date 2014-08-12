@@ -18,9 +18,9 @@
 <body ng-controller="appController" class="{{pageStatus}}">  
 
   <!-- #dynamicNav - container for the dynamic nav. -->
-  <div id="dynamicNav" ng-controller="dynamicNavController" class="{{dynamicNavStatus}}" > 
+  <div id="dynamicNav" ng-controller="dynamicNavController" ng-hide="imageNavStatus == 'open'" class="{{dynamicNavStatus}}" > 
     <h1 class="your-title">Front End Developer</h1>  
-    <h2 class="your-name">Jani Momolu Anderson</h2> 
+    <h2 class="your-name" ng-click="dynamicNavStatusToggle()"><a href="#/home">Jani Momolu Anderson</a></h2> 
     <!--
       A table allows the logo to maintain its relative position 
       as the nav moves around the page
@@ -30,7 +30,7 @@
       <tr>
         <td width="50%"></td>
         <td class="logo">
-          <a href="" class="your-logo" ng-click="dynamicNavStatusToggle()"></a>
+          <a href="#/home" class="your-logo" ng-click="dynamicNavStatusToggle()"></a>
         </td>
         <td width="50%"></td>
       </tr> 
@@ -38,14 +38,14 @@
     </table><!-- / logo table -->
     <div id="dashboardNav">
       <ul id="home" ng-hide="dynamicNavStatus != 'closed'">
-        <li><a ng-click="toggleDashboard()">About Me</a></li>
-        <li><a href="#/page/contact">Contact Me</a></li>
+        <li ng-click="dynamicNavStatusToggle()"><a>About Me</a></li>
+        <li ng-click="dynamicNavStatusToggle()"><a href="#/page/contact">Contact Me</a></li>
       </ul>
-      <ul id="aboutme" ng-hide="dynamicNavStatus != 'open'">
-        <li><a href="#/portfolio">R&eacute;sum&eacute;</a></li>
-        <li><a href="">Creative</a></li>
-        <li><a href="">Code</a></li>
-        <li><a href="">UX Diary</a></li>
+      <ul id="aboutme" ng-hide="dynamicNavStatus == 'closed'">
+        <li ng-click="dynamicNavStatusToggle('top')"><a href="#/resume">R&eacute;sum&eacute;</a></li>
+        <li ng-click="dynamicNavStatusToggle('top')"><a href="#/portfolio">Creative</a></li>
+        <li ng-click="dynamicNavStatusToggle('top')"><a href="#/code">Code</a></li>
+        <li ng-click="dynamicNavStatusToggle('top')"><a href="#/ux-diary">UX Diary</a></li>
         <!-- <li><a href="">Blog</a></li> -->
       </ul> 
       <!-- #subNav - container for secondary nav -->
@@ -56,7 +56,7 @@
     </div>      
   </div> <!-- / #dynamicNav -->
 
-  <div class="view" ng-view></div>
+  <div class="view" ng-hide="imageNavStatus == 'open'" ng-view></div>
 
   <div>Showmolu : v<span app-version></span></div>
   
@@ -67,7 +67,7 @@
   for better organization
   -->  
   <div id="dynamicBkg" ng-controller="dynamicBkgController" style="background-image:{{bkgImage}}">
-    <button id="infoBtn" ng-click="imageNavStatusToggle()" class="{{infoBtnStatus}}">i</button> 
+    <a id="infoBtn" ng-click="imageNavStatusToggle()" class="{{infoBtnStatus}}">i</a> 
     <!-- bottom menu -->
     <ul class="menu border-box" ng-hide="imageNavStatus != 'open'">
       <li ng-click="thumbsStatusToggle()" class="toggle">

@@ -21,6 +21,9 @@ body.open {
 	border: 1px solid #ccc;
 	cursor: pointer;
 }
+#dashboardNav {
+  background-color: #fff;
+}
 #dynamicNav {
 	width: 50%;
 	height: 50%;
@@ -37,8 +40,24 @@ body.open {
   top: 5%;
   left: 5%;
 }
-#dynamicNav.gone{
-  display: none;
+#dynamicNav.top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 175px;
+  position: relative;
+}
+#dynamicNav.top .your-name {
+  bottom: auto;
+  top: 0;
+  left: 0;
+  width: auto;
+}
+#dynamicNav.top .your-title {
+  bottom: auto;
+  top: 0;
+  right: 0;
+  width: auto;
 }
 #dynamicNav li {
 	list-style-type: none;
@@ -49,6 +68,14 @@ body.open {
 	margin: 0;
 	position: relative;
 	text-align: center;
+}
+#dynamicNav.top table {height: 100px;}
+#dynamicNav.top ul {
+  width: 50%;
+  position: relative;
+}
+#dynamicNav.top li {
+  padding: 20px 0;
 }
 #dynamicNav li a {
 	cursor: pointer;

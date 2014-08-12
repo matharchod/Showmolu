@@ -3,32 +3,52 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('appController', ['$scope','$rootScope', function($scope, $rootScope) {
+  .controller('appController', ['$scope','$rootScope', '$location', function($scope, $rootScope, $location) {
   
     $rootScope.page = 'home';
     $rootScope.pageStatus = 'default'; 
-    $rootScope.dynamicNavStatus = 'closed';
+    $rootScope.dynamicNavStatus = 'closed';    
+    $rootScope.imageNavStatus = 'hidden';
     
-    $rootScope.dynamicNavStatusToggle = function() {
-      if ($scope.dynamicNavStatus != 'open') {
-          $scope.dynamicNavStatus = 'open';
+    $rootScope.dynamicNavStatusToggle = function(newStatus) {
+      if (!newStatus) {
+        if ($rootScope.dynamicNavStatus != 'open') {
+            $rootScope.dynamicNavStatus = 'open';
+          } else {
+            $rootScope.dynamicNavStatus = 'closed';
+        }        
+      } else {
+        $rootScope.dynamicNavStatus = newStatus; 
+      }
+    
+    };
+    
+    $rootScope.imageNavStatusToggle = function() {
+      if ($location.path().indexOf('page') == -1 && $rootScope.imageNavStatus == 'hidden') {
+          $rootScope.dynamicNavStatus = 'top ';
+        }
+        
+      if ($rootScope.imageNavStatus == 'hidden') {
+          $rootScope.imageNavStatus = 'open';
+          $rootScope.dynamicNavStatus = 'hidden';
         } else {
-          $scope.dynamicNavStatus = 'closed';
+          $rootScope.imageNavStatus = 'hidden';
+          $rootScope.dynamicNavStatus = 'closed ';
       }    
-    };      
+    };     
+
+    //update dynamicNav
+    $rootScope.$watch('$location', function() {
+      //if locattion is not home
+      if ($location.path() != '/home' || $location.path().indexOf('page') == -1) {
+        $rootScope.dynamicNavStatusToggle('top');
+        //console.log('$location.path()',$location.path());
+      }
+      //$scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
+      //alert('$location', $location);   
+    });           
     
-    $scope.imageNavStatus = 'closed';
     $scope.thumbsStatus = "hidden"; 
-    
-    $scope.imageNavStatusToggle = function() {
-      if ($scope.imageNavStatus == 'hidden') {
-          $scope.imageNavStatus = 'open';
-          $scope.dynamicNavStatus = 'hidden';
-        } else {
-          $scope.imageNavStatus = 'hidden';
-          $scope.dynamicNavStatus = 'closed ';
-      }    
-    }; 
     
     $scope.thumbsStatusToggle = function() {
       if ($scope.thumbsStatus == 'hidden') {
@@ -47,14 +67,6 @@ angular.module('myApp.controllers', [])
   .controller('dynamicNavController', ['$scope', function($scope) {
     //nav status 
     //about me link
-    $scope.toggleDashboard = function(){
-      if ($scope.dynamicNavStatus != 'open') {
-        $scope.dynamicNavStatus = 'open';
-      } else {
-        $scope.dynamicNavStatus = 'closed'; 
-      }
-       
-    }
     //about me - resume link
     //about me - creative link
     //about me - code link
@@ -62,7 +74,7 @@ angular.module('myApp.controllers', [])
     //contact me
     
   }])
-  .controller('dynamicBkgController', ['$scope', '$http', function($scope, $http)  {
+  .controller('dynamicBkgController', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope)  {
     //get stored flickr data from sessionStorage
     $scope.flickrData = Flickolu.getSessionStorage(); 
     //if sessionStorage is empty, get new flickr data
@@ -114,7 +126,7 @@ angular.module('myApp.controllers', [])
     });  
     
   }])
-  .controller('pageController', ['$scope', function($scope, $location) {
+  .controller('pageController', ['$scope', '$location', function($scope, $location) {
     //$scope.dynamicNavStatus = 'top';
     console.log('$location.path()',$location.path());
   }])  
