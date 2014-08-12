@@ -14,6 +14,7 @@ angular.module('myApp.controllers', [])
       if (!newStatus) {
         if ($rootScope.dynamicNavStatus != 'open') {
             $rootScope.dynamicNavStatus = 'open';
+            $rootScope.pageStatus == 'contentpage'
           } else {
             $rootScope.dynamicNavStatus = 'closed';
         }        
@@ -34,15 +35,19 @@ angular.module('myApp.controllers', [])
     };     
 
     //update dynamicNav
-    $rootScope.$watch('$location', function() {
-      //if location is not home or if location contains '/page'
+    $rootScope.$on('$locationChangeStart', function(event) {
+      //if location is not home or if location contains '/page'    
       if ($location.path() != '/home' || $location.path().indexOf('page') != -1) {
-        $rootScope.dynamicNavStatusToggle('top');
-        //console.log('$location.path()',$location.path());
+        //change pageStatus
+        $rootScope.pageStatus = 'contentpage'; 
+        //change navStatus
+        $rootScope.dynamicNavStatus = 'open'; 
+        console.log('$location.path()',$location.path());
+      } else {
+        $rootScope.pageStatus = 'default';
       }
-      //$scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
-      //alert('$location', $location);   
-    });           
+    });
+          
     
     $scope.thumbsStatus = "hidden"; 
     
@@ -54,13 +59,14 @@ angular.module('myApp.controllers', [])
       }    
     };        
         
-  }])  
+  }]) 
+  .controller('pageController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
+  }])     
   .controller('portfolioController', ['$scope', '$rootScope', function($scope, $rootScope) {
-    $rootScope.dynamicNavStatus = 'top';
-    //$scope.toggleDashboard;
-    //console.log('changeDynamicNavStatus',changeDynamicNavStatus);    
   }])
-  .controller('dynamicNavController', ['$scope', function($scope) {
+  .controller('resumeController', ['$scope', '$rootScope', function($scope, $rootScope) {
+  }])  
+  .controller('dynamicNavController', ['$scope', '$rootScope', function($scope, $rootScope) {
     //nav status 
     //about me link
     //about me - resume link
@@ -122,10 +128,5 @@ angular.module('myApp.controllers', [])
     });  
     
   }])
-  .controller('pageController', ['$scope', '$location', function($scope, $location) {
-    //$scope.dynamicNavStatus = 'top';
-    console.log('$location.path()',$location.path());
-  }])  
-  .controller('dashboardController', ['$scope', function($scope) {}])
-  .controller('resumeController', ['$scope', function($scope) {}])
-  .controller('twitoluController', ['$scope', function($scope) {}]);
+  .controller('dashboardController', ['$scope', '$rootScope', function($scope, $rootScope) {}])
+  .controller('twitoluController', ['$scope', '$rootScope', function($scope, $rootScope) {}]);

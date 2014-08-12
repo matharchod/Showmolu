@@ -40,20 +40,28 @@ body.open {
   top: 5%;
   left: 5%;
 }
-#dynamicNav.top {
+.contentpage #dynamicNav {
   top: 0;
   left: 0;
   width: 100%;
   height: 175px;
   position: relative;
 }
-#dynamicNav.top .your-name {
+.contentpage #dynamicNav table {height: 100px;}
+.contentpage #dynamicNav ul {
+  width: 50%;
+  position: relative;
+}
+.contentpage #dynamicNav li {
+  padding: 20px 0;
+}
+.contentpage #dynamicNav .your-name {
   bottom: auto;
   top: 0;
   left: 0;
   width: auto;
 }
-#dynamicNav.top .your-title {
+.contentpage #dynamicNav .your-title {
   bottom: auto;
   top: 0;
   right: 0;
@@ -68,14 +76,6 @@ body.open {
 	margin: 0;
 	position: relative;
 	text-align: center;
-}
-#dynamicNav.top table {height: 100px;}
-#dynamicNav.top ul {
-  width: 50%;
-  position: relative;
-}
-#dynamicNav.top li {
-  padding: 20px 0;
 }
 #dynamicNav li a {
 	cursor: pointer;
