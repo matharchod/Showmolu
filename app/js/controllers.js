@@ -24,10 +24,6 @@ angular.module('myApp.controllers', [])
     };
     
     $rootScope.imageNavStatusToggle = function() {
-      if ($location.path().indexOf('page') == -1 && $rootScope.imageNavStatus == 'hidden') {
-          $rootScope.dynamicNavStatus = 'top ';
-        }
-        
       if ($rootScope.imageNavStatus == 'hidden') {
           $rootScope.imageNavStatus = 'open';
           $rootScope.dynamicNavStatus = 'hidden';
@@ -39,8 +35,8 @@ angular.module('myApp.controllers', [])
 
     //update dynamicNav
     $rootScope.$watch('$location', function() {
-      //if locattion is not home
-      if ($location.path() != '/home' || $location.path().indexOf('page') == -1) {
+      //if location is not home or if location contains '/page'
+      if ($location.path() != '/home' || $location.path().indexOf('page') != -1) {
         $rootScope.dynamicNavStatusToggle('top');
         //console.log('$location.path()',$location.path());
       }
