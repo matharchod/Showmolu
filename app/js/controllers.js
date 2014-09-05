@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', [])
+angular.module('myApp.controllers', ['ngRoute','ngResource'])
   .controller('appController', ['$scope','$rootScope', '$location', function($scope, $rootScope, $location) {
   
     $rootScope.page = 'home';
@@ -76,11 +76,17 @@ angular.module('myApp.controllers', [])
     //contact me
     
   }])
-  .controller('dynamicBkgController', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope)  {
+  .controller('dynamicBkgController', ['$scope', '$http', '$rootScope', '$resource', 'AngularIssues', function($scope, $http, $rootScope, $resource, AngularIssues)  {
     //get stored flickr data from sessionStorage
     $scope.flickrData = Flickolu.getSessionStorage(); 
     //if sessionStorage is empty, get new flickr data
-    if ($scope.flickrData == null){ 
+    if ($scope.flickrData == null || $scope.flickrData == undefined || $scope.flickrData == '') { 
+      
+      $scope.flickrData = AngularIssues.get();
+      Flickolu.setSessionStorage($scope.flickrData); 
+      consoloe.log('$scope.flickrData',$scope.flickrData);
+    
+/*
       $scope.imageSet = '72157645741266837'; //flickr gallery ID
       $scope.owner = '94139373@N05'; //your flickr ID     
       $http.get('https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=5ae3f6d6106e232dc531b19d44ccd668&photoset_id=' + $scope.imageSet + '&format=json&nojsoncallback=1').success(function(data) {
@@ -88,6 +94,9 @@ angular.module('myApp.controllers', [])
         // create dynamic background 
         $scope.flickrData = data;
       });    
+      
+*/
+      
     }       
     //create image url
     $scope.changeDynamicBkg = function(flickrPhoto) {
@@ -109,6 +118,7 @@ angular.module('myApp.controllers', [])
     }    
     
     //pick a random image to use as first wallpaper 
+    /*
     $scope.idx = Flickolu.randomFromSet(1, $scope.flickrData.photoset.photo.length -1); 
     $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
     
@@ -120,7 +130,8 @@ angular.module('myApp.controllers', [])
     $scope.prev = function() {
       $scope.idx > 0 ? $scope.idx-- : $scope.idx = $scope.flickrData.photoset.photo - 1;
     };
-
+    */
+    
     //update bkgImage
     $scope.$watch('idx', function() {
       $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
