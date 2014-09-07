@@ -27,6 +27,7 @@ var Flickolu = {
   },
   getSessionStorage : function(){
     return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
+    console.log('getSessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));
   },
   randomFromSet : function(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
