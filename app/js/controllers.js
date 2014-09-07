@@ -76,14 +76,14 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     //contact me
     
   }])
-  .controller('dynamicBkgController', ['$scope', '$http', '$rootScope', 'AngularIssues', function($scope, $http, $rootScope, AngularIssues)  {
+  .controller('dynamicBkgController', ['$scope', '$http', '$rootScope', 'FlickrPhotos', function($scope, $http, $rootScope, FlickrPhotos)  {
     //get stored flickr data from sessionStorage
     $scope.flickrData = Flickolu.getSessionStorage(); 
 
     //if sessionStorage is empty, get new flickr data
     if ($scope.flickrData === null || $scope.flickrData === undefined || $scope.flickrData == '') { 
     
-        AngularIssues.query( function(data) {
+        FlickrPhotos.query( function(data) {
           $scope.flickrData = data;
           Flickolu.setSessionStorage($scope.flickrData);
           console.log('ifStatement - AngularIssues.query()', $scope.flickrData);  
