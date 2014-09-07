@@ -12,4 +12,10 @@ myAppService.factory('FlickrPhotos', function($resource){
     query: {method:'GET', isArray:false}
   });
 });
+
+myAppService.factory('BehanceItems', function($resource){
+  return $resource('https://www.behance.net/v2/users/jani312/projects?client_id=MkEs5mltD9t1wVqV9kiv2QUeT3OVVHju&sort=published_date', {}, {
+    query: {method:'GET', isArray:false}
+  });
+});
   

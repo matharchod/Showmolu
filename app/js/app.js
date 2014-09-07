@@ -24,6 +24,7 @@ var Flickolu = {
   //adding session storage for json object  
   setSessionStorage : function(data){
     sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(data)); 
+    //console.log('setSessionStorage', JSON.stringify(data));
   },
   getSessionStorage : function(){
     return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
@@ -31,5 +32,37 @@ var Flickolu = {
   },
   randomFromSet : function(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
-  }      
+  },
+  changeDynamicBkg : function(flickrPhoto) {
+    var imageTitle = flickrPhoto.title;
+    var imageURL = (['https://farm' + 
+      flickrPhoto.farm + '.staticflickr.com/' + 
+      flickrPhoto.server + '/' + flickrPhoto.id + '_' + 
+      flickrPhoto.secret + '_b.jpg'   
+    ]).join('');    
+    //create image link
+    var imageLink = (['https://www.flickr.com/photos/' + 
+      '94139373@N05' + '/' + // owner ID 
+      flickrPhoto.id + '/in/set-' + 
+      '72157645741266837' //image set
+    ]).join('');
+    console.log('Flickolu.changeDynamicBkg imageURL', imageURL);
+    return imageURL; //return bkg image URL   
+  }            
+}
+
+//Behansolu object
+var Behansolu = {
+  //adding session storage for json object  
+  setSessionStorage : function(data){
+    sessionStorage.setItem('behancePortfolioItems', JSON.stringify(data)); 
+    console.log('Behansolu.setSessionStorage', JSON.stringify(data));
+  },
+  getSessionStorage : function(){
+    return JSON.parse(sessionStorage.getItem('behancePortfolioItems'));
+    console.log('Behansolu.getSessionStorage', JSON.parse(sessionStorage.getItem('behancePortfolioItems')));
+  },
+  randomFromSet : function(min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
+  }
 }

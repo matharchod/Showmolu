@@ -62,7 +62,21 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
   }]) 
   .controller('pageController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
   }])     
-  .controller('portfolioController', ['$scope', '$rootScope', function($scope, $rootScope) {
+  .controller('portfolioController', ['$scope', '$rootScope', 'BehanceItems', function($scope, $rootScope, BehanceItems) {
+  
+    $scope.behanceData = Behansolu.getSessionStorage(); 
+
+    //if sessionStorage is empty, get new flickr data
+    if (!$scope.behanceData || $scope.behanceData === null || $scope.behanceData === undefined || $scope.behanceData == '') { 
+    
+        console.log('ifStatement - $scope.behanceData =', $scope.behanceData);  
+        
+        BehanceItems.query( function(data) {
+          Behansolu.setSessionStorage(data);
+        }); 
+        
+    }   
+    
   }])
   .controller('resumeController', ['$scope', '$rootScope', function($scope, $rootScope) {
   }])  
@@ -76,21 +90,25 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     //contact me
     
   }])
-  .controller('dynamicBkgController', ['$scope', '$http', '$rootScope', 'FlickrPhotos', function($scope, $http, $rootScope, FlickrPhotos)  {
-    //get stored flickr data from sessionStorage
+  .controller('dynamicBkgController', ['$scope', '$rootScope', 'FlickrPhotos', function($scope, $rootScope, FlickrPhotos)  {
+    
     $scope.flickrData = Flickolu.getSessionStorage(); 
 
     //if sessionStorage is empty, get new flickr data
-    if ($scope.flickrData === null || $scope.flickrData === undefined || $scope.flickrData == '') { 
+    if (!$scope.flickrData || $scope.flickrData === null || $scope.flickrData === undefined || $scope.flickrData == '') { 
     
+        console.log('ifStatement - $scope.flickrData =', $scope.flickrData);  
+        
         FlickrPhotos.query( function(data) {
-          $scope.flickrData = data;
-          Flickolu.setSessionStorage($scope.flickrData);
-          console.log('ifStatement - AngularIssues.query()', $scope.flickrData);  
-        });        
-      
-    }       
+          Flickolu.setSessionStorage(data);
+        }); 
+        
+    } 
+          
     //create image url
+    //$scope.dynamicPhoto = $scope.flickrData.photoset.photo[$scope.idx];
+    //$scope.changeDynamicBkg = Flickolu.changeDynamicBkg($scope.dynamicPhoto);
+
     $scope.changeDynamicBkg = function(flickrPhoto) {
       $scope.flickrPhoto = flickrPhoto;
       $scope.imageTitle = $scope.flickrPhoto.title;
@@ -124,7 +142,7 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     //update bkgImage
     $scope.$watch('idx', function() {
       $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
-      console.log('$scope.changeDynamicBkg ' + $scope.idx,$scope.flickrData.photoset.photo[$scope.idx]);   
+      console.log('$scope.$watch(idx) ' + $scope.idx,$scope.flickrData.photoset.photo[$scope.idx].title);   
     });  
     
   }])
