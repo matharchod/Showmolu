@@ -71,8 +71,9 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     
         console.log('ifStatement - $scope.behanceData =', $scope.behanceData);  
         
-        BehanceItems.query( function(data) {
+        BehanceItems.query(function(data) {
           Behansolu.setSessionStorage(data);
+          $scope.behanceData = Behansolu.getSessionStorage(); 
         }); 
         
     }   
@@ -99,8 +100,9 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     
         console.log('ifStatement - $scope.flickrData =', $scope.flickrData);  
         
-        FlickrPhotos.query( function(data) {
+        FlickrPhotos.query(function(data) {
           Flickolu.setSessionStorage(data);
+          $scope.flickrData = Flickolu.getSessionStorage();
         }); 
         
     } 

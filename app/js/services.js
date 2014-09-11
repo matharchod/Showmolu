@@ -14,7 +14,7 @@ myAppService.factory('FlickrPhotos', function($resource){
 });
 
 myAppService.factory('BehanceItems', function($resource){
-  return $resource('https://www.behance.net/v2/users/jani312/projects?client_id=MkEs5mltD9t1wVqV9kiv2QUeT3OVVHju&sort=published_date&callback=Behansolu.getSessionStorage', {}, {
+  return $resource('https://www.behance.net/v2/users/jani312/projects?client_id=MkEs5mltD9t1wVqV9kiv2QUeT3OVVHju&sort=published_date&callback=Behansolu.setSessionStorage', {}, {
     query: {method:'JSONP', isArray:false}
   });
 });
