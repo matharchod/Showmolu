@@ -1,15 +1,17 @@
 <div id="portfolio" ng-controller="portfolioController">
   <h1>Portfolio</h1>
-  <ul ng-repeat="item in behanceData.projects">
-    <li>
-      <img ng-src="{{item.covers.202}}" />
+  <ul>
+    <li ng-repeat="item in behanceData.projects">
+      <a href="#/portfolio/{{item.name  |removeSpaces}}">
+        <img ng-src="{{item.covers.202}}" />
+      </a>
       <p>{{item.name}}</p>
       <p>{{item.url}}</p> 
       <p>{{item.company}}</p>      
       <p ng-repeat="field in item.fields">
         <a href="">{{field}}</a>
       </p>
+      <p>Views on Behance: {{item.stats.views}}</p>
     </li>
   </ul>
-  {{behanceData}}
 </div>

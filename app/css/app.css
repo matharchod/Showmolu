@@ -73,7 +73,11 @@ body.contentpage {
   width: auto;
 }
 .contentpage .view {
-  top: 200px;
+  top: 150px;
+  background: lime;
+  position: fixed;
+  height: 100%;
+  width: 100%;
 }
 #dynamicNav li {
 	list-style-type: none;
@@ -213,6 +217,13 @@ body.contentpage {
 #infoBtn.closed {
   display: none;
 }
+#portfolio {
+background: red;
+position: absolute;
+height: 99%;
+overflow: scroll;
+width: 100%;
+}
 #portfolio > ul,
 #portfolio > li {
   list-style-type: none;
@@ -235,6 +246,7 @@ body.contentpage {
 .view {
   z-index: 1;
   position: relative;
+  color: #fff;
 }
 h3 {
 	font-size: 14px;

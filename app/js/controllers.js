@@ -76,7 +76,9 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
           $scope.behanceData = Behansolu.getSessionStorage(); 
         }); 
         
-    }   
+    }
+    
+    console.log('$scope.behanceData',$scope.behanceData);   
     
   }])
   .controller('resumeController', ['$scope', '$rootScope', function($scope, $rootScope) {

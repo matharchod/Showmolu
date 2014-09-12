@@ -17,7 +17,16 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/resume', {templateUrl: 'partials/resume.html', controller: 'resumeController'});
   $routeProvider.when('/twitolu', {templateUrl: 'partials/twitolu.html', controller: 'twitoluController'});
   $routeProvider.otherwise({redirectTo: '/home'});
-}]);
+}]).
+filter('removeSpaces', function(){ 
+  return function (textString){
+    if(textString){
+      return textString.toLowerCase()
+      .replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,'-')
+      .replace(/[^a-z0-9-]/ig,'-');
+    }
+  }
+});
 
 //Flickolu object
 var Flickolu = {
