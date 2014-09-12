@@ -22,7 +22,10 @@ body.open {
 	cursor: pointer;
 }
 #dashboardNav {
+  position: relative;
   background-color: #fff;
+  width: 100%;
+  height: auto;
 }
 #dynamicNav {
 	width: 50%;
@@ -44,6 +47,9 @@ body.contentpage {
   position: relative;
   overflow: auto;
 }
+.contentpage #dashboardNav {
+  height: 75px;
+}
 .contentpage #dynamicNav {
   top: 0;
   left: 0;
@@ -51,14 +57,17 @@ body.contentpage {
   height: 175px;
   position: fixed;
   z-index: 2;
+  box-shadow: 0 -20px 40px #000;
 }
 .contentpage #dynamicNav table {height: 100px;}
 .contentpage #dynamicNav ul {
+  height: 100%;
   width: 50%;
-  position: relative;
+  bottom: 0;
+  margin: 0 25%;
 }
 .contentpage #dynamicNav li {
-  padding: 20px 0;
+  padding: 30px 0;
 }
 .contentpage #dynamicNav .your-name {
   bottom: auto;
@@ -73,8 +82,8 @@ body.contentpage {
   width: auto;
 }
 .contentpage .view {
-  top: 150px;
-  background: lime;
+  top: 175px;
+  background: transparent;
   position: fixed;
   height: 100%;
   width: 100%;
@@ -218,15 +227,25 @@ body.contentpage {
   display: none;
 }
 #portfolio {
-background: red;
-position: absolute;
-height: 99%;
-overflow: scroll;
-width: 100%;
+  background: #fff;
+  position: absolute;
+  height: 99%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
 }
 #portfolio > ul,
 #portfolio > li {
   list-style-type: none;
+  padding-left: 0;
+}
+#portfolio .portfolio-items {
+  text-align: center;
+}
+#portfolio .portfolio-items .item {
+  display: inline-block;
+  margin: 2.5%;
+  border: 1px solid #ddd;  
 }
 .your-name {font-size: 24px;}
 .your-title {margin-bottom: -25px;}
