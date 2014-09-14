@@ -67,9 +67,9 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     $scope.behanceData = Behansolu.getSessionStorage(); 
 
     //if sessionStorage is empty, get new flickr data
-    if (!$scope.behanceData || $scope.behanceData === null || $scope.behanceData === undefined || $scope.behanceData == '') { 
+    if (!$scope.behanceData || $scope.behanceData == null || $scope.behanceData == undefined || $scope.behanceData == '') { 
     
-        console.log('ifStatement - $scope.behanceData =', $scope.behanceData);  
+        console.log('ERROR: $scope.behanceData =', $scope.behanceData);  
         
         BehanceItems.query(function(data) {
           Behansolu.setSessionStorage(data);
@@ -96,19 +96,29 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
   .controller('dynamicBkgController', ['$scope', '$rootScope', 'FlickrPhotos', function($scope, $rootScope, FlickrPhotos)  {
     
     $scope.flickrData = Flickolu.getSessionStorage(); 
-
-    //if sessionStorage is empty, get new flickr data
-    if (!$scope.flickrData || $scope.flickrData === null || $scope.flickrData === undefined || $scope.flickrData == '') { 
     
-        console.log('ifStatement - $scope.flickrData =', $scope.flickrData);  
-        
-        FlickrPhotos.query(function(data) {
-          Flickolu.setSessionStorage(data);
-          $scope.flickrData = Flickolu.getSessionStorage();
-        }); 
-        
-    } 
-          
+    //set up dynamic background image and controls
+    $scope.setupBkg = function(){
+    
+      //pick a random image to use as first wallpaper 
+      $scope.idx = Flickolu.randomFromSet(1, $scope.flickrData.photoset.photo.length -1); 
+      
+      //prev/next - http//wwwsitepointcom/creating-slide-show-plugin-angularjs/     
+      $scope.next = function() {
+        $scope.idx < $scope.flickrData.photoset.photo.length - 1 ? $scope.idx++ : $scope.idx = 0;
+        return $scope.idx;
+      };     
+      $scope.prev = function() {
+        $scope.idx > 0 ? $scope.idx-- : $scope.idx = $scope.flickrData.photoset.photo - 1;
+      };    
+      //update bkgImage
+      $scope.$watch('idx', function() {
+        $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
+        console.log('$scope.$watch(idx) ' + $scope.idx,$scope.flickrData.photoset.photo[$scope.idx].title);   
+      });  
+      
+    }
+
     //create image url
     //$scope.dynamicPhoto = $scope.flickrData.photoset.photo[$scope.idx];
     //$scope.changeDynamicBkg = Flickolu.changeDynamicBkg($scope.dynamicPhoto);
@@ -129,26 +139,26 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
       ]).join('');
       $scope.bkgImage = 'url(' + $scope.imageURL + ')'; //create bkg image CSS     
       $scope.photoSet = $scope.flickrData.photoset.photo;     
-    }    
+    }     
     
-    //pick a random image to use as first wallpaper 
-    $scope.idx = Flickolu.randomFromSet(1, $scope.flickrData.photoset.photo.length -1); 
-    $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
-    
-    //prev/next - http//wwwsitepointcom/creating-slide-show-plugin-angularjs/     
-    $scope.next = function() {
-      $scope.idx < $scope.flickrData.photoset.photo.length - 1 ? $scope.idx++ : $scope.idx = 0;
-      return $scope.idx;
-    };     
-    $scope.prev = function() {
-      $scope.idx > 0 ? $scope.idx-- : $scope.idx = $scope.flickrData.photoset.photo - 1;
-    };    
-    //update bkgImage
-    $scope.$watch('idx', function() {
+    //if sessionStorage is empty, get new flickr data
+    if (!$scope.flickrData || $scope.flickrData === null || $scope.flickrData === undefined || $scope.flickrData == '') {
+      
+      FlickrPhotos.query(function(data) {
+        Flickolu.setSessionStorage(data);
+        $scope.flickrData = data;
+        $scope.setupBkg();
+        $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
+      });     
+      
+    } else {
+
+      $scope.flickrData = Flickolu.getSessionStorage(); 
+      $scope.setupBkg();
       $scope.changeDynamicBkg($scope.flickrData.photoset.photo[$scope.idx]);
-      console.log('$scope.$watch(idx) ' + $scope.idx,$scope.flickrData.photoset.photo[$scope.idx].title);   
-    });  
-    
+      
+    }      
+        
   }])
   .controller('dashboardController', ['$scope', '$rootScope', function($scope, $rootScope) {}])
   .controller('twitoluController', ['$scope', '$rootScope', function($scope, $rootScope) {}]);

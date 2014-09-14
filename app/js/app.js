@@ -18,6 +18,8 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/twitolu', {templateUrl: 'partials/twitolu.html', controller: 'twitoluController'});
   $routeProvider.otherwise({redirectTo: '/home'});
 }]).
+//Remove spaces from the title of a project 
+//Convert spaces and special charachters to dashes
 filter('removeSpaces', function(){ 
   return function (textString){
     if(textString){
@@ -33,11 +35,11 @@ var Flickolu = {
   //adding session storage for json object  
   setSessionStorage : function(data){
     sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(data)); 
-    //console.log('setSessionStorage', JSON.stringify(data));
+    console.log('Flickolu.setSessionStorage', data);
   },
   getSessionStorage : function(){
+    console.log('Flickolu.getSessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));
     return JSON.parse(sessionStorage.getItem('flickrPhotoGroup'));
-    console.log('getSessionStorage', JSON.parse(sessionStorage.getItem('flickrPhotoGroup')));
   },
   randomFromSet : function(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
@@ -65,11 +67,11 @@ var Behansolu = {
   //adding session storage for json object  
   setSessionStorage : function(data){
     sessionStorage.setItem('behancePortfolioItems', JSON.stringify(data)); 
-    console.log('Behansolu.setSessionStorage', JSON.stringify(data));
+    console.log('Behansolu.setSessionStorage', data);
   },
   getSessionStorage : function(){
-    return JSON.parse(sessionStorage.getItem('behancePortfolioItems'));
     console.log('Behansolu.getSessionStorage', JSON.parse(sessionStorage.getItem('behancePortfolioItems')));
+    return JSON.parse(sessionStorage.getItem('behancePortfolioItems'));
   },
   randomFromSet : function(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
