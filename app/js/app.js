@@ -66,8 +66,8 @@ var Flickolu = {
 var Behansolu = {
   //adding session storage for json object  
   setSessionStorage : function(data){
-    sessionStorage.setItem('behancePortfolioItems', JSON.stringify(data)); 
-    console.log('Behansolu.setSessionStorage', data);
+    sessionStorage.setItem('behancePortfolioItems', JSON.stringify(data));   
+    console.log('Behansolu.setSessionStorage', JSON.parse(sessionStorage.getItem('behancePortfolioItems')));
   },
   getSessionStorage : function(){
     console.log('Behansolu.getSessionStorage', JSON.parse(sessionStorage.getItem('behancePortfolioItems')));

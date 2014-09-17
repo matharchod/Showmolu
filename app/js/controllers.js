@@ -60,29 +60,30 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     };        
         
   }]) 
-  .controller('pageController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
-  }])     
-  .controller('portfolioController', ['$scope', '$rootScope', 'BehanceItems', function($scope, $rootScope, BehanceItems) {
-  
+  .controller('pageController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {}])     
+  .controller('portfolioController', ['$scope', '$rootScope', 'BehanceItems', '$timeout', function($scope, $rootScope, BehanceItems, $timeout) {
+    
+    //check sessionStorage for Behance portfolio data
     $scope.behanceData = Behansolu.getSessionStorage(); 
-
+    
     //if sessionStorage is empty, get new flickr data
-    if (!$scope.behanceData || $scope.behanceData == null || $scope.behanceData == undefined || $scope.behanceData == '') { 
+    if (!$scope.behanceData || $scope.behanceData === null || $scope.behanceData === undefined || $scope.behanceData == '') { 
+      
+      //Query returns a service with a callback to setSesstionStorage 
+      BehanceItems.query();
+      
+      //HACK - we should to resolve a promise to update
+      $timeout(function(){$scope.behanceData = Behansolu.getSessionStorage()}, 1000);
     
-        console.log('ERROR: $scope.behanceData =', $scope.behanceData);  
-        
-        BehanceItems.query(function(data) {
-          Behansolu.setSessionStorage(data);
-          $scope.behanceData = Behansolu.getSessionStorage(); 
-        }); 
-        
+    } else {
+      
+      $scope.behanceData = Behansolu.getSessionStorage();
+      
     }
-    
-    console.log('$scope.behanceData',$scope.behanceData);   
+       
     
   }])
-  .controller('resumeController', ['$scope', '$rootScope', function($scope, $rootScope) {
-  }])  
+  .controller('resumeController', ['$scope', '$rootScope', function($scope, $rootScope) {}])  
   .controller('dynamicNavController', ['$scope', '$rootScope', function($scope, $rootScope) {
     //nav status 
     //about me link
@@ -98,6 +99,7 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     $scope.flickrData = Flickolu.getSessionStorage(); 
     
     //set up dynamic background image and controls
+    //NOTE: try moving this to Flickolu      
     $scope.setupBkg = function(){
     
       //pick a random image to use as first wallpaper 
@@ -120,9 +122,7 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     }
 
     //create image url
-    //$scope.dynamicPhoto = $scope.flickrData.photoset.photo[$scope.idx];
-    //$scope.changeDynamicBkg = Flickolu.changeDynamicBkg($scope.dynamicPhoto);
-
+    //NOTE: try moving this to Flickolu  
     $scope.changeDynamicBkg = function(flickrPhoto) {
       $scope.flickrPhoto = flickrPhoto;
       $scope.imageTitle = $scope.flickrPhoto.title;
