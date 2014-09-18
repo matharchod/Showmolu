@@ -13,7 +13,7 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'dynamicNavController'});
   $routeProvider.when('/page/:pageID', {templateUrl: 'partials/page.html', controller: 'pageController'});
   $routeProvider.when('/portfolio', {templateUrl: 'partials/portfolio.html', controller: 'portfolioController'});
-  $routeProvider.when('/portfolio/page/:pageID', {templateUrl: 'partials/portfolio-page.html', controller: 'portfolioController'});
+  $routeProvider.when('/portfolio/:pageID', {templateUrl: 'partials/portfolio-page.html', controller: 'portfolioController'});
   $routeProvider.when('/resume', {templateUrl: 'partials/resume.html', controller: 'resumeController'});
   $routeProvider.when('/twitolu', {templateUrl: 'partials/twitolu.html', controller: 'twitoluController'});
   $routeProvider.otherwise({redirectTo: '/home'});
@@ -45,7 +45,7 @@ var Flickolu = {
     return Math.floor(Math.random()*(max-min+1)+min);
   },
   changeDynamicBkg : function(flickrPhoto) {
-    var imageTitle = flickrPhoto.title;
+    var imageTitle = flickrPhoto.title; 
     var imageURL = (['https://farm' + 
       flickrPhoto.farm + '.staticflickr.com/' + 
       flickrPhoto.server + '/' + flickrPhoto.id + '_' + 
@@ -65,14 +65,24 @@ var Flickolu = {
 //Behansolu object
 var Behansolu = {
   //adding session storage for json object  
-  setSessionStorage : function(data){
-    sessionStorage.setItem('behancePortfolioItems', JSON.stringify(data));   
-    console.log('Behansolu.setSessionStorage', JSON.parse(sessionStorage.getItem('behancePortfolioItems')));
+  storePortfolio : function(data){
+    sessionStorage.setItem('Behansolu_Portfolio', JSON.stringify(data));   
+    console.log('Behansolu.storePortfolio', JSON.parse(sessionStorage.getItem('Behansolu_Portfolio')));
   },
-  getSessionStorage : function(){
-    console.log('Behansolu.getSessionStorage', JSON.parse(sessionStorage.getItem('behancePortfolioItems')));
-    return JSON.parse(sessionStorage.getItem('behancePortfolioItems'));
+  getPortfolio : function(){
+    console.log('Behansolu.getPortfolio', JSON.parse(sessionStorage.getItem('Behansolu_Portfolio')));
+    return JSON.parse(sessionStorage.getItem('Behansolu_Portfolio'));
   },
+  storePortfolioItem : function(data){
+    var storeageName = 'Behansolu_prj_' + data.project.id.toString();
+    sessionStorage.setItem(storeageName, JSON.stringify(data));   
+    console.log('Behansolu.storePortfolioItems', JSON.parse(sessionStorage.getItem(storeageName)));
+    //return sessionStorage;
+  },
+  getStoredPortfolioItem : function(projectId){
+    console.log('Behansolu.getPortfolioItems', JSON.parse(sessionStorage.getItem('Behansolu_PortfolioItems')));
+    return JSON.parse(sessionStorage.getItem('Behansolu_PortfolioItems'));
+  },  
   randomFromSet : function(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
   }

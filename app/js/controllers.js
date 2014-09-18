@@ -61,26 +61,34 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
         
   }]) 
   .controller('pageController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {}])     
-  .controller('portfolioController', ['$scope', '$rootScope', 'BehanceItems', '$timeout', function($scope, $rootScope, BehanceItems, $timeout) {
+  .controller('portfolioController', ['$scope', '$rootScope', '$timeout', 'BehancePortfolio', 'BehanceItem', function($scope, $rootScope, $timeout, BehancePortfolio, BehanceItem) {
     
+    $scope.getBehanceItem = function(projectId){
+    
+      BehanceItem.query({ method: "GET", isArray: false, projectId: projectId });
+      	
+      
+      console.log('projectId:',projectId);
+      
+    };
+
     //check sessionStorage for Behance portfolio data
-    $scope.behanceData = Behansolu.getSessionStorage(); 
+    $scope.behanceData = Behansolu.getPortfolio(); 
     
     //if sessionStorage is empty, get new flickr data
     if (!$scope.behanceData || $scope.behanceData === null || $scope.behanceData === undefined || $scope.behanceData == '') { 
       
       //Query returns a service with a callback to setSesstionStorage 
-      BehanceItems.query();
+      BehancePortfolio.query();
       
       //HACK - we should to resolve a promise to update
-      $timeout(function(){$scope.behanceData = Behansolu.getSessionStorage()}, 1000);
+      $timeout(function(){$scope.behanceData = Behansolu.getPortfolio()}, 1000);
     
     } else {
       
-      $scope.behanceData = Behansolu.getSessionStorage();
+      $scope.behanceData = Behansolu.getPortfolio();
       
-    }
-       
+    }       
     
   }])
   .controller('resumeController', ['$scope', '$rootScope', function($scope, $rootScope) {}])  
