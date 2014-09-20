@@ -74,14 +74,15 @@ var Behansolu = {
     return JSON.parse(sessionStorage.getItem('Behansolu_Portfolio'));
   },
   storePortfolioItem : function(data){
-    var storeageName = 'Behansolu_prj_' + data.project.id.toString();
-    sessionStorage.setItem(storeageName, JSON.stringify(data));   
-    console.log('Behansolu.storePortfolioItems', JSON.parse(sessionStorage.getItem(storeageName)));
+    var projectId = 'Behansolu_prj_' + data.project.id.toString();
+    sessionStorage.setItem(projectId, JSON.stringify(data));   
+    console.log('Behansolu.storePortfolioItem ' + projectId, JSON.parse(sessionStorage.getItem(projectId)));
     //return sessionStorage;
   },
   getStoredPortfolioItem : function(projectId){
-    console.log('Behansolu.getPortfolioItems', JSON.parse(sessionStorage.getItem('Behansolu_PortfolioItems')));
-    return JSON.parse(sessionStorage.getItem('Behansolu_PortfolioItems'));
+    var projectId = 'Behansolu_prj_' + projectId;
+    console.log('Behansolu.getStoredPortfolioItem ' + projectId, JSON.parse(sessionStorage.getItem(projectId)));
+    return JSON.parse(sessionStorage.getItem(projectId));
   },  
   randomFromSet : function(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);

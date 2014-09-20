@@ -62,14 +62,22 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
   }]) 
   .controller('pageController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {}])     
   .controller('portfolioController', ['$scope', '$rootScope', '$timeout', 'BehancePortfolio', 'BehanceItem', function($scope, $rootScope, $timeout, BehancePortfolio, BehanceItem) {
-    
+  
+    $scope.project;
+          
     $scope.getBehanceItem = function(projectId){
     
       BehanceItem.query({ method: "GET", isArray: false, projectId: projectId });
-      	
       
-      console.log('projectId:',projectId);
+      //HACK - we should to resolve a promise to update
+      $timeout(function(){
       
+        $scope.project = Behansolu.getStoredPortfolioItem(projectId);
+                
+          //console.log('projectId:',projectId);
+          console.log('$scope.project',$scope.project);
+          
+        }, 5000);      
     };
 
     //check sessionStorage for Behance portfolio data
