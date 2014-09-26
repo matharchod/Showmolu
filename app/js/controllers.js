@@ -3,13 +3,28 @@
 /* Controllers */
 
 angular.module('myApp.controllers', ['ngRoute','ngResource'])
-  .controller('appController', ['$scope','$rootScope', '$location', function($scope, $rootScope, $location) {
+  .controller('appController', ['$scope','$rootScope', '$location', '$timeout', 'BehanceItem', function($scope, $rootScope, $location, $timeout, BehanceItem) {
   
     $rootScope.page = 'home';
     $rootScope.pageStatus = 'default'; 
     $rootScope.dynamicNavStatus = 'closed';    
     $rootScope.imageNavStatus = 'hidden';
     $rootScope.behance_prj = '';
+    $rootScope.getBehanceItem = function(projectId){
+    
+      BehanceItem.query({ method: "GET", isArray: false, projectId: projectId });
+            
+      $timeout(function(){
+
+        $rootScope.behance_prj = Behansolu.getStoredPortfolioItem(projectId);
+                          
+          //console.log('projectId:',projectId);
+          console.log('$rootScope.behance_prj',$rootScope.behance_prj);
+        
+        }, 1000);
+          
+    };
+    
     
     
     $rootScope.dynamicNavStatusToggle = function(newStatus) {
@@ -44,7 +59,11 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
         $rootScope.pageStatus = 'contentpage'; 
         //change navStatus
         $rootScope.dynamicNavStatus = 'open'; 
-        console.log('$location.path()',$location.path());
+        var behancePrjID = $location.path().split('/')[2]; 
+        //$rootScope.getBehanceItem(behancePrjID.toString());
+        $rootScope.getBehanceItem(behancePrjID);
+        console.log('Behance item: ', behancePrjID);
+        //console.log('$location.path()',$location.path());
       } else {
         $rootScope.pageStatus = 'default';
       }
@@ -64,22 +83,7 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
   }]) 
   .controller('pageController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {}])     
   .controller('portfolioController', ['$scope', '$rootScope', '$timeout', '$interval', '$location', 'BehancePortfolio', 'BehanceItem', function($scope, $rootScope, $timeout, $interval, $location, BehancePortfolio, BehanceItem) {
-              
-    $scope.getBehanceItem = function(projectId){
-    
-      BehanceItem.query({ method: "GET", isArray: false, projectId: projectId });
-            
-      $timeout(function(){
-
-        $rootScope.behance_prj = Behansolu.getStoredPortfolioItem(projectId);
-                          
-          //console.log('projectId:',projectId);
-          console.log('$rootScope.behance_prj',$rootScope.behance_prj);
-        
-        }, 1000);
-          
-    };
-        
+                      
 
     //check sessionStorage for Behance portfolio data
     $scope.behanceData = Behansolu.getPortfolio(); 
@@ -99,14 +103,16 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
       
     }
     
+/*
     $rootScope.$on('$locationChangeSuccess', function(event){
       if ($location.path().indexOf('portfolio')) {
         //get project ID from URL
         var behancePrjID = $location.path().split('/')[2]; 
-        //$scope.getBehanceItem(behancePrjID.toString());
+        //$rootScope.getBehanceItem(behancePrjID.toString());
         console.log('Behance item: ', behancePrjID);
       }
     });
+*/
        
     
   }])

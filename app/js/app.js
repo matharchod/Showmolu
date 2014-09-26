@@ -79,15 +79,25 @@ var Behansolu = {
     return JSON.parse(sessionStorage.getItem('Behansolu_Portfolio'));
   },
   storePortfolioItem : function(data){
-    var projectId = 'Behansolu_prj_' + data.project.id.toString();
-    sessionStorage.setItem(projectId, JSON.stringify(data));   
-    console.log('Behansolu.storePortfolioItem ' + projectId, JSON.parse(sessionStorage.getItem(projectId)));
-    //return sessionStorage;
+    if (!data.project){
+      console.log('Behansolu.storePortfolioItem: This project has no ID');
+      return false;
+    } else {
+      var projectId = 'Behansolu_prj_' + data.project.id.toString();
+      sessionStorage.setItem(projectId, JSON.stringify(data));   
+      console.log('Behansolu.storePortfolioItem ' + projectId, JSON.parse(sessionStorage.getItem(projectId)));
+      //return sessionStorage;
+    }
   },
   getStoredPortfolioItem : function(projectId){
-    var projectId = 'Behansolu_prj_' + projectId;
-    console.log('Behansolu.getStoredPortfolioItem ' + projectId, JSON.parse(sessionStorage.getItem(projectId)));
-    return JSON.parse(sessionStorage.getItem(projectId));
+    if (!projectId) {
+      console.log('Behansolu.getStoredPortfolioItem: This project has no ID');
+      return false;
+    } else {
+      var projectId = 'Behansolu_prj_' + projectId;
+      console.log('Behansolu.getStoredPortfolioItem ' + projectId, JSON.parse(sessionStorage.getItem(projectId)));
+      return JSON.parse(sessionStorage.getItem(projectId));      
+    }
   },  
   randomFromSet : function(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min);
