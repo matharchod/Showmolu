@@ -84,7 +84,6 @@ body.contentpage {
 .contentpage .view {
   top: 175px;
   background: transparent;
-  position: fixed;
   height: 100%;
   width: 100%;
 }
@@ -228,11 +227,10 @@ body.contentpage {
 }
 #portfolio {
   background: #fff;
-  position: absolute;
-  height: 99%;
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  width: 100%;
 }
 #portfolio > ul,
 #portfolio > li {
@@ -246,6 +244,14 @@ body.contentpage {
   display: inline-block;
   margin: 2.5%;
   border: 1px solid #ddd;  
+}
+#portfolioPage {
+  background: #fff;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  color: #000;
 }
 .your-name {font-size: 24px;}
 .your-title {margin-bottom: -25px;}

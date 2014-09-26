@@ -13,7 +13,7 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'dynamicNavController'});
   $routeProvider.when('/page/:pageID', {templateUrl: 'partials/page.html', controller: 'pageController'});
   $routeProvider.when('/portfolio', {templateUrl: 'partials/portfolio.html', controller: 'portfolioController'});
-  $routeProvider.when('/portfolio/:pageID', {templateUrl: 'partials/portfolio-page.html', controller: 'portfolioController'});
+  $routeProvider.when('/portfolio/:pageID/:pageFriendlyURL', {templateUrl: 'partials/portfolio-page.html', controller: 'portfolioController'});
   $routeProvider.when('/resume', {templateUrl: 'partials/resume.html', controller: 'resumeController'});
   $routeProvider.when('/twitolu', {templateUrl: 'partials/twitolu.html', controller: 'twitoluController'});
   $routeProvider.otherwise({redirectTo: '/home'});
@@ -27,6 +27,11 @@ filter('removeSpaces', function(){
       .replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,'-')
       .replace(/[^a-z0-9-]/ig,'-');
     }
+  }
+}).
+filter('htmlToPlaintext', function() {
+  return function(text) {
+    return String(text).replace(/<[^>]+>/gm, '');
   }
 });
 

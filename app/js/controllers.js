@@ -9,6 +9,8 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     $rootScope.pageStatus = 'default'; 
     $rootScope.dynamicNavStatus = 'closed';    
     $rootScope.imageNavStatus = 'hidden';
+    $rootScope.behance_prj = '';
+    
     
     $rootScope.dynamicNavStatusToggle = function(newStatus) {
       if (!newStatus) {
@@ -61,24 +63,23 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
         
   }]) 
   .controller('pageController', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {}])     
-  .controller('portfolioController', ['$scope', '$rootScope', '$timeout', 'BehancePortfolio', 'BehanceItem', function($scope, $rootScope, $timeout, BehancePortfolio, BehanceItem) {
-  
-    $scope.project;
-          
+  .controller('portfolioController', ['$scope', '$rootScope', '$timeout', '$interval', '$location', 'BehancePortfolio', 'BehanceItem', function($scope, $rootScope, $timeout, $interval, $location, BehancePortfolio, BehanceItem) {
+              
     $scope.getBehanceItem = function(projectId){
     
       BehanceItem.query({ method: "GET", isArray: false, projectId: projectId });
-      
-      //HACK - we should to resolve a promise to update
+            
       $timeout(function(){
-      
-        $scope.project = Behansolu.getStoredPortfolioItem(projectId);
-                
+
+        $rootScope.behance_prj = Behansolu.getStoredPortfolioItem(projectId);
+                          
           //console.log('projectId:',projectId);
-          console.log('$scope.project',$scope.project);
+          console.log('$rootScope.behance_prj',$rootScope.behance_prj);
+        
+        }, 1000);
           
-        }, 5000);      
     };
+        
 
     //check sessionStorage for Behance portfolio data
     $scope.behanceData = Behansolu.getPortfolio(); 
@@ -96,7 +97,17 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
       
       $scope.behanceData = Behansolu.getPortfolio();
       
-    }       
+    }
+    
+    $rootScope.$on('$locationChangeSuccess', function(event){
+      if ($location.path().indexOf('portfolio')) {
+        //get project ID from URL
+        var behancePrjID = $location.path().split('/')[2]; 
+        //$scope.getBehanceItem(behancePrjID.toString());
+        console.log('Behance item: ', behancePrjID);
+      }
+    });
+       
     
   }])
   .controller('resumeController', ['$scope', '$rootScope', function($scope, $rootScope) {}])  

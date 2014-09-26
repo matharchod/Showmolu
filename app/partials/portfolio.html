@@ -2,7 +2,7 @@
   <h1>Portfolio</h1>
   <ul class="portfolio-items">
     <li ng-repeat="item in behanceData.projects" class="item">
-      <a href="#/portfolio/{{item.name|removeSpaces}}" ng-click="getBehanceItem(item.id)">
+      <a href="#/portfolio/{{item.id}}/{{item.name|removeSpaces}}" ng-click="getBehanceItem(item.id)">
         <img ng-src="{{item.covers.202}}" />
       </a>
       <div ng-show="">

@@ -1,6 +1,4 @@
-<div ng-controller="portfolioController">
-  <h1>{{name}}</h1>
-  <h3>PageTitle</h3>
+<div id="portfolioPage" ng-controller="portfolioController">
   <div class="portfolio-page">
     <ul class="page-nav">
       <li><a>prev</a></li>
@@ -9,14 +7,13 @@
     </ul>
     <div class="content">
       <div class="header">
-        <div class="title">Let There Be Light</div>
-        <div class="subtitle">Event Flyers. Photography by David Anthony.</div>
-        <div class="date">January 09, 2011</div>    
-        <div class="description">I worked closely with Lumen and Effen Vodka to develop promotional graphics for a fashion event entitled Let There Be Light. Playing off of the elemental themes of the promo copy, we developed a series of four graphics for the event, each element represented by a different photograph. We were fortunate enough to work with David Anthony, one of Chicago's finest art and fashion photographers, to design graphics that were simple, eye-catching and clever. For the print promotions, we coupled the "element" on the front with a detail shot of the venue on the back that reflected that particular element. Can you tell?</div>      
+        <h3 class="title">{{behance_prj.project.name}}</h3>
+        <h3 class="subtitle">{{behance_prj.project.description}}</h4>
+        <div class="date">{{behance_prj.project.published_on * 1000|date:'medium'}}</div>    
+        <p class="description">{{behance_prj.project.modules[1].text|htmlToPlaintext}}</p>      
       </div>
       <div class="images">
-        <img src="https://m1.behance.net/rendition/modules/5653836/disp/a10a9edc99e4450457fcabc6e1b6eaa0.jpeg" />
-        <img src="https://m1.behance.net/rendition/modules/5653836/disp/a10a9edc99e4450457fcabc6e1b6eaa0.jpeg" />
+        <img ng-repeat="image in behance_prj.project.modules" ng-src="{{image.src}}" />
       </div>
     </div>
   </div>
