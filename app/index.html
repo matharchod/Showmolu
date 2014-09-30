@@ -49,8 +49,8 @@
         <!-- <li><a href="">Blog</a></li> -->
       </ul> 
       <!-- #subNav - container for secondary nav -->
-      <ul id="subNav" class="hidden">
-        <li ng-repeat="item in subNavItem"><a href="{{item.link}}">{{item.name}}</a></li>
+      <ul id="subNav" ng-model="subNavItems" class="">
+        <li ng-repeat="navItem in subNavItems"><a href="">{{navItem}}</a></li>
         <li><a class="more-btn">...</a></li>
       </ul> 
     </div>      

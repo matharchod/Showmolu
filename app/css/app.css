@@ -3,7 +3,8 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: normal;
-	line-height: 100%;
+	font-size: 14px;
+	line-height: 175%;
 	overflow: hidden;
 	background-color: #ccc;
 	position: absolute;
@@ -67,7 +68,7 @@ body.contentpage {
   margin: 0 25%;
 }
 .contentpage #dynamicNav li {
-  padding: 30px 0;
+  padding: 25px 0;
 }
 .contentpage #dynamicNav .your-name {
   bottom: auto;
@@ -110,6 +111,9 @@ body.contentpage {
 	bottom: 1px;
 	left: 0;
 	width: 100%;
+}
+#dynamicNav.closed li {
+  width: 50%;
 }
 #dynamicNav h1, 
 #dynamicNav h2 {
@@ -252,7 +256,52 @@ body.contentpage {
   overflow-y: scroll;
   width: 100%;
   color: #000;
+  padding: 5% 10%;
+  box-sizing: border-box;
 }
+#portfolioPage ul.page-nav {
+  text-align: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 5% 0;
+}
+#portfolioPage ul.page-nav span {
+  font-size: 48px;
+  color: #ccc;
+  display: inline-table;
+  vertical-align: middle;
+  line-height: 14px;
+  padding-right: 20px;
+}
+#portfolioPage .subtitle {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+}
+#portfolioPage .title {
+  font-size: 24px;
+  font-family: 'Ubuntu', sans-serif;
+  color: #000;
+  margin-top: 0;
+}
+#portfolioPage .images {
+  float: left;
+  text-align: center;
+}
+#portfolioPage .images img {
+  margin: 5%;
+}
+#portfolioPage .metadata,
+#portfolioPage .description {
+  width: 50%;
+  display: inline-block;
+  float: left;
+  padding: 0 5%;
+  box-sizing: border-box;
+  color: #888;
+  margin-top: 0;
+}
+#portfolioPage .description {letter-spacing: 0.5px;}
 .your-name {font-size: 24px;}
 .your-title {margin-bottom: -25px;}
 .your-logo {

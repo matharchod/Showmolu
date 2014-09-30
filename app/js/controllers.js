@@ -10,6 +10,7 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
     $rootScope.dynamicNavStatus = 'closed';    
     $rootScope.imageNavStatus = 'hidden';
     $rootScope.behance_prj = '';
+    $rootScope.subNavItems = '';    
     $rootScope.getBehanceItem = function(projectId){
     
       BehanceItem.query({ method: "GET", isArray: false, projectId: projectId });
@@ -17,9 +18,11 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
       $timeout(function(){
 
         $rootScope.behance_prj = Behansolu.getStoredPortfolioItem(projectId);
-                          
-          //console.log('projectId:',projectId);
-          console.log('$rootScope.behance_prj',$rootScope.behance_prj);
+        $rootScope.subNavItems = $rootScope.behance_prj.project.fields;
+        
+        
+        console.log('Behance fields: ', $rootScope.subNavItems);
+        console.log('$rootScope.behance_prj',$rootScope.behance_prj);
         
         }, 1000);
           
@@ -60,10 +63,10 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
         //change navStatus
         $rootScope.dynamicNavStatus = 'open'; 
         var behancePrjID = $location.path().split('/')[2]; 
-        //$rootScope.getBehanceItem(behancePrjID.toString());
+        //add Behance project data
         $rootScope.getBehanceItem(behancePrjID);
+        //add subNav data
         console.log('Behance item: ', behancePrjID);
-        //console.log('$location.path()',$location.path());
       } else {
         $rootScope.pageStatus = 'default';
       }
@@ -95,12 +98,16 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
       BehancePortfolio.query();
       
       //HACK - we should to resolve a promise to update
-      $timeout(function(){$scope.behanceData = Behansolu.getPortfolio()}, 1000);
+      $timeout(function(){
+      
+        $scope.behanceData = Behansolu.getPortfolio();
+
+        }, 1000);
     
     } else {
       
       $scope.behanceData = Behansolu.getPortfolio();
-      
+
     }
     
 /*
