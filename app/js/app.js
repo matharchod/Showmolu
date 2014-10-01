@@ -36,7 +36,7 @@ filter('htmlToPlaintext', function() {
 });
 
 //Flickolu object
-var Flickolu = {
+var Flickolu = {         
   //adding session storage for json object  
   setSessionStorage : function(data){
     sessionStorage.setItem('flickrPhotoGroup', JSON.stringify(data)); 
@@ -69,6 +69,22 @@ var Flickolu = {
 
 //Behansolu object
 var Behansolu = {
+  getAllTags : function(behancePortfolio){
+    var tags = [];
+    //get all the tags from all the Behance projects
+    for (var i in behancePortfolio.projects) {
+      //add tags to array
+      for (var x in behancePortfolio.projects[i].fields) {
+        tags.push(behancePortfolio.projects[i].fields[x]);
+      }
+    }
+    //remove duplicates    
+    tags = tags.filter(function(item, pos, self) {
+      return self.indexOf(item) == pos;
+    })
+    console.log('Tags',tags);
+    return tags;  
+  },  
   //adding session storage for json object  
   storePortfolio : function(data){
     sessionStorage.setItem('Behansolu_Portfolio', JSON.stringify(data));   

@@ -6,10 +6,10 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
   .controller('appController', ['$scope','$rootScope', '$location', '$timeout', 'BehanceItem', function($scope, $rootScope, $location, $timeout, BehanceItem) {
   
     $rootScope.page = 'home';
-    $rootScope.pageStatus = 'default'; 
-    $rootScope.dynamicNavStatus = 'closed';    
-    $rootScope.imageNavStatus = 'hidden';
-    $rootScope.behance_prj = '';
+    $rootScope.pageStatus = 'default'; //describes the type of page
+    $rootScope.dynamicNavStatus = 'closed';// main nav panel status    
+    $rootScope.imageNavStatus = 'hidden';//Flickr image nav status
+    $rootScope.behance_prj = ''; //single Behance project
     $rootScope.subNavItems = '';    
     $rootScope.getBehanceItem = function(projectId){
     
@@ -18,9 +18,17 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
       $timeout(function(){
 
         $rootScope.behance_prj = Behansolu.getStoredPortfolioItem(projectId);
-        $rootScope.subNavItems = $rootScope.behance_prj.project.fields;
         
+        try {
         
+          $rootScope.subNavItems = $rootScope.behance_prj.project.fields;
+          
+        } catch(err) {
+          
+          console.log('There are no subnav items', err);
+            
+        } 
+                  
         console.log('Behance fields: ', $rootScope.subNavItems);
         console.log('$rootScope.behance_prj',$rootScope.behance_prj);
         
@@ -90,7 +98,7 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
 
     //check sessionStorage for Behance portfolio data
     $scope.behanceData = Behansolu.getPortfolio(); 
-    
+        
     //if sessionStorage is empty, get new flickr data
     if (!$scope.behanceData || $scope.behanceData === null || $scope.behanceData === undefined || $scope.behanceData == '') { 
       
@@ -101,25 +109,16 @@ angular.module('myApp.controllers', ['ngRoute','ngResource'])
       $timeout(function(){
       
         $scope.behanceData = Behansolu.getPortfolio();
+        $rootScope.subNavItems = Behansolu.getAllTags($scope.behanceData);   
 
         }, 1000);
     
     } else {
       
       $scope.behanceData = Behansolu.getPortfolio();
+      $rootScope.subNavItems = Behansolu.getAllTags($scope.behanceData);   
 
     }
-    
-/*
-    $rootScope.$on('$locationChangeSuccess', function(event){
-      if ($location.path().indexOf('portfolio')) {
-        //get project ID from URL
-        var behancePrjID = $location.path().split('/')[2]; 
-        //$rootScope.getBehanceItem(behancePrjID.toString());
-        console.log('Behance item: ', behancePrjID);
-      }
-    });
-*/
        
     
   }])

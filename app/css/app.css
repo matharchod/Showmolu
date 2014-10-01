@@ -3,7 +3,7 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 175%;
 	overflow: hidden;
 	background-color: #ccc;
@@ -13,6 +13,12 @@ body {
 }
 body.open {
 	overflow-y: auto;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: #ccc !important;
 }
 .button {
 	width: 45%;
@@ -69,7 +75,7 @@ body.contentpage {
   position: relative;
 }
 .contentpage #dynamicNav li {
-  padding: 15px 0;
+  padding: 10px 0;
 }
 .contentpage #dynamicNav ul#subNav {
   background: #fff;
@@ -103,6 +109,9 @@ body.contentpage {
   background: transparent;
   height: 100%;
   width: 100%;
+}
+.default #subNav {
+  display: none;
 }
 #dynamicNav li {
 	list-style-type: none;
