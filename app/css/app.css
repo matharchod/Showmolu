@@ -49,13 +49,13 @@ body.contentpage {
   overflow: auto;
 }
 .contentpage #dashboardNav {
-  height: 75px;
+  height: auto;
 }
 .contentpage #dynamicNav {
   top: 0;
   left: 0;
   width: 100%;
-  height: 175px;
+  height: auto;
   position: fixed;
   z-index: 2;
   box-shadow: 0 -20px 40px #000;
@@ -66,9 +66,25 @@ body.contentpage {
   width: 50%;
   bottom: 0;
   margin: 0 25%;
+  position: relative;
 }
 .contentpage #dynamicNav li {
-  padding: 25px 0;
+  padding: 15px 0;
+}
+.contentpage #dynamicNav ul#subNav {
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  float: left;
+}
+.contentpage #dynamicNav ul#subNav li {
+  width: auto;
+  padding: 10px;
+  margin: 0 2%;
+}
+.contentpage #dynamicNav ul#subNav li:last-child {
+  float: right;
 }
 .contentpage #dynamicNav .your-name {
   bottom: auto;
@@ -144,6 +160,7 @@ body.contentpage {
   background-color: transparent;
   width: 75px;
   height: 75px;
+  padding: 0;
 }
 #dynamicBkg {
   background-size: cover;
