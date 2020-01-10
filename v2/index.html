@@ -33,7 +33,7 @@
 	#bottomLeft {bottom: 0; left: 0; text-align: left;}
 	#bottomRight {bottom: 0; right: 0; text-align: right;}
 	.row.showmonav {position: absolute; width: 100%; height: 100%; top: 0; left: 0; right: 0; margin: 0;}
-	#showmoNav {position: absolute; width: 100%; height: 100%; right: 0; left: auto;}
+	#showmoNav {position: absolute; width: 100%; height: 100%; right: 0; left: auto; overflow: hidden;}
 	#mainNav {z-index: 2;}
 	#secondNav {z-index: 1; bottom: 0; top: auto; height: 0; background: #ccc;}
 	#secondNav ul li {font-size: 300%; opacity: 1; position: relative;}
@@ -111,6 +111,7 @@
 	function closeMenu() {
 		var tl = gsap.timeline();
 		tl.to("#secondNav", {height: "0", ease: "bounce"});
+		tl.to("#secondNav li", {opacity: 0});
 	}	
 
 
