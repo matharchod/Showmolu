@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>portfolio / jani momolu anderson / user experience designer</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="http://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,700" rel="stylesheet" type="text/css">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Import Animate.CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="sass/materialize.css" media="screen,projection" />
+	<link rel="stylesheet" type="text/css" href="sass/showmoluStyles/base.css" />
+
+</head>
+
+<style>
+	.col {
+		border: 1px solid #ccc;
+	}
+	#topLeft,
+	#topRight,
+	#bottomLeft,
+	#bottomRight {position: absolute;}
+	#topLeft {top: 0; left: 0; text-align: left;}
+	#topRight {top: 0; right: 0; text-align: right;}
+	#bottomLeft {bottom: 0; left: 0; text-align: left;}
+	#bottomRight {bottom: 0; right: 0; text-align: right;}
+	.row.showmonav {position: absolute; width: 100%; height: 100%; top: 0; left: 0; right: 0; margin: 0;}
+	#showmoNav {position: absolute; width: 100%; height: 100%; right: 0; left: auto;}
+	#mainNav {z-index: 2;}
+	#secondNav {z-index: 1; bottom: 0; top: auto; height: 0; background: #ccc;}
+	#secondNav ul li {font-size: 300%; opacity: 1; position: relative;}
+	#secondNav :last-child {margin-bottom: 10%;}
+</style>
+
+<body>
+
+	<!-- PAGE LAYOUT -->
+	<div id="showmoluMainStage">
+
+		<div id="showmoNav">
+			<div class="container">
+				<div id="mainNav" class="showmonav row">
+					<div id="topLeft" class="col s3">
+						<i id="showmoOpen" class="material-icons">menu</i>
+						<i id="showmoClose" class="material-icons">menu</i>
+					</div>
+					<div id="topRight" class="col s3">
+						<i class="material-icons">share</i>
+					</div>
+					<div id="bottomLeft" class="col s3">
+						<p>This is footer text. &copy; 2020</p>
+					</div>
+					<div id="bottomRight" class="">
+						<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Contact</a>
+					</div>				
+				</div><!-- /row -->
+				<div id="secondNav" class="showmonav row">
+					<div class="col s6">					
+						<ul>
+							<li>One</li>
+							<li>Two</li>
+							<li>Three</li>
+							<li>Four</li>	
+						</ul>
+					</div>
+				</div><!-- /row -->			
+			</div><!-- /container -->	
+		</div>
+
+	</div>
+
+
+
+</body>
+<!-- The SCRIPTS -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/gsap/gsap.min.js"></script>
+<script type="text/javascript" src="js/showmolu.js"></script>
+
+<script>
+
+	$(function() {
+		//gsap.registerPlugin(Physics2DPlugin);
+	});
+	
+
+	$('#showmoOpen').click(function(){
+		openMenu();
+	})
+
+	$('#showmoClose').click(function(){
+		closeMenu();
+	})	
+
+	function openMenu() {
+		var tl = gsap.timeline();
+		tl.to("#secondNav", {height: "auto"});
+		tl.from("#secondNav li", {opacity: 0, right: "-500px", stagger: 0.25, duration: 1, ease: "power4"});		
+	}
+
+	function closeMenu() {
+		var tl = gsap.timeline();
+		tl.to("#secondNav li", {opacity: 0, right: "-500px", stagger: 0.05, duration: 0.25, ease: "power4"});		
+		tl.to("#secondNav", {height: "0"});
+	}	
+
+
+</script>
+
+</html>
