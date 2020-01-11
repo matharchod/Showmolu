@@ -16,7 +16,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="sass/materialize.css" media="screen,projection" />
-	<link rel="stylesheet" type="text/css" href="sass/showmoluStyles/base.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="sass/showmoluStyles/base.css" /> -->
 
 </head>
 
@@ -43,7 +43,7 @@
 <body>
 
 	<!-- PAGE LAYOUT -->
-	<div id="showmoluMainStage">
+	<div id="ShowmoluApp">
 
 		<div id="showmoNav">
 			<div class="container">
@@ -90,7 +90,30 @@
 <script>
 
 	$(function() {
-		//gsap.registerPlugin(Physics2DPlugin);
+
+		var TileMethods;
+
+		var TileBoard = new Vue({
+			el: '#ShowmoluApp',
+			data: function () {
+				return {
+					loading: true,
+					searching: false,
+					searchterm: '',
+					Projects: ''
+				}
+			},
+			computed: {
+				filteredTiles: function () {
+					var self = this;
+					return this.Tiles.filter(function (tile) {
+						return tile.fullText.toLowerCase().indexOf(self.searchterm
+							.toLowerCase()) >= 0;
+					});
+				}
+			},
+			methods: TileMethods
+		});
 	});
 	
 

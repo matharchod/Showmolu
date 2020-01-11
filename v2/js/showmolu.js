@@ -3,7 +3,7 @@
 //Use the URL from the tweet as the link for its tile 
 var Showmolu = (function () {
 
-	//Create persistent storage for Tweets in a closure
+	//Create persistent storage for Projects in a closure
 	var Projects = (function (input) {
 		var x;
 		return function (input) {
@@ -30,15 +30,15 @@ var Showmolu = (function () {
 
 	})();
 
-	//Make a synchronous call to get Tweets
-	var getTweets = (function () {
+	//Make a synchronous call to get Projects
+	var getProjects = (function () {
 
 		//Use AJAX to get the latest tweets
 		$.ajax({
 			//REAL DATA
 			//url: "/_projects/Showmolu/tmhOAuth-master/tweets_json.php?count=200",
 			//TEST DATA
-			url: "/_projects/Showmolu/v2/test-data.json",
+			url: "/v2/test-data.json",
 			type: "GET",
 			dataType: "json",
 			async: false,
@@ -95,15 +95,15 @@ var Showmolu = (function () {
 	})();
 
 	//Create a word cloud from the tags extracted from the Tweet text						
-	var CloudFactory = function (Tweets) {
+	var CloudFactory = function (Projects) {
 
 		var wordCloud = [],
 			cloud = [],
 			duplicate = cloud[0];
 
-		for (var i in Tweets) {
+		for (var i in Projects) {
 
-			var x = Tweets[i].tag;
+			var x = Projects[i].tag;
 			//console.log(x);	
 
 			if (x === undefined || x.length >= 24) {
@@ -161,12 +161,12 @@ var Showmolu = (function () {
 	};
 
 
-	//Use the Tweets to create tiles	
+	//Use the Projects to create tiles	
 	var TileFactory = function (colors) {
 
 		//Create place to collect tiles for future reference
 		var TilesCollection = [],
-			result = Tweets();
+			result = Projects();
 
 		for (var i in result) {
 
@@ -264,12 +264,12 @@ var Showmolu = (function () {
 
 		};
 
-		Tweets(TilesCollection);
+		Projects(TilesCollection);
 		// 		CloudFactory(TilesCollection);
 
 		// console.log( "TilesCollection: ", TilesCollection ); 
 
-		return Tweets();
+		return Projects();
 
 
 	};
