@@ -49,8 +49,8 @@
 			<div class="container">
 				<div id="mainNav" class="showmonav row">
 					<div id="topLeft" class="col s3">
-						<i id="showmoOpen" class="material-icons">menu</i>
-						<i id="showmoClose" class="material-icons">menu</i>
+						<i v-on:click="openMenu()" class="material-icons">menu</i>
+						<i v-on:click="closeMenu()" class="material-icons">menu</i>
 					</div>
 					<div id="topRight" class="col s3">
 						<i class="material-icons">share</i>
@@ -91,16 +91,31 @@
 
 	$(function() {
 
-		var TileMethods;
+		var Projects = Showmolu.Projects();
+
+		var ShowmoluMethods = {
+			openMenu: function () {
+				var tl = gsap.timeline();
+				tl.to("#secondNav", {height: "auto", ease: "circ"});
+				tl.from("#secondNav li", {opacity: 0, right: "-500px", stagger: 0.25, duration: 1, ease: "power4"});
+				this.menuopen = true;
+			},
+			closeMenu: function () {
+				var tl = gsap.timeline();
+				tl.to("#secondNav", {height: "0", ease: "bounce"});
+				this.menuopen = false;
+			}			
+		};
 
 		var TileBoard = new Vue({
 			el: '#ShowmoluApp',
 			data: function () {
 				return {
+					menuopen: false,
 					loading: true,
 					searching: false,
 					searchterm: '',
-					Projects: ''
+					Projects: Projects
 				}
 			},
 			computed: {
@@ -112,30 +127,9 @@
 					});
 				}
 			},
-			methods: TileMethods
+			methods: ShowmoluMethods
 		});
 	});
-	
-
-	$('#showmoOpen').click(function(){
-		openMenu();
-	})
-
-	$('#showmoClose').click(function(){
-		closeMenu();
-	})	
-
-	function openMenu() {
-		var tl = gsap.timeline();
-		tl.to("#secondNav", {height: "auto", ease: "bounce"});
-		tl.from("#secondNav li", {opacity: 0, right: "-500px", stagger: 0.25, duration: 1, ease: "power4"});		
-	}
-
-	function closeMenu() {
-		var tl = gsap.timeline();
-		tl.to("#secondNav", {height: "0", ease: "bounce"});
-		tl.to("#secondNav li", {opacity: 0});
-	}	
 
 
 </script>
