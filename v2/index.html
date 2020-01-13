@@ -17,7 +17,7 @@
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="sass/materialize.css" media="screen,projection" />
 	<!-- <link rel="stylesheet" type="text/css" href="sass/showmoluStyles/base.css" /> -->
-	<script src="https://sdk.scdn.co/spotify-player.js"></script>
+
 </head>
 
 <style>
@@ -49,8 +49,8 @@
 			<div class="container">
 				<div id="mainNav" class="showmonav row">
 					<div id="topLeft" class="col s3">
-						<i v-if="!menuopen" v-on:click="openMenu()" class="material-icons">menu</i>
-						<i v-if="menuopen" v-on:click="closeMenu()" class="material-icons">menu</i>
+						<i v-on:click="openMenu()" class="material-icons">menu</i>
+						<i v-on:click="closeMenu()" class="material-icons">menu</i>
 					</div>
 					<div id="topRight" class="col s3">
 						<i class="material-icons">share</i>
@@ -96,7 +96,7 @@
 		var ShowmoluMethods = {
 			openMenu: function () {
 				var tl = gsap.timeline();
-				tl.to("#secondNav", {height: "auto", ease: "back"});
+				tl.to("#secondNav", {height: "auto", ease: "circ"});
 				tl.from("#secondNav li", {opacity: 0, right: "-500px", stagger: 0.25, duration: 1, ease: "power4"});
 				this.menuopen = true;
 			},
@@ -130,37 +130,6 @@
 			methods: ShowmoluMethods
 		});
 	});
-
-	window.onSpotifyWebPlaybackSDKReady = () => {
-	const token =
-	'BQBEd7VxdhOJgy-qEC65PMuf6w5xZXb1v8hMjrRISl57IojOC1Lcz9Q6QI9wDRSG7RfAjOPvJl2Y-Zn7YkF1vgL1J_zU13HMKNEJZQ-_Kzb8hs_0iqKf19fAOhSxBbHQOX3GWcdADhYO7nAuyOA6xaQbjMB3FzaZj6I';
-	const player = new Spotify.Player({
-	name: 'Web Playback SDK Quick Start Player',
-	getOAuthToken: cb => { cb(token); }
-	});
-
-	// Error handling
-	player.addListener('initialization_error', ({ message }) => { console.error(message); });
-	player.addListener('authentication_error', ({ message }) => { console.error(message); });
-	player.addListener('account_error', ({ message }) => { console.error(message); });
-	player.addListener('playback_error', ({ message }) => { console.error(message); });
-
-	// Playback status updates
-	player.addListener('player_state_changed', state => { console.log(state); });
-
-	// Ready
-	player.addListener('ready', ({ device_id }) => {
-	console.log('Ready with Device ID', device_id);
-	});
-
-	// Not Ready
-	player.addListener('not_ready', ({ device_id }) => {
-	console.log('Device ID has gone offline', device_id);
-	});
-
-	// Connect to the player!
-	player.connect();
-	};
 
 
 </script>
