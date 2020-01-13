@@ -14,20 +14,6 @@ var Showmolu = (function () {
 				return x;
 			}
 		};
-
-	})();
-
-	var User = (function (input) {
-		var x;
-		return function (input) {
-			if (!input) {
-				return x;
-			} else {
-				x = input;
-				return input;
-			}
-		};
-
 	})();
 
 	//Make a synchronous call to get Projects
@@ -38,7 +24,7 @@ var Showmolu = (function () {
 			//REAL DATA
 			//url: "/_projects/Showmolu/tmhOAuth-master/tweets_json.php?count=200",
 			//TEST DATA
-			url: "/v2/test-data.json",
+			url: "/_projects/Showmolu/v2/test-data.json",
 			type: "GET",
 			dataType: "json",
 			async: false,
@@ -51,46 +37,6 @@ var Showmolu = (function () {
 				alert("Error with JSON: " + err.responseText);
 			}
 		});
-
-	})();
-
-	//Create persistent storage for Recipients
-	var Recipients = (function (input) {
-
-		//check for recipients in web storage	
-		var x = JSON.parse(localStorage.getItem('ShowmoluRecipients'));
-
-		//if nothing in web storage, create empty object for storage
-		if (x === null) {
-			x = [];
-			localStorage.setItem('ShowmoluRecipients', JSON.stringify(x));
-		}
-
-		return function (input) {
-
-			if (!input) {
-				return x;
-			} else {
-				x.push(input);
-				//set new archive contents
-				localStorage.setItem('ShowmoluRecipients', JSON.stringify(x));
-				return x;
-			}
-		};
-
-	})();
-
-	//Create persistent storage for Favorites in a closure
-	var Favorites = (function (input) {
-		var x = [];
-		return function (input) {
-			if (!input) {
-				return x;
-			} else {
-				x.push(input);
-				return x;
-			}
-		};
 
 	})();
 
@@ -278,9 +224,6 @@ var Showmolu = (function () {
 	return {
 
 		Projects: Projects,
-		Favorites: Favorites,
-		User: User,
-		Recipients: Recipients,
 		TileFactory: TileFactory,
 		CloudFactory: CloudFactory
 
