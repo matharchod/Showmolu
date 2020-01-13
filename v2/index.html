@@ -27,15 +27,13 @@
 	#topLeft,
 	#topRight,
 	#bottomLeft,
-	#bottomRight {position: absolute;}
+	#bottomRight {position: fixed; z-index: 2;}
 	#topLeft {top: 0; left: 0; text-align: left;}
 	#topRight {top: 0; right: 0; text-align: right;}
 	#bottomLeft {bottom: 0; left: 0; text-align: left;}
 	#bottomRight {bottom: 0; right: 0; text-align: right;}
-	.row.showmonav {position: absolute; width: 100%; height: 100%; top: 0; left: 0; right: 0; margin: 0;}
-	#showmoNav {position: absolute; width: 100%; height: 100%; right: 0; left: auto; overflow: hidden;}
 	#mainNav {z-index: 2;}
-	#secondNav {z-index: 1; bottom: 0; top: auto; height: 0; background: #ccc;}
+	#secondNav {z-index: 1; bottom: 0; top: auto; width: 100%; height: 0; background: #ccc; position: fixed;}
 	#secondNav ul li {font-size: 300%; opacity: 1; position: relative;}
 	#secondNav :last-child {margin-bottom: 10%;}
 </style>
@@ -45,35 +43,78 @@
 	<!-- PAGE LAYOUT -->
 	<div id="ShowmoluApp">
 
-		<div id="showmoNav">
-			<div class="container">
-				<div id="mainNav" class="showmonav row">
-					<div id="topLeft" class="col s3">
-						<i v-on:click="openMenu()" class="material-icons">menu</i>
-						<i v-on:click="closeMenu()" class="material-icons">menu</i>
-					</div>
-					<div id="topRight" class="col s3">
-						<i class="material-icons">share</i>
-					</div>
-					<div id="bottomLeft" class="col s3">
-						<p>This is footer text. &copy; 2020</p>
-					</div>
-					<div id="bottomRight" class="">
-						<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Contact</a>
-					</div>				
-				</div><!-- /row -->
-				<div id="secondNav" class="showmonav row">
-					<div class="col s6">					
-						<ul>
-							<li>One</li>
-							<li>Two</li>
-							<li>Three</li>
-							<li>Four</li>	
-						</ul>
-					</div>
-				</div><!-- /row -->			
-			</div><!-- /container -->	
+		<div id="topLeft">
+			<i v-on:click="toggleMenu()" class="material-icons">menu</i>
 		</div>
+		<div id="topRight">
+			<i class="material-icons">share</i>
+		</div>
+		<div id="bottomLeft">
+			<p>This is footer text. &copy; 2020</p>
+		</div>
+		<div id="bottomRight">
+			<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Contact</a>
+		</div>
+
+		<div id="secondNav">
+			<ul>
+				<li>One</li>
+				<li>Two</li>
+				<li>Three</li>
+				<li>Four</li>
+			</ul>
+		</div><!-- /row -->
+
+
+		<div id="showmoContent">
+			<div class="container">
+				<div class="row">
+					<div class="col s4"></div>
+					<div class="col s4">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+							dolore magna aliqua. Diam quam nulla porttitor massa id. Quam lacus suspendisse faucibus interdum posuere
+							lorem. Ornare arcu dui vivamus arcu felis bibendum. Lorem mollis aliquam ut porttitor leo a diam
+							sollicitudin. Varius sit amet mattis vulputate enim nulla aliquet porttitor. Vel pretium lectus quam id leo
+							in vitae turpis massa. Venenatis tellus in metus vulputate eu scelerisque. Ullamcorper malesuada proin
+							libero nunc consequat. Sed euismod nisi porta lorem mollis aliquam.
+
+						</p>
+						<p>
+							Risus pretium quam vulputate dignissim suspendisse in est. Sit amet commodo nulla facilisi nullam vehicula.
+							Sapien eget mi proin sed libero enim. Et malesuada fames ac turpis egestas. Lectus magna fringilla urna
+							porttitor rhoncus dolor. Ullamcorper a lacus vestibulum sed arcu non odio. Dui vivamus arcu felis bibendum
+							ut tristique. Eget nullam non nisi est sit amet facilisis. Tellus in metus vulputate eu scelerisque felis
+							imperdiet. Purus faucibus ornare suspendisse sed nisi lacus sed. Tellus cras adipiscing enim eu turpis.
+							Lacus sed turpis tincidunt id aliquet. Fermentum odio eu feugiat pretium nibh ipsum consequat. Sed
+							vulputate mi sit amet mauris commodo quis imperdiet massa. At auctor urna nunc id cursus metus. Vel
+							fringilla est ullamcorper eget nulla facilisi etiam. Lacus suspendisse faucibus interdum posuere lorem
+							ipsum dolor sit amet. A cras semper auctor neque vitae tempus quam. Amet venenatis urna cursus eget nunc.
+
+						</p>
+						<p>
+							Nunc consequat interdum varius sit amet mattis vulputate enim nulla. Vel eros donec ac odio tempor. Dui
+							faucibus in ornare quam viverra orci sagittis. Enim facilisis gravida neque convallis a. Convallis aenean
+							et tortor at risus viverra. Commodo quis imperdiet massa tincidunt nunc. Urna molestie at elementum eu
+							facilisis sed odio morbi. Pretium aenean pharetra magna ac placerat vestibulum lectus. Elit scelerisque
+							mauris pellentesque pulvinar pellentesque. Sapien et ligula ullamcorper malesuada proin libero nunc.
+							Tristique risus nec feugiat in fermentum posuere. Turpis massa sed elementum tempus.
+
+						</p>
+						<p>
+							Enim tortor at auctor urna nunc id. Pharetra convallis posuere morbi leo urna. Commodo ullamcorper a lacus
+							vestibulum sed arcu non odio euismod. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Faucibus
+							ornare suspendisse sed nisi lacus sed viverra tellus. Sit amet tellus cras adipiscing enim eu turpis
+							egestas pretium. Vitae tortor condimentum lacinia quis vel eros donec. Libero nunc consequat interdum
+							varius sit. Urna duis convallis convallis tellus id interdum velit laoreet. Feugiat in ante metus dictum at
+							tempor commodo ullamcorper a.
+
+						</p>
+					</div>
+					<div class="col s4"></div>
+				</div><!-- /row -->
+			</div><!-- /container -->
+		</div><!-- /showmoContent -->
 
 	</div>
 
@@ -92,6 +133,7 @@
 	$(function() {
 
 		var Projects = Showmolu.Projects();
+		var tl = gsap.timeline();
 
 		var ShowmoluMethods = {
 			openMenu: function () {
@@ -104,6 +146,9 @@
 				var tl = gsap.timeline();
 				tl.to("#secondNav", {height: "0", ease: "bounce"});
 				this.menuopen = false;
+			},
+			toggleMenu: function() {
+				this.menuopen == false ? this.openMenu() : this.closeMenu();
 			}			
 		};
 
