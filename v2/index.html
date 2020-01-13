@@ -24,18 +24,31 @@
 	.col {
 		border: 1px solid #ccc;
 	}
-	#topLeft,
-	#topRight,
-	#bottomLeft,
-	#bottomRight {position: fixed; z-index: 2;}
+	.mainNav {position: fixed; z-index: 2;}
 	#topLeft {top: 0; left: 0; text-align: left;}
 	#topRight {top: 0; right: 0; text-align: right;}
 	#bottomLeft {bottom: 0; left: 0; text-align: left;}
 	#bottomRight {bottom: 0; right: 0; text-align: right;}
-	#mainNav {z-index: 2;}
 	#secondNav {z-index: 1; bottom: 0; top: auto; width: 100%; height: 0; background: #ccc; position: fixed;}
 	#secondNav ul li {font-size: 300%; opacity: 1; position: relative;}
 	#secondNav :last-child {margin-bottom: 10%;}
+	#showmoContent {
+		position: relative;
+		z-index: 1;
+	}
+	#showmoBkg {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		z-index: 0;
+	}
+	#showmoBkg * {
+		width: 100%;
+		height: auto;
+	}
 </style>
 
 <body>
@@ -43,16 +56,16 @@
 	<!-- PAGE LAYOUT -->
 	<div id="ShowmoluApp">
 
-		<div id="topLeft">
+		<div id="topLeft" class="mainNav">
 			<i v-on:click="toggleMenu()" class="material-icons">menu</i>
 		</div>
-		<div id="topRight">
+		<div id="topRight" class="mainNav">
 			<i class="material-icons">share</i>
 		</div>
-		<div id="bottomLeft">
+		<div id="bottomLeft" class="mainNav">
 			<p>This is footer text. &copy; 2020</p>
 		</div>
-		<div id="bottomRight">
+		<div id="bottomRight" class="mainNav">
 			<a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Contact</a>
 		</div>
 
@@ -115,6 +128,10 @@
 				</div><!-- /row -->
 			</div><!-- /container -->
 		</div><!-- /showmoContent -->
+
+		<div id="showmoBkg">
+			<img src="imx/IMG_3929.jpg" />
+		</div>
 
 	</div>
 
