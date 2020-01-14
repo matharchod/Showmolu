@@ -56,6 +56,13 @@
 		background-position: center center;
 		margin: 2em;
 	}
+	#showmoGridView li a {
+		display: block;
+		background: rgba(0, 0, 0, 0.8);
+		width: 100%;
+		height: 100%;
+		padding: 5em;
+	}
 	.content-columns {
 		column-count: 2;
 	}
@@ -203,13 +210,11 @@
 		const Foo = {template: "<div>foo</div>"}
 		const Bar = {template: "<div>bar</div>"}
 
-		const routes = [
-			{ path: "/foo", component: Foo },
-			{ path: "/bar", component: Bar}
-		]
-
 		const router = new VueRouter({
-			routes
+			routes: [
+				{ path: "/foo", component: Foo },
+				{ path: "/bar", component: Bar}
+			]
 		});
 
 		var ShowmoluMethods = {
@@ -229,7 +234,7 @@
 			}			
 		};
 
-		var TileBoard = new Vue({
+		var appStage = new Vue({
 			el: '#ShowmoluApp',
 			data: function () {
 				return {
@@ -252,7 +257,11 @@
 			methods: ShowmoluMethods
 		});
 
-		const app = new Vue({router}).$mount('#app');
+		var App = Vue.extend();
+
+		App.options.router = router;
+
+		var App = new Vue({router}).$mount('#app');
 
 
 
