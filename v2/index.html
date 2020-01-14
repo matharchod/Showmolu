@@ -46,6 +46,16 @@
 		width: 100%;
 		height: auto;
 	}
+	#showmoGridView li {
+		width: 250px;
+		height: 250px;
+		display: inline-block;
+		overflow: hidden;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		margin: 2em;
+	}
 	.content-columns {
 		column-count: 2;
 	}
@@ -83,97 +93,79 @@
 
 
 		<div id="showmoContent">
-			<div class="container">
+
+			<div id="showmoGridView">
+				<ul class="">
+					<li v-for="project in behance.projects"
+					:style="{backgroundImage: 'url(\'' + project.covers.original + '\')'}">
+						<a v-bind:href="project.url">{{project.name}}</a>
+					</li>
+				</ul>
+			</div><!-- /showmoGridView -->
+
+			<div id="showmoProjectView" class="container">
 				<div class="row">
 					<div class="col s4">
-						<h1 class="fixed-content">Diam quam nulla porttitor massa id.</h1>
+						<h2>Lorem Ipsum Dolor Set Ami.</h2>
 					</div>
 					<div class="col s8">
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Diam quam nulla porttitor massa id. Quam lacus suspendisse faucibus interdum posuere
-							lorem. Ornare arcu dui vivamus arcu felis bibendum. Lorem mollis aliquam ut porttitor leo a diam
-							sollicitudin. Varius sit amet mattis vulputate enim nulla aliquet porttitor. Vel pretium lectus quam id leo
-							in vitae turpis massa. Venenatis tellus in metus vulputate eu scelerisque. Ullamcorper malesuada proin
-							libero nunc consequat. Sed euismod nisi porta lorem mollis aliquam.
-
-						</p>
-						<p>
-							Risus pretium quam vulputate dignissim suspendisse in est. Sit amet commodo nulla facilisi nullam vehicula.
-							Sapien eget mi proin sed libero enim. Et malesuada fames ac turpis egestas. Lectus magna fringilla urna
-							porttitor rhoncus dolor. Ullamcorper a lacus vestibulum sed arcu non odio. Dui vivamus arcu felis bibendum
-							ut tristique. Eget nullam non nisi est sit amet facilisis. Tellus in metus vulputate eu scelerisque felis
-							imperdiet. Purus faucibus ornare suspendisse sed nisi lacus sed. Tellus cras adipiscing enim eu turpis.
-							Lacus sed turpis tincidunt id aliquet. Fermentum odio eu feugiat pretium nibh ipsum consequat. Sed
-							vulputate mi sit amet mauris commodo quis imperdiet massa. At auctor urna nunc id cursus metus. Vel
-							fringilla est ullamcorper eget nulla facilisi etiam. Lacus suspendisse faucibus interdum posuere lorem
-							ipsum dolor sit amet. A cras semper auctor neque vitae tempus quam. Amet venenatis urna cursus eget nunc.
-
-						</p>
-						<p>
-							Nunc consequat interdum varius sit amet mattis vulputate enim nulla. Vel eros donec ac odio tempor. Dui
-							faucibus in ornare quam viverra orci sagittis. Enim facilisis gravida neque convallis a. Convallis aenean
-							et tortor at risus viverra. Commodo quis imperdiet massa tincidunt nunc. Urna molestie at elementum eu
-							facilisis sed odio morbi. Pretium aenean pharetra magna ac placerat vestibulum lectus. Elit scelerisque
-							mauris pellentesque pulvinar pellentesque. Sapien et ligula ullamcorper malesuada proin libero nunc.
-							Tristique risus nec feugiat in fermentum posuere. Turpis massa sed elementum tempus.
-
-						</p>
-						<p>
-							Enim tortor at auctor urna nunc id. Pharetra convallis posuere morbi leo urna. Commodo ullamcorper a lacus
-							vestibulum sed arcu non odio euismod. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Faucibus
-							ornare suspendisse sed nisi lacus sed viverra tellus. Sit amet tellus cras adipiscing enim eu turpis
-							egestas pretium. Vitae tortor condimentum lacinia quis vel eros donec. Libero nunc consequat interdum
-							varius sit. Urna duis convallis convallis tellus id interdum velit laoreet. Feugiat in ante metus dictum at
-							tempor commodo ullamcorper a.
-
-						</p>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua. Diam quam nulla porttitor massa id. Quam lacus suspendisse faucibus interdum posuere
-							lorem. Ornare arcu dui vivamus arcu felis bibendum. Lorem mollis aliquam ut porttitor leo a diam
-							sollicitudin. Varius sit amet mattis vulputate enim nulla aliquet porttitor. Vel pretium lectus quam id leo
-							in vitae turpis massa. Venenatis tellus in metus vulputate eu scelerisque. Ullamcorper malesuada proin
-							libero nunc consequat. Sed euismod nisi porta lorem mollis aliquam.
-
-						</p>
-						<p>
-							Risus pretium quam vulputate dignissim suspendisse in est. Sit amet commodo nulla facilisi nullam vehicula.
-							Sapien eget mi proin sed libero enim. Et malesuada fames ac turpis egestas. Lectus magna fringilla urna
-							porttitor rhoncus dolor. Ullamcorper a lacus vestibulum sed arcu non odio. Dui vivamus arcu felis bibendum
-							ut tristique. Eget nullam non nisi est sit amet facilisis. Tellus in metus vulputate eu scelerisque felis
-							imperdiet. Purus faucibus ornare suspendisse sed nisi lacus sed. Tellus cras adipiscing enim eu turpis.
-							Lacus sed turpis tincidunt id aliquet. Fermentum odio eu feugiat pretium nibh ipsum consequat. Sed
-							vulputate mi sit amet mauris commodo quis imperdiet massa. At auctor urna nunc id cursus metus. Vel
-							fringilla est ullamcorper eget nulla facilisi etiam. Lacus suspendisse faucibus interdum posuere lorem
-							ipsum dolor sit amet. A cras semper auctor neque vitae tempus quam. Amet venenatis urna cursus eget nunc.
-
-						</p>
-						<p>
-							Nunc consequat interdum varius sit amet mattis vulputate enim nulla. Vel eros donec ac odio tempor. Dui
-							faucibus in ornare quam viverra orci sagittis. Enim facilisis gravida neque convallis a. Convallis aenean
-							et tortor at risus viverra. Commodo quis imperdiet massa tincidunt nunc. Urna molestie at elementum eu
-							facilisis sed odio morbi. Pretium aenean pharetra magna ac placerat vestibulum lectus. Elit scelerisque
-							mauris pellentesque pulvinar pellentesque. Sapien et ligula ullamcorper malesuada proin libero nunc.
-							Tristique risus nec feugiat in fermentum posuere. Turpis massa sed elementum tempus.
-
-						</p>
-						<p>
-							Enim tortor at auctor urna nunc id. Pharetra convallis posuere morbi leo urna. Commodo ullamcorper a lacus
-							vestibulum sed arcu non odio euismod. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Faucibus
-							ornare suspendisse sed nisi lacus sed viverra tellus. Sit amet tellus cras adipiscing enim eu turpis
-							egestas pretium. Vitae tortor condimentum lacinia quis vel eros donec. Libero nunc consequat interdum
-							varius sit. Urna duis convallis convallis tellus id interdum velit laoreet. Feugiat in ante metus dictum at
-							tempor commodo ullamcorper a.
-
-						</p>						
+						<div class="col s8">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Diam quam nulla porttitor massa id. Quam lacus suspendisse faucibus interdum posuere
+								lorem. Ornare arcu dui vivamus arcu felis bibendum. Lorem mollis aliquam ut porttitor leo a diam
+								sollicitudin. Varius sit amet mattis vulputate enim nulla aliquet porttitor. Vel pretium lectus quam id leo
+								in vitae turpis massa. Venenatis tellus in metus vulputate eu scelerisque. Ullamcorper malesuada proin
+								libero nunc consequat. Sed euismod nisi porta lorem mollis aliquam.
+	
+							</p>
+							<p>
+								Risus pretium quam vulputate dignissim suspendisse in est. Sit amet commodo nulla facilisi nullam vehicula.
+								Sapien eget mi proin sed libero enim. Et malesuada fames ac turpis egestas. Lectus magna fringilla urna
+								porttitor rhoncus dolor. Ullamcorper a lacus vestibulum sed arcu non odio. Dui vivamus arcu felis bibendum
+								ut tristique. Eget nullam non nisi est sit amet facilisis. Tellus in metus vulputate eu scelerisque felis
+								imperdiet. Purus faucibus ornare suspendisse sed nisi lacus sed. Tellus cras adipiscing enim eu turpis.
+								Lacus sed turpis tincidunt id aliquet. Fermentum odio eu feugiat pretium nibh ipsum consequat. Sed
+								vulputate mi sit amet mauris commodo quis imperdiet massa. At auctor urna nunc id cursus metus. Vel
+								fringilla est ullamcorper eget nulla facilisi etiam. Lacus suspendisse faucibus interdum posuere lorem
+								ipsum dolor sit amet. A cras semper auctor neque vitae tempus quam. Amet venenatis urna cursus eget nunc.
+	
+							</p>
+							<p>
+								Nunc consequat interdum varius sit amet mattis vulputate enim nulla. Vel eros donec ac odio tempor. Dui
+								faucibus in ornare quam viverra orci sagittis. Enim facilisis gravida neque convallis a. Convallis aenean
+								et tortor at risus viverra. Commodo quis imperdiet massa tincidunt nunc. Urna molestie at elementum eu
+								facilisis sed odio morbi. Pretium aenean pharetra magna ac placerat vestibulum lectus. Elit scelerisque
+								mauris pellentesque pulvinar pellentesque. Sapien et ligula ullamcorper malesuada proin libero nunc.
+								Tristique risus nec feugiat in fermentum posuere. Turpis massa sed elementum tempus.
+	
+							</p>
+							<p>
+								Enim tortor at auctor urna nunc id. Pharetra convallis posuere morbi leo urna. Commodo ullamcorper a lacus
+								vestibulum sed arcu non odio euismod. Eu ultrices vitae auctor eu augue ut lectus arcu bibendum. Faucibus
+								ornare suspendisse sed nisi lacus sed viverra tellus. Sit amet tellus cras adipiscing enim eu turpis
+								egestas pretium. Vitae tortor condimentum lacinia quis vel eros donec. Libero nunc consequat interdum
+								varius sit. Urna duis convallis convallis tellus id interdum velit laoreet. Feugiat in ante metus dictum at
+								tempor commodo ullamcorper a.
+	
+							</p>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+								dolore magna aliqua. Diam quam nulla porttitor massa id. Quam lacus suspendisse faucibus interdum posuere
+								lorem. Ornare arcu dui vivamus arcu felis bibendum. Lorem mollis aliquam ut porttitor leo a diam
+								sollicitudin. Varius sit amet mattis vulputate enim nulla aliquet porttitor. Vel pretium lectus quam id leo
+								in vitae turpis massa. Venenatis tellus in metus vulputate eu scelerisque. Ullamcorper malesuada proin
+								libero nunc consequat. Sed euismod nisi porta lorem mollis aliquam.
+							</p>
+						</div>
 					</div>
 				</div><!-- /row -->
-			</div><!-- /container -->
+			</div><!-- /showmoProjectView -->
+
 		</div><!-- /showmoContent -->
 
 		<div id="showmoBkg">
-			<img src="imx/IMG_3929.jpg" />
+			<!-- <img src="imx/IMG_3929.jpg" /> -->
 		</div>
 
 	</div>
