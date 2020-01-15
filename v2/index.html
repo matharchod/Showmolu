@@ -112,14 +112,9 @@
 
 		<div id="showmoContent">
 
-			<div id="showmoGridView">
-				<ul class="">
-					<li v-for="project in behance.projects"
-					:style="{backgroundImage: 'url(\'' + project.covers.original + '\')'}">
-						<a v-bind:href="project.url">{{project.name}}</a>
-					</li>
-				</ul>
-			</div><!-- /showmoGridView -->
+			<!--  Grid View  -->
+			<showmogridview></showmogridview>					
+			<!--  end CARD  -->
 
 			<div id="showmoProjectView" class="container">
 				<div class="row">
@@ -185,7 +180,17 @@
 			<!-- <img src="imx/IMG_3929.jpg" /> -->
 		</div>
 
-	</div>
+	</div><!-- /ShowmoluApp-->
+
+
+	<script type="text/x-template" id="showmogridview">
+		<p>This is the Grid View</p>
+		<!-- <ul class="">
+			<li :style="{backgroundImage: 'url(\'' + project.covers.original + '\')'}">
+				<a v-bind:href="project.url">{{project.name}}</a>
+			</li>
+		</ul> -->
+	</script><!-- /showmoGridView -->
 
 
 
@@ -207,7 +212,7 @@
 		var tl = gsap.timeline();
 		Vue.use(VueRouter);
 		
-		const Foo = {template: "<div>foo</div>"}		
+		const Foo = {template: "#showmogridview"}		
 		const Bar = {template: "<div>bar</div>"}
 
 		const router = new VueRouter({
@@ -255,14 +260,15 @@
 				}
 			},
 			methods: ShowmoluMethods,
+			components: {
+				showmogridview: {
+					//props: ['project'],
+					template: '#showmogridview',
+					methods: ShowmoluMethods
+				}
+			},
 			router: router
 		}).$mount('#ShowmoluApp');
-
-		// Vue.component('showmo-grid-view', {
-		// 	props: ['project'],
-		// 	template: '#showmoGridView',
-		// 	methods: ShowmoluMethods
-		// });
 
 	});
 
