@@ -74,16 +74,18 @@
 <body>
 
 
-	<div id="app" style="position:relative;z-index:10;">
-		<router-link to="/foo">Go to Foo</router-link>
-		<router-link to="/bar">Go to Bar</router-link>
-		<router-view></router-view>
-	</div>
+
 	
 		
 
 	<!-- PAGE LAYOUT -->
 	<div id="ShowmoluApp">
+
+		<div id="app" style="position:relative;z-index:10;">
+			<router-link to="/foo">Go to Foo</router-link>
+			<router-link to="/bar">Go to Bar</router-link>
+			<router-view></router-view>
+		</div>
 
 		<div id="topLeft" class="mainNav">
 			<i v-on:click="toggleMenu()" class="material-icons">menu</i>
@@ -201,13 +203,11 @@
 
 	$(function() {
 
-		Vue.use(VueRouter);
-
-
 		var behanceProjects = Showmolu.BehanceProjects();
 		var tl = gsap.timeline();
+		Vue.use(VueRouter);
 		
-		const Foo = {template: "<div>foo</div>"}
+		const Foo = {template: "<div>foo</div>"}		
 		const Bar = {template: "<div>bar</div>"}
 
 		const router = new VueRouter({
@@ -254,16 +254,9 @@
 					});
 				}
 			},
-			methods: ShowmoluMethods
-		});
-
-		var App = Vue.extend();
-
-		App.options.router = router;
-
-		var App = new Vue({router}).$mount('#app');
-
-
+			methods: ShowmoluMethods,
+			router: router
+		}).$mount('#ShowmoluApp');
 
 		// Vue.component('showmo-grid-view', {
 		// 	props: ['project'],
