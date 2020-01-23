@@ -81,10 +81,10 @@
 	<!-- PAGE LAYOUT -->
 	<div id="ShowmoluApp">
 
-		<div id="app" style="position:relative;z-index:10;">
+		<!-- <div id="app" style="position:relative;z-index:10;">
 			<router-link to="/foo">Go to Foo</router-link>
 			<router-link to="/bar">Go to Bar</router-link>
-		</div>
+		</div> -->
 
 		<div id="topLeft" class="mainNav">
 			<i v-on:click="toggleMenu()" class="material-icons">menu</i>
@@ -113,6 +113,16 @@
 
 			<router-view ></router-view>
 
+
+			<div id="showmoGridView">
+				<ul class="">
+					<li>This is the Grid View</li>
+					<li v-for="project in behance.projects" :style="{backgroundImage: 'url(\'' + project.covers.original + '\')'}">
+						<a v-bind:href="project.url">{{project.name}}</a>
+					</li>
+				</ul>
+			</div><!-- /showmoGridView -->
+
 		</div><!-- /showmoContent -->
 
 		<div id="showmoBkg">
@@ -122,17 +132,7 @@
 	</div><!-- /ShowmoluApp-->
 
 
-	<script type="text/x-template" id="showmogridview">
-		<ul class="">
-			<li>This is the Grid View</li>
-			<li v-for="proj in projects" :style="{backgroundImage: 'url(\'' + proj.covers.original + '\')'}">
-				<a v-bind:href="proj.url">{{proj.name}}</a>
-			</li>
-			<li v-for="proj in projects">{{proj}}</li>
-		</ul>
-	</script><!-- /showmoGridView -->
-
-	<script type="text/x-template" id="showmoprojectview" class="container">
+	<!-- <script type="text/x-template" id="showmoprojectview" class="container">
 		<div class="row">
 			<div class="col s4">
 				<h2>Lorem Ipsum Dolor Set Ami.</h2>
@@ -188,8 +188,9 @@
 					</p>
 				</div>
 			</div>
-		</div><!-- /row -->
-	</script><!-- /showmoProjectView -->
+		</div>
+	</script> -->
+	<!-- /showmoProjectView -->
 
 
 </body>
@@ -215,8 +216,8 @@
 
 		const router = new VueRouter({
 			routes: [
-				{ path: "/foo", component: Grid, props: { projects: behanceProjects} },
-				{ path: "/bar", component: Project}
+				// { path: "/foo", component: Grid },
+				// { path: "/bar", component: Project }
 			]
 		});
 
