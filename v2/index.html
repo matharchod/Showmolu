@@ -118,7 +118,7 @@
 				<ul class="">
 					<li>This is the Grid View</li>
 					<li v-for="project in behance.projects" :style="{backgroundImage: 'url(\'' + project.covers.original + '\')'}">
-						<a v-bind:href="project.url">{{project.name}}</a>
+						<a v-bind:href=" 'https://www.behance.net/v2/projects/' + project.id + '?client_id=MkEs5mltD9t1wVqV9kiv2QUeT3OVVHju&sort=published_date' ">{{project.name}}<br />{{project.id}}</a>
 					</li>
 				</ul>
 			</div><!-- /showmoGridView -->
