@@ -1,0 +1,437 @@
+{
+    "project": {
+        "id": 901555,
+        "name": "The Girls Next Door for Playboy.com",
+        "published_on": 1294597180,
+        "created_on": 1294595802,
+        "modified_on": 1563199280,
+        "url": "https:\/\/www.behance.net\/gallery\/901555\/The-Girls-Next-Door-for-Playboycom",
+        "slug": "The-Girls-Next-Door-for-Playboycom",
+        "privacy": "public",
+        "fields": ["Web Design", "Web Development"],
+        "covers": {
+            "202": "https:\/\/mir-s3-cdn-cf.behance.net\/projects\/202\/901555.544560e3d1b28.jpg",
+            "115": "https:\/\/mir-s3-cdn-cf.behance.net\/projects\/115\/901555.544560e3d1b28.jpg",
+            "original": "https:\/\/mir-s3-cdn-cf.behance.net\/projects\/original\/901555.544560e3d1b28.jpg",
+            "max_808": "https:\/\/mir-s3-cdn-cf.behance.net\/projects\/max_808\/901555.544560e3d1b28.jpg"
+        },
+        "mature_content": 0,
+        "mature_access": "allowed",
+        "owners": [{
+            "id": 58355,
+            "first_name": "Jani",
+            "last_name": "Anderson",
+            "username": "jani312",
+            "city": "Chicago",
+            "state": "Illinois",
+            "country": "United States",
+            "location": "Chicago, IL, USA",
+            "company": "Freelance",
+            "occupation": "User Experience Designer",
+            "created_on": 1202338277,
+            "url": "https:\/\/www.behance.net\/jani312",
+            "images": {
+                "50": "https:\/\/mir-s3-cdn-cf.behance.net\/user\/50\/58355.53aafde82dbda.jpg",
+                "115": "https:\/\/mir-s3-cdn-cf.behance.net\/user\/115\/58355.53aafde82dbda.jpg",
+                "138": "https:\/\/mir-s3-cdn-cf.behance.net\/user\/138\/58355.53aafde82dbda.jpg"
+            },
+            "display_name": "Jani Anderson",
+            "fields": ["Graphic Design", "Web Design", "Art Direction"],
+            "has_default_image": 0,
+            "website": "http:\/\/janianderson.com",
+            "banner_image_url": "https:\/\/mir-s3-cdn-cf.behance.net\/v1\/assets\/ae3b51dc513017886763769520c88c3a\/81915561-8939-460b-a9ca-e074481bb5ae_rwc_0x860x3219x409x3219.jpg?h=1c1de3aec514396c77b4cccd53f7f23a",
+            "stats": {
+                "followers": 10,
+                "following": 76,
+                "appreciations": 35,
+                "views": 3471,
+                "comments": 3
+            }
+        }],
+        "stats": {
+            "views": 1598,
+            "appreciations": 14,
+            "comments": 0
+        },
+        "conceived_on": 1294595802,
+        "canvas_width": 724,
+        "tags": ["playboy", "Girls Next Door", "E! Entertainment Television"],
+        "description": "A mini-site for the popular reality T.V. show \"Girls Next Door\", featuring Playboy's Hugh Hefner and his girlfriends: Holly, Bridget and Kendra",
+        "editor_version": 3,
+        "allow_comments": 1,
+        "modules": [{
+            "id": 5652483,
+            "project_id": 901555,
+            "type": "text",
+            "full_bleed": 0,
+            "alignment": "center",
+            "caption_alignment": "left",
+            "text": "<div><span class=\"title\">The Girls Next Door<\/span><br>Mini-Site for Playboy.com<br><\/div>",
+            "text_plain": "The Girls Next DoorMini-Site for Playboy.com"
+        }, {
+            "id": 5652484,
+            "project_id": 901555,
+            "type": "text",
+            "full_bleed": 0,
+            "alignment": "center",
+            "caption_alignment": "left",
+            "text": "<div>In 2006, while working in the Online Editorial department at Playboy, I designed and implemented a mini-site for the original \"Girls Next Door\": Holly, Kendra and Bridget. We were supplied logos and artwork from the mansion as well as from E! Television and it was my challenge to make it all look good and be interactive. Good times!<br><\/div>",
+            "text_plain": "In 2006, while working in the Online Editorial department at Playboy, I designed and implemented a mini-site for the original \"Girls Next Door\": Holly, Kendra and Bridget. We were supplied logos and artwork from the mansion as well as from E! Television and it was my challenge to make it all look good and be interactive. Good times!"
+        }, {
+            "id": 5652589,
+            "project_id": 901555,
+            "type": "image",
+            "full_bleed": 0,
+            "alignment": "center",
+            "caption_alignment": "left",
+            "alt_text_for_editor": "",
+            "color": {
+                "r": 98,
+                "g": 60,
+                "b": 220
+            },
+            "alt_text": "",
+            "src": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/disp\/fcb2445652589.56023bf3321ab.jpeg",
+            "sizes": {
+                "max_632": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_632\/fcb2445652589.56023bf3321ab.jpeg",
+                "max_316": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_316\/fcb2445652589.56023bf3321ab.jpeg",
+                "max_158": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_158\/fcb2445652589.56023bf3321ab.jpeg",
+                "disp": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/disp\/fcb2445652589.56023bf3321ab.jpeg",
+                "max_1240": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/hd\/fcb2445652589.56023bf3321ab.jpeg",
+                "max_1200": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_1200\/fcb2445652589.56023bf3321ab.jpeg",
+                "original": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/source\/fcb2445652589.56023bf3321ab.jpeg"
+            },
+            "dimensions": {
+                "max_632": {
+                    "width": 460,
+                    "height": 632
+                },
+                "max_316": {
+                    "width": 230,
+                    "height": 316
+                },
+                "max_158": {
+                    "width": 115,
+                    "height": 158
+                },
+                "disp": {
+                    "width": 600,
+                    "height": 824
+                },
+                "max_1240": {
+                    "width": 728,
+                    "height": 1000
+                },
+                "max_1200": {
+                    "width": 728,
+                    "height": 1000
+                },
+                "original": {
+                    "width": 728,
+                    "height": 1000
+                }
+            },
+            "width": 600,
+            "height": 824
+        }, {
+            "id": 5652629,
+            "project_id": 901555,
+            "type": "image",
+            "full_bleed": 0,
+            "alignment": "center",
+            "caption_alignment": "left",
+            "alt_text_for_editor": "",
+            "color": {
+                "r": 248,
+                "g": 247,
+                "b": 247
+            },
+            "alt_text": "",
+            "src": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/disp\/bd8cb95652629.56023bb00d32d.jpeg",
+            "sizes": {
+                "max_632": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_632\/bd8cb95652629.56023bb00d32d.jpeg",
+                "max_316": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_316\/bd8cb95652629.56023bb00d32d.jpeg",
+                "max_158": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_158\/bd8cb95652629.56023bb00d32d.jpeg",
+                "disp": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/disp\/bd8cb95652629.56023bb00d32d.jpeg",
+                "max_1240": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/hd\/bd8cb95652629.56023bb00d32d.jpeg",
+                "max_1200": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_1200\/bd8cb95652629.56023bb00d32d.jpeg",
+                "original": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/source\/bd8cb95652629.56023bb00d32d.jpeg"
+            },
+            "dimensions": {
+                "max_632": {
+                    "width": 506,
+                    "height": 632
+                },
+                "max_316": {
+                    "width": 253,
+                    "height": 316
+                },
+                "max_158": {
+                    "width": 126,
+                    "height": 158
+                },
+                "disp": {
+                    "width": 600,
+                    "height": 750
+                },
+                "max_1240": {
+                    "width": 1024,
+                    "height": 1280
+                },
+                "max_1200": {
+                    "width": 1024,
+                    "height": 1280
+                },
+                "original": {
+                    "width": 1024,
+                    "height": 1280
+                }
+            },
+            "width": 600,
+            "height": 750
+        }, {
+            "id": 5652630,
+            "project_id": 901555,
+            "type": "image",
+            "full_bleed": 0,
+            "alignment": "center",
+            "caption_alignment": "left",
+            "alt_text_for_editor": "",
+            "color": {
+                "r": 247,
+                "g": 244,
+                "b": 244
+            },
+            "alt_text": "",
+            "src": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/disp\/93d0995652630.56023c1c6f9cb.jpeg",
+            "sizes": {
+                "max_632": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_632\/93d0995652630.56023c1c6f9cb.jpeg",
+                "max_316": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_316\/93d0995652630.56023c1c6f9cb.jpeg",
+                "max_158": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_158\/93d0995652630.56023c1c6f9cb.jpeg",
+                "disp": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/disp\/93d0995652630.56023c1c6f9cb.jpeg",
+                "max_1240": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/hd\/93d0995652630.56023c1c6f9cb.jpeg",
+                "max_1200": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_1200\/93d0995652630.56023c1c6f9cb.jpeg",
+                "original": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/source\/93d0995652630.56023c1c6f9cb.jpeg"
+            },
+            "dimensions": {
+                "max_632": {
+                    "width": 728,
+                    "height": 601
+                },
+                "max_316": {
+                    "width": 383,
+                    "height": 316
+                },
+                "max_158": {
+                    "width": 191,
+                    "height": 158
+                },
+                "disp": {
+                    "width": 600,
+                    "height": 495
+                },
+                "max_1240": {
+                    "width": 728,
+                    "height": 601
+                },
+                "max_1200": {
+                    "width": 728,
+                    "height": 601
+                },
+                "original": {
+                    "width": 728,
+                    "height": 601
+                }
+            },
+            "width": 600,
+            "height": 495
+        }, {
+            "id": 5652633,
+            "project_id": 901555,
+            "type": "image",
+            "full_bleed": 0,
+            "alignment": "center",
+            "caption_alignment": "left",
+            "alt_text_for_editor": "",
+            "color": {
+                "r": 252,
+                "g": 251,
+                "b": 250
+            },
+            "alt_text": "",
+            "src": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/disp\/8fb25e5652633.56023c1c64620.jpeg",
+            "sizes": {
+                "max_632": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_632\/8fb25e5652633.56023c1c64620.jpeg",
+                "max_316": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_316\/8fb25e5652633.56023c1c64620.jpeg",
+                "max_158": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_158\/8fb25e5652633.56023c1c64620.jpeg",
+                "disp": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/disp\/8fb25e5652633.56023c1c64620.jpeg",
+                "max_1240": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/hd\/8fb25e5652633.56023c1c64620.jpeg",
+                "max_1200": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/max_1200\/8fb25e5652633.56023c1c64620.jpeg",
+                "original": "https:\/\/mir-s3-cdn-cf.behance.net\/project_modules\/source\/8fb25e5652633.56023c1c64620.jpeg"
+            },
+            "dimensions": {
+                "max_632": {
+                    "width": 241,
+                    "height": 632
+                },
+                "max_316": {
+                    "width": 121,
+                    "height": 316
+                },
+                "max_158": {
+                    "width": 60,
+                    "height": 158
+                },
+                "disp": {
+                    "width": 600,
+                    "height": 1573
+                },
+                "max_1240": {
+                    "width": 610,
+                    "height": 1599
+                },
+                "max_1200": {
+                    "width": 610,
+                    "height": 1599
+                },
+                "original": {
+                    "width": 610,
+                    "height": 1599
+                }
+            },
+            "width": 600,
+            "height": 1573
+        }],
+        "short_url": "http:\/\/on.be.net\/gbbGWs",
+        "copyright": {
+            "license": "cc by-nc-nd",
+            "description": "Attribution-NonCommercial-NoDerivs",
+            "license_id": 1,
+            "label": "Attribution Non-commercial\\nNo Derivatives"
+        },
+        "tools": [{
+            "id": 185289859,
+            "title": "Adobe Photoshop",
+            "category": "9",
+            "category_label": "Software",
+            "category_id": 9,
+            "synonym": {
+                "tag_id": 185289859,
+                "synonym_id": 7,
+                "name": "photoshop",
+                "title": "Adobe Photoshop",
+                "url": "https:\/\/www.adobe.com\/products\/photoshop.html?promoid=JVLHW6X4&mv=other",
+                "download_url": "https:\/\/www.adobe.com\/products\/photoshop.html?promoid=JVLHW6X4&mv=other",
+                "gallery_url": "https:\/\/www.behance.net\/galleries\/photoshop?tracking_source=tool_icon&sdid=WG1BJMHZ&mv=other",
+                "authenticated": 1,
+                "type": 1,
+                "icon_url": "https:\/\/a5.behance.net\/0d72dbacf071d74664fe7a814724cffebad3ed15\/img\/project\/tools\/1x\/photoshop.png",
+                "icon_url_2x": "https:\/\/a5.behance.net\/0d72dbacf071d74664fe7a814724cffebad3ed15\/img\/project\/tools\/2x\/photoshop.png"
+            },
+            "approved": "1",
+            "url": "\/search?content=projects&tools=185289859"
+        }, {
+            "id": 10324,
+            "title": "BBEdit",
+            "category": "9",
+            "category_label": "Software",
+            "category_id": 9,
+            "synonym": null,
+            "approved": "1",
+            "url": "\/search?content=projects&tools=10324"
+        }],
+        "styles": {
+            "text": {
+                "title": {
+                    "font_family": "georgia,\"times new roman\",times,serif",
+                    "font_weight": "normal",
+                    "color": "#4C4C4C",
+                    "text_align": "left",
+                    "line_height": "1.4em",
+                    "font_size": "28px",
+                    "text_decoration": "none",
+                    "font_style": "normal",
+                    "display": "inline",
+                    "text_transform": "none"
+                },
+                "subtitle": {
+                    "font_family": "arial,helvetica,sans-serif",
+                    "font_weight": "bold",
+                    "color": "#3b3b3b",
+                    "text_align": "left",
+                    "line_height": "1.4em",
+                    "font_size": "16px",
+                    "text_decoration": "none",
+                    "font_style": "normal",
+                    "display": "inline",
+                    "text_transform": "none"
+                },
+                "paragraph": {
+                    "font_family": "arial,helvetica,sans-serif",
+                    "font_weight": "normal",
+                    "color": "#3b3b3b",
+                    "text_align": "left",
+                    "line_height": "1.4em",
+                    "font_size": "12px",
+                    "text_decoration": "none",
+                    "font_style": "normal",
+                    "display": "inline",
+                    "text_transform": "none"
+                },
+                "caption": {
+                    "font_family": "arial,helvetica,sans-serif",
+                    "font_weight": "normal",
+                    "color": "#3b3b3b",
+                    "text_align": "left",
+                    "line_height": "1.4em",
+                    "font_size": "11px",
+                    "text_decoration": "none",
+                    "font_style": "normal",
+                    "display": "block",
+                    "text_transform": "none"
+                },
+                "link": {
+                    "font_family": "arial,helvetica,sans-serif",
+                    "font_weight": "normal",
+                    "color": "#226bec",
+                    "text_align": "left",
+                    "line_height": "1.4em",
+                    "font_size": "12px",
+                    "text_decoration": "none",
+                    "font_style": "normal",
+                    "display": "inline",
+                    "text_transform": "none"
+                }
+            },
+            "background": {
+                "color": "FFFFFF"
+            },
+            "spacing": {
+                "project": {
+                    "top_margin": 65
+                },
+                "modules": {
+                    "bottom_margin": 54
+                }
+            },
+            "dividers": {
+                "font_size": "1px",
+                "line_height": "1px",
+                "height": "1px",
+                "border_color": "#A7A7A7",
+                "margin": "-1px auto 0",
+                "position": "relative",
+                "top": "50%",
+                "border_width": "1px 0px 0px 0px",
+                "border_style": "dotted"
+            }
+        },
+        "colors": [{
+            "r": 98,
+            "g": 59,
+            "b": 219
+        }],
+        "creator_id": 58355
+    },
+    "http_code": 200
+}

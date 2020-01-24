@@ -41,6 +41,29 @@ var Showmolu = (function () {
 
 	})();
 
+	//Make asynchronous call to get Projects
+	var getProj = function (projectID) {
+
+		//Use AJAX to get the latest tweets
+		// $.ajax({
+		// 	//REAL DATA
+		// 	url: 'https://www.behance.net/v2/projects/' + projectID + '?client_id=MkEs5mltD9t1wVqV9kiv2QUeT3OVVHju&sort=published_date',
+		// 	//TEST DATA
+		// 	// url: "/v2/test-data.json",
+		// 	type: "GET",
+		// 	dataType: "json",
+		// 	success: function (result) {
+		// 		console.log(result);
+		// 		return result;
+		// 	},
+		// 	error: function (err) {
+		// 		console.log(err);
+		// 		alert("Error with JSON: " + err.responseText);
+		// 	}
+		// });
+
+	};	
+
 	//Use the Projects to create tiles	
 	var ProjectFactory = function () {
 
@@ -71,6 +94,7 @@ var Showmolu = (function () {
 
 		BehanceProjects: Projects,
 		ProjectFactory: ProjectFactory,
+		getProject: getProj()
 
 	};
 
